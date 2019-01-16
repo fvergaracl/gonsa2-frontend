@@ -1,0 +1,28 @@
+<div class=" contenedor">
+  <div class="">
+    <h4 class="titulo">Inicio de Sesión</h4>
+    <form [formGroup]="usuarioForm" (ngSubmit)="enviarDatos()">
+      <label class="" for="user"></label>
+      <div class="">
+        <div class="i">
+          <div class="mini-titulo"> <i class="fas fa-user"></i>Usuario</div>
+        </div>
+        <input type="text" class="" id="user" placeholder="Usuario" formControlName="user">
+      </div>
+      <label class="" for="password"></label>
+      <div class="">
+        <div class="">
+          <div class="mini-titulo"><i class="fas fa-key"></i>Contraseña</div>
+        </div>
+        <input type="password" class="" id="password" placeholder="Contraseña" formControlName="pass">
+      </div>
+      <div class="">
+        <button type="submit" class="boton">Ingresar</button>
+      </div>
+
+      <div class="forgot">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+    </form>
+  </div>
+</div>
