@@ -17,13 +17,16 @@ export class DashboardHeaderComponent implements OnInit {
 
   clickensalir(){
     localStorage.removeItem('token');
-    localStorage.removeItem('listaproveedores');
-    localStorage.removeItem('recursos');
-    //this._LoginuserService.setLogged(false);
+    this._loginService.setLogged(false)
+    this._loginService.setExpireToken('')
+    this._loginService.setNick('')
+    this._loginService.setRol('')
+    this._loginService.setToken('')
     this.router.navigate(['/']);
   }
 
   ngOnInit() {
+    
     if (this._loginService.getRol() === 'Professor'){
       // veo si es el rol es profesor o no , si es profesor , entonces sigue todo normal
       if (this._loginService.getLogged()) {
@@ -50,6 +53,7 @@ export class DashboardHeaderComponent implements OnInit {
           }
         });
       } else {
+
         this.router.navigate(['/']);
         // si no esta logueado en el front-end , lo redirigo a inicio
       }

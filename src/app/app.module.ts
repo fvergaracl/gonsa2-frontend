@@ -21,6 +21,10 @@ import { DashboardHeaderComponent } from './components/profesor/dashboardcomp/da
 import { InicioComponent_p } from './components/profesor/inicio/inicio.component';
 import { DashboardSidebarComponent } from './components/profesor/dashboardcomp/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardFooterComponent } from './components/profesor/dashboardcomp/dashboard-footer/dashboard-footer.component';
+import { Error404Component } from './components/error404/error404.component';
+import { Error403Component } from './components/error403/error403.component';
+import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component';
+import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component';
 
 
 
@@ -47,7 +51,11 @@ var adminLteConf = {
     DashboardHeaderComponent,
     InicioComponent_p,
     DashboardSidebarComponent,
-    DashboardFooterComponent
+    DashboardFooterComponent,
+    Error404Component,
+    Error403Component,
+    EInicioComponent,
+    AInicioComponent
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
   nick: string;
   token: string;
@@ -16,8 +14,22 @@ export class LoginService {
 
   constructor(public http: HttpClient, 
     private router: Router) {
-      this.nick = '';
-      this.token = '';
+      this.token = localStorage.getItem('token')
+      console.log(this.token)
+      if (this.token != null) {
+        let temproltoken = this.token.split('.')[1]
+        this.rol = JSON.parse(atob(temproltoken))['Rol']
+        this.nick = JSON.parse(atob(temproltoken))['User']
+        this.expiretoken = JSON.parse(atob(temproltoken))['exp']
+        this.logged = true
+      }
+      else {
+        this.rol = ''
+        this.nick = ''
+        this.expiretoken = ''
+        this.logged = false
+      }
+      
       this.urlapi = 'http://tera.uach.cl:8080/'
     }
 

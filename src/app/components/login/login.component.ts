@@ -34,7 +34,15 @@ export class LoginComponent implements OnInit {
             let expiracion_token = JSON.parse(atob(temproltoken))['exp']
             this._loginService.setRol(rol);
             this._loginService.setExpireToken(expiracion_token);
-            this.router.navigate(['/profesor/inicio']);
+            localStorage.setItem('token',res['token'])
+            if (rol === 'Professor') {
+              this.router.navigate(['/profesor/inicio']);
+            } else if (rol == 'Student'){
+              this.router.navigate(['/estudiante/inicio']);
+            } else if (rol == 'Administrador'){
+              this.router.navigate(['/administrador/inicio']);
+            }
+            
           } else if (res['code'] >= 400) {
             console.log('no entro algo paso');
             console.log(res);
@@ -48,6 +56,14 @@ export class LoginComponent implements OnInit {
       );
   }
   ngOnInit() {
+    let rol = this._loginService.getRol()
+    if (rol === 'Professor') {
+      this.router.navigate(['/profesor/inicio']);
+    } else if (rol == 'Student'){
+      this.router.navigate(['/estudiante/inicio']);
+    } else if (rol == 'Administrador'){
+      this.router.navigate(['/administrador/inicio']);
+    }
   }
 
 }
