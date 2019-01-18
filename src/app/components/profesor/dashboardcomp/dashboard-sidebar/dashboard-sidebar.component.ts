@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard-sidebar',
@@ -10,9 +8,7 @@ import {Router} from "@angular/router";
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  constructor(public http: HttpClient,
-    public _loginService: LoginService,
-    public router: Router) { }
+  constructor(public _loginService: LoginService) { }
 
   ngOnInit() {
   }

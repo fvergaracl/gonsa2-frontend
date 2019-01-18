@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { LayoutModule } from 'angular-admin-lte';    //Loading layout module
@@ -25,6 +26,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { Error403Component } from './components/error403/error403.component';
 import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component';
 import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component';
+import { PDesafioComponent } from './components/profesor/p-desafio/p-desafio.component';
 
 
 
@@ -32,7 +34,7 @@ var adminLteConf = {
   skin: 'blue',
   sidebarLeftMenu: [
     {label: 'Panel', separator: true},
-    {label: ' Inicio', route: '/inicio', iconClasses: 'fa fa-dashboard'},
+    {label: ' Inicio', route: '/profesor/inicio', iconClasses: 'fa fa-dashboard'},
     {label: ' Desafíos', iconClasses: 'fa fa-tasks', route: '/profesor/desafios'},
     {label: ' Clases', iconClasses: 'fas fa-users', route: '/profesor/clases'},
     {label: ' Informes', iconClasses: 'fa fa-files-o', route: '/profesor/informes'},
@@ -55,9 +57,11 @@ var adminLteConf = {
     Error404Component,
     Error403Component,
     EInicioComponent,
-    AInicioComponent
+    AInicioComponent,
+    PDesafioComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(ROUTES),
