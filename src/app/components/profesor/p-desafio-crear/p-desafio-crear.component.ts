@@ -48,6 +48,7 @@ export class PDesafioCrearComponent implements OnInit {
     console.log(this.desafioobjetivos);
     console.log(this.desafiocategoria);
     console.log(this.desafiourl);
+    
     const req = this.http.post(this._LoginService.getUrlApi()+ 'challenge/new', {
       title: this.desafiotitulo,
       summary: this.desafioresumen,
