@@ -6,13 +6,13 @@
         <section class="content-header">
             <h1>Desafíos </h1>
             <ol class="breadcrumb">
-                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Desafíos </a></li>
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fa fa-tasks"></i> Desafíos </a></li>
                 <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-tachometer-alt active"></i> Vista General </li>
             </ol>
         </section>
         <section class="content">
           <div class="row">
-            <button class="btn btn-primary" style="display: block; margin: auto;"> Crear desafío</button>
+            <button class="btn btn-primary" style="display: block; margin: auto;" (click)="clickcreardesafio()"> Crear desafío</button>
                     
           </div>
           <hr> 
@@ -22,12 +22,11 @@
                 <h3 class="box-title">Desafíos</h3>
                 <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 200px;">
-                      <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar por categoría">
-    
-                      <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
+                        <div class="icon-addon addon-lg">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminoabuscar">
+                            <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                        </div>
+                    </div>  
                   </div>
               </div>
               <!-- /.box-header -->
@@ -44,7 +43,7 @@
                         <th>Detalle</th>
                         <th>Editar</th>
                     </tr>
-                    <ng-container *ngFor="let item of desafios| paginate: { itemsPerPage: 5, id: 'desafiosi', currentPage: pd }" [attr.data-index]="i">               
+                    <ng-container *ngFor="let item of desafios|filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'desafiosi', currentPage: pd }" [attr.data-index]="i">               
                         <tr>
                             <td id="{{item[0]}}_{{item[1]}}">{{item[2]}}</td>
                             <td id="{{item[0]}}_foto" style="display: none;">{{item[3]}}</td>
@@ -54,8 +53,8 @@
                             <td>{{item[7] | date: 'dd/MM/yyyy'}}</td>
                             <td>{{item[8] | date: 'dd/MM/yyyy'}}</td>
                             <td>{{item[9]}}</td>
-                            <td><button class="btn btn-info" style="display: block; margin: auto;" (click)="editardesafio(item[1])"><i class="far fa-eye"style="color: black;"></i></button></td>
-                          <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>                                                 
+                            <td><button class="btn btn-info" style="display: block; margin: auto;" (click)="verdesafio(item[0])"><i class="far fa-eye"style="color: black;"></i></button></td>
+                          <td><button class="btn btn-warning" style="display: block; margin: auto;" (click)="editardesafio(item[0])"><i class="fas fa-pen" ></i></button></td>                                                 
                         </tr>
                       </ng-container>
                       

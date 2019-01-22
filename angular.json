@@ -24,6 +24,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "node_modules/ngx-select-dropdown/dist/assets/style.css",
               "node_modules/bootstrap-css-only/css/bootstrap.min.css",
               "node_modules/admin-lte-css/dist/css/AdminLTE.css",
               "node_modules/admin-lte-css/dist/css/skins/_all-skins.css",

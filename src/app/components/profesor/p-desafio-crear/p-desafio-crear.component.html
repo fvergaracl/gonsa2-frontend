@@ -1,0 +1,71 @@
+<mk-layout-wrapper>
+  
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <section class="content-header">
+            <h1>Crear Desafío </h1>
+            <ol class="breadcrumb">
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fa fa-tasks"></i> Desafíos </a></li>
+                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-plus-square active"></i> Crear Desafío </li>
+            </ol>
+        </section>
+        <section class="content">
+          <div class="row">
+              
+              <div class="form-group col-sm-12">
+                <label>Título<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                <input type="text" class="form-control" [(ngModel)]="desafiotitulo" required="true">
+              </div>
+              <div class="form-group col-sm-12">
+                <label>Resumen (100 caracteres)<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                <input type="text" class="form-control" [(ngModel)]="desafioresumen" required="true">
+              </div>
+              <div class="form-group col-sm-12">
+                <label>Descripción<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                <app-ngx-editor 
+                  [placeholder]="'Ingresa la Descripción del desafío'" 
+                  [spellcheck]="true" 
+                  [(ngModel)]="desafiodescripcion"
+                  [config]="editorConfig">
+                </app-ngx-editor>
+              </div>
+              <div class="form-group col-sm-8">
+                <label>Objetivos<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                <tag-input 
+                  [(ngModel)]='desafioobjetivos' 
+                  [editable]='true'
+                  [placeholder]="'Añade otro objetivo'" 
+                  [secondaryPlaceholder]="'Objetivo'"
+                  (onTagEdited)="onTagEdited($event)">
+                </tag-input>
+              </div>
+              <div class="form-group col-sm-4">
+                <label>Categoría<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                <ng-multiselect-dropdown
+                    [(ngModel)]="desafiocategoria"
+                    [ngModelOptions]="{standalone: true}"
+                    [placeholder]="'Elije la categoría del desafío'"
+                    [data]="dropdownList"
+                    [settings]="dropdownSettings">
+                    </ng-multiselect-dropdown>
+              </div>
+              <div class="form-group col-sm-8"></div>
+              <div class="form-group col-sm-4"><p id="categoriadescripcion"></p></div>
+              <div class="form-group col-sm-12"><label>Imagen de desafío</label></div>
+              <div *ngIf="fotosubida" class="form-group col-sm-12">
+                <img  [src]="desafiourl" height="100" width="100"> <br/>
+              </div>
+              <div class="form-group col-sm-12">
+                <input type='file' accept='image/*' (change)="onSelectFile($event)">
+              </div>
+              
+              
+              <div class="form-group col-sm-8"></div>
+              <div class="form-group col-sm-4"><button class="btn btn-success" (click)="creardesafio()" >Crear Desafío</button></div>
+          </div>
+        </section>
+    </mk-layout-content>
+    <app-dashboard-footer></app-dashboard-footer>
+   
+  </mk-layout-wrapper>

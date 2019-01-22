@@ -2,9 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TagInputModule } from 'ngx-chips';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { LayoutModule } from 'angular-admin-lte';    //Loading layout module
 import { BoxModule } from 'angular-admin-lte';       //Box component
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxEditorModule } from 'ngx-editor';
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 import { LoginService } from './services/login.service';
 
@@ -14,7 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { ROUTES } from './app.routes'
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EstudianteComponent } from './components/estudiante/estudiante.component';
@@ -27,6 +33,7 @@ import { Error403Component } from './components/error403/error403.component';
 import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component';
 import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component';
 import { PDesafioComponent } from './components/profesor/p-desafio/p-desafio.component';
+import { PDesafioCrearComponent } from './components/profesor/p-desafio-crear/p-desafio-crear.component';
 
 
 
@@ -58,9 +65,17 @@ var adminLteConf = {
     Error403Component,
     EInicioComponent,
     AInicioComponent,
-    PDesafioComponent
+    PDesafioComponent,
+    PDesafioCrearComponent
   ],
   imports: [
+    NgMultiSelectDropDownModule.forRoot(),
+    SelectDropDownModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    TagInputModule,
+    NgxEditorModule,
+    Ng2SearchPipeModule,
     NgxPaginationModule,
     BrowserModule,
     FormsModule,

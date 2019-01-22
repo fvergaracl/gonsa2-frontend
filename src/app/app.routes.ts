@@ -8,7 +8,7 @@ import { Error404Component } from './components/error404/error404.component'
 import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component'
 import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component'
 import { PDesafioComponent } from './components/profesor/p-desafio/p-desafio.component';
-
+import { PDesafioCrearComponent } from './components/profesor/p-desafio-crear/p-desafio-crear.component'
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent, },
@@ -16,6 +16,7 @@ export const ROUTES: Routes = [
     { path: 'estudiante', component: EstudianteComponent },
     { path: 'profesor/inicio', component: InicioComponent_p },
     { path: 'profesor/desafios', component: PDesafioComponent },
+    { path: 'profesor/desafios/crear', component: PDesafioCrearComponent },
     { path: 'estudiante/inicio', component: EInicioComponent },
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'Error404', component: Error404Component },
