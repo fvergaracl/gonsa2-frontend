@@ -33,8 +33,19 @@ export class PClasesComponent implements OnInit {
     direccionarCrearClase() {
       this.router.navigate(['/profesor/clases/crear']);
     }
+    editardesafio(id_desafio: any,school: any, identificator:any, clase:any, year:any ){
+      console.log(id_desafio,school, identificator,clase, year);
+      localStorage.setItem('id_desafio',id_desafio);
+      localStorage.setItem('school',school);
+      localStorage.setItem('identificator',identificator);
+      localStorage.setItem('clase',clase);
+      localStorage.setItem('year',year);
+      console.log('entro al editar');
+      this.router.navigate(['/profesor/clases/editar']);
+    }
     ngOnInit() {
       this.obtenertodaslasclases();
       console.log(this.obtenertodaslasclases);
     }
 }
+

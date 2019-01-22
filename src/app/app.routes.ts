@@ -12,6 +12,7 @@ import { PDesafioCrearComponent } from './components/profesor/p-desafio-crear/p-
 import { PClasesComponent } from './components/profesor/p-clases/p-clases.component';
 import { PClasesCrearComponent } from './components/profesor/p-clases-crear/p-clases-crear.component';
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
 
 
 
@@ -24,6 +25,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/desafios/crear', component: PDesafioCrearComponent },
     { path: 'profesor/clases', component: PClasesComponent },
     { path: 'profesor/clases/crear', component: PClasesCrearComponent },
+    { path: 'profesor/clases/editar', component: PClasesEditarComponent},
     { path: 'estudiante/inicio', component: EInicioComponent },
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'configuracion', component: ConfiguracionComponent},

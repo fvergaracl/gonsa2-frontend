@@ -37,6 +37,7 @@ import { PDesafioCrearComponent } from './components/profesor/p-desafio-crear/p-
 import { PClasesComponent } from './components/profesor/p-clases/p-clases.component';
 import { PClasesCrearComponent } from './components/profesor/p-clases-crear/p-clases-crear.component';
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
 
 
 
@@ -72,7 +73,8 @@ var adminLteConf = {
     PDesafioCrearComponent,
     PClasesComponent,
     PClasesCrearComponent,
-    ConfiguracionComponent
+    ConfiguracionComponent,
+    PClasesEditarComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
