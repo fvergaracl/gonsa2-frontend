@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent_p implements OnInit {
-
+  range = [
+    {nombre:"Desafios", descripcion:"descipcion componente", color: "bg-green", icon: "fa-tasks"},
+    {nombre:"Clases", descripcion:"descipcion componente",  color: "bg-red", icon:"fa-users"},
+    {nombre:"Informes", descripcion:"descipcion componente", color:"bg-yellow", icon:"fa-files-o"},
+    {nombre:"Configuracion", descripcion:"descipcion componente",color:"bg-blue",  icon:"fa-cogs"}
+    ];
   constructor() {}
 
   ngOnInit() {
