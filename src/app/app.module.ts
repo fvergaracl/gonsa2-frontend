@@ -42,6 +42,7 @@ import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-
 import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
 import { AlertsModule } from 'angular-alert-module';
 
+import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
 
 
 
@@ -80,7 +81,8 @@ var adminLteConf = {
     ConfiguracionComponent,
     PClasesDetallesComponent,
     PClasesEditarComponent,
-    PClasesAgregaralumnoComponent
+    PClasesAgregaralumnoComponent,
+    ModalalertaComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
