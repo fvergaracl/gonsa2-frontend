@@ -34,6 +34,10 @@ import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.comp
 import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component';
 import { PDesafioComponent } from './components/profesor/p-desafio/p-desafio.component';
 import { PDesafioCrearComponent } from './components/profesor/p-desafio-crear/p-desafio-crear.component';
+import { PClasesComponent } from './components/profesor/p-clases/p-clases.component';
+import { PClasesCrearComponent } from './components/profesor/p-clases-crear/p-clases-crear.component';
+import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
 
 
 
@@ -46,7 +50,7 @@ var adminLteConf = {
     {label: ' Clases', iconClasses: 'fas fa-users', route: '/profesor/clases'},
     {label: ' Informes', iconClasses: 'fa fa-files-o', route: '/profesor/informes'},
     {label: ' Cuenta', separator: true},
-    {label: ' Configuraciones', iconClasses: 'fa fa-cogs', route: '/profesor/configuraciones'}
+    {label: ' Configuraciones', iconClasses: 'fa fa-cogs', route: '/configuracion'}
   ]
 };
 
@@ -66,7 +70,11 @@ var adminLteConf = {
     EInicioComponent,
     AInicioComponent,
     PDesafioComponent,
-    PDesafioCrearComponent
+    PDesafioCrearComponent,
+    PClasesComponent,
+    PClasesCrearComponent,
+    ConfiguracionComponent,
+    ModalalertaComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

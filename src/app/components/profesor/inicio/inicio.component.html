@@ -1,21 +1,34 @@
 <mk-layout-wrapper>
-  
-  <app-dashboard-header></app-dashboard-header>
-  <app-dashboard-sidebar></app-dashboard-sidebar>
-  <mk-layout-content>
-      <section class="content-header">
-          <h1>Inicio </h1>
-          <ol class="breadcrumb">
-              <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
-              <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-tachometer-alt active"></i> Dashboard</li>
-          </ol>
-      </section>
-      <section class="content">
-        <div class="row">
-          Aquí va el resumen de todo 
-        </div>
-      </section>
-  </mk-layout-content>
-  <app-dashboard-footer></app-dashboard-footer>
- 
+
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <section class="content-header">
+            <h1>Inicio </h1>
+            <ol class="breadcrumb">
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
+                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-tachometer-alt active"></i> Dashboard</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="container">
+                    <div class="row mbr-justify-content-center">
+                        <div *ngFor="let ran of range" class="col-lg-6 mbr-col-md-10">
+                            <div class="info-box {{ran.color}}">
+                                <span class="info-box-icon"><i class="fa {{ran.icon}}"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">{{ran.nombre}}</span>
+                                    <span class="progress-description2">
+                  <p>{{ran.descripcion}}</p></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </mk-layout-content>
+    <app-dashboard-footer></app-dashboard-footer>
+
 </mk-layout-wrapper>

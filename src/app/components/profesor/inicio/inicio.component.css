@@ -1,0 +1,20 @@
+.p {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    line-height: 25px;
+    padding-left: 10px;
+}
+
+.info-box-icon {
+    height: 100%;
+}
+
+.info-box {
+    height: 200px;
+}
+
+.progress-description2,
+.info-box-text {
+    display: block;
+    font-size: 14px;
+}

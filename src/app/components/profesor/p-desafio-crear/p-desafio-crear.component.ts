@@ -30,6 +30,7 @@ export class PDesafioCrearComponent implements OnInit {
 
   onSelectFile(event) { // called each time file input changes
     this.fotosubida = false;
+    this.desafiourl = null;
       if (event.target.files && event.target.files[0]) {
         var reader = new FileReader();
 
@@ -41,22 +42,34 @@ export class PDesafioCrearComponent implements OnInit {
         }
       }
   }
+  dataURItoBlob(dataURI) {
+    const byteString = atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+ 
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([arrayBuffer], { type: 'image/jpeg' });    
+    return blob;
+ }
+
   creardesafio(){
-    console.log(this.desafiotitulo);
-    console.log(this.desafioresumen);
-    console.log(this.desafiodescripcion);
-    console.log(this.desafioobjetivos);
-    console.log(this.desafiocategoria);
-    console.log(this.desafiourl);
-    
+    console.log(this.desafiourl)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
     const req = this.http.post(this._LoginService.getUrlApi()+ 'challenge/new', {
       title: this.desafiotitulo,
       summary: this.desafioresumen,
       description: this.desafiodescripcion,
       aims: this.desafioobjetivos,
       photo: this.desafiourl,
-      category: this.desafiocategoria
-    })
+      category: this.desafiocategoria[0]
+    }, httpOptions)
       .subscribe(
         res => {
           console.log(res)

@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  constructor(public _loginService: LoginService) { }
+  constructor(public _loginService: LoginService) {}
 
   ngOnInit() {
   }

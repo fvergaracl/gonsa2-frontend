@@ -1,0 +1,28 @@
+<mk-layout-wrapper>
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <h3 class="box-title">Crear una clase</h3>
+        <div class="box box-success">
+            <div class="box-header with-border">
+
+                <div class="form-group">
+                    <label>Colegio</label>
+                    <input id="school" type="text" class="form-control" #school>
+
+                    <label>Identificador</label>
+                    <input id="id" type="text" class="form-control" #id>
+
+                    <label>Clase</label>
+                    <input id="clase" type="text" class="form-control" #clase>
+
+                    <label>Año</label>
+                    <input id="year" type="text" class="form-control" #year>
+                </div>
+                <button class="btn btn-primary" (click)="CrearClase(school.value, id.value, clase.value, year.value)">Crear</button>
+
+            </div>
+        </div>
+    </mk-layout-content>
+
+</mk-layout-wrapper>
