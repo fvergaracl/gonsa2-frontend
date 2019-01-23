@@ -1,0 +1,73 @@
+<mk-layout-wrapper>
+
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <section class="content-header">
+            <h1>Agregar estudiante </h1>
+            <ol class="breadcrumb">
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Profesor </a></li>
+                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-tachometer-alt active"></i> Vista General </li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+
+                <button style="margin-left:10px;margin-top: 5px; " class="btn btn-primary">Nick o email</button>
+                <button style="margin-left:20px;margin-top: 5px " class="btn btn-primary">XLS </button>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Nomina de estudiantes</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar por categoría">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Nick</th>
+                                    <th>Email</th>
+                                    <th>Identificador</th>
+                                    <th>año</th>
+                                    <th>algo </th>
+                                    <th>Desvintular</th>
+                                </tr>
+                                <ng-container *ngFor="let item of clases">
+                                    <tr>
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
+                                        <td>{{item[2]}} </td>
+                                        <td>{{item[3]}} </td>
+                                        <td>{{item[4]}}</td>
+                                        <td>{{item[5]}}</td>
+
+                                        <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="far fa-eye"style="color: black;"></i></button></td>
+                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>
+                                    </tr>
+                                </ng-container>
+
+                            </tbody>
+                        </table>
+                        <ul style="float:right;">
+
+                            <pagination-controls id="desafiosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </mk-layout-content>
+    <app-dashboard-footer></app-dashboard-footer>
+
+</mk-layout-wrapper>
