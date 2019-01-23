@@ -14,7 +14,7 @@ import { PClasesCrearComponent } from './components/profesor/p-clases-crear/p-cl
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import { PClasesDetallesComponent } from './components/profesor/p-clases-detalles/p-clases-detalles.component';
 import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
-
+import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
 
 
 export const ROUTES: Routes = [
@@ -28,6 +28,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/clases/crear', component: PClasesCrearComponent },
     { path: 'profesor/clases/detalles', component: PClasesDetallesComponent},
     { path: 'profesor/clases/editar', component: PClasesEditarComponent},
+    { path: 'profesor/clases/agregaralumno', component: PClasesAgregaralumnoComponent},
     { path: 'estudiante/inicio', component: EInicioComponent },
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'configuracion', component: ConfiguracionComponent},

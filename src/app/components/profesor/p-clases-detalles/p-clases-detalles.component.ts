@@ -10,13 +10,15 @@ import { Router } from "@angular/router";
   styleUrls: ['./p-clases-detalles.component.css']
 })
 export class PClasesDetallesComponent implements OnInit {
-
-  constructor(public http: HttpClient, public router: Router,
-    public _LoginService: LoginService) {}
-    añadirAClasePorNick(nick: any) { }
-
-    añadirAClasePorEmail(email: any) { }
-    
+  alumno: any;
+  idclase:any;
+  constructor(public router: Router) { 
+    this.idclase = localStorage.getItem('id_desafio');
+  }
+  agregarAlumno(){
+    this.idclase = localStorage.getItem('id_desafio');
+    this.router.navigate(['/profesor/clases/agregaralumno']);
+  }
     ngOnInit() {
       
     }

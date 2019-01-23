@@ -1,0 +1,23 @@
+<mk-layout-wrapper>
+
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <h3 class="box-title">Agregar estudiante</h3>
+        <div class="box box-success">
+            <div class="box-header with-border">
+
+                <div class="form-group">
+                    <label>Id clase</label>
+                    <input id="idClase" type="text" class="form-control" #school placeholder="{{idclase}}">
+
+                    <label>Alumno</label>
+                    <input id="alumno" type="text" class="form-control" #id placeholder="nombre alumno">
+
+                </div>
+                <button class="btn btn-primary" (click)="agregarAlumno(idClase,alumno)">Guardar cambios</button>
+
+            </div>
+        </div>
+    </mk-layout-content>
+</mk-layout-wrapper>

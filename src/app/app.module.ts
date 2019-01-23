@@ -39,6 +39,7 @@ import { PClasesCrearComponent } from './components/profesor/p-clases-crear/p-cl
 import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
 import { PClasesDetallesComponent } from './components/profesor/p-clases-detalles/p-clases-detalles.component';
 import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
+import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
 
 
 
@@ -76,7 +77,8 @@ var adminLteConf = {
     PClasesCrearComponent,
     ConfiguracionComponent,
     PClasesDetallesComponent,
-    PClasesEditarComponent
+    PClasesEditarComponent,
+    PClasesAgregaralumnoComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
