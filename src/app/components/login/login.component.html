@@ -1,28 +1,29 @@
 <div class=" contenedor">
-  <div class="">
-    <h4 class="titulo">Inicio de Sesión</h4>
-    <div>
-      <label class="" for="user"></label>
-      <div class="">
-        <div class="i">
-          <div class="mini-titulo"> <i class="fas fa-user"></i>Usuario</div>
-        </div>
-        <input type="text" class="" #user placeholder="Usuario">
-      </div>
-      <label class="" for="password"></label>
-      <div class="">
-        <div class="">
-          <div class="mini-titulo"><i class="fas fa-key"></i>Contraseña</div>
-        </div>
-        <input type="password" class="" #password placeholder="Contraseña">
-      </div>
-      <div class="">
-        <button type="submit" class="boton" (click)="Entrar(user.value, password.value)">Ingresar</button>
-      </div>
+    <div class="">
+        <h4 class="titulo">Inicio de Sesión</h4>
+        <div>
+            <label class="" for="user"></label>
+            <div class="">
+                <div class="i">
+                    <div class="mini-titulo"> <i class="fas fa-user"></i>Usuario</div>
+                </div>
+                <input type="text" class="" #user placeholder="Usuario">
+            </div>
+            <label class="" for="password"></label>
+            <div class="">
+                <div class="">
+                    <div class="mini-titulo"><i class="fas fa-key"></i>Contraseña</div>
+                </div>
+                <input type="password" class="" #password placeholder="Contraseña">
+            </div>
+            <div class="">
+                <button type="submit" class="boton" (click)="Entrar(user.value, password.value)">Ingresar</button>
+            </div>
 
-      <div class="forgot">
-        <a href="#">¿Olvidaste tu contraseña?</a>
-      </div>
+            <div class="forgot">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+<app-modalalerta></app-modalalerta>

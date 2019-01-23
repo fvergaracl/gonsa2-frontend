@@ -25,6 +25,10 @@ export class PClasesAgregaralumnoComponent implements OnInit {
       res => {
         console.log(res)
         if (res['code'] === 200) {
+          document.getElementById('modaldashboardtitulo').innerHTML = 'Alumno agregado a la clase';
+          document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+           +  'mensaje 2 de prueba exitosa';
+          document.getElementById('activarmodaldashboard').click();
           console.log('Estudiante agregado exitosamente');
         } else {
           console.log(res);
