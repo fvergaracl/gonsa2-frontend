@@ -23,8 +23,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-import { EstudianteComponent } from './components/estudiante/estudiante.component';
 import { DashboardHeaderComponent } from './components/profesor/dashboardcomp/dashboard-header/dashboard-header.component';
+import { DashboardHeaderComponentEstudiante } from './components/estudiante/dashboardcomp/dashboard-header/dashboard-header.component';
 import { InicioComponent_p } from './components/profesor/inicio/inicio.component';
 import { DashboardSidebarComponent } from './components/profesor/dashboardcomp/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardFooterComponent } from './components/profesor/dashboardcomp/dashboard-footer/dashboard-footer.component';
@@ -62,8 +62,8 @@ var adminLteConf = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    EstudianteComponent,
     DashboardHeaderComponent,
+    DashboardHeaderComponentEstudiante,
     InicioComponent_p,
     DashboardSidebarComponent,
     DashboardFooterComponent,

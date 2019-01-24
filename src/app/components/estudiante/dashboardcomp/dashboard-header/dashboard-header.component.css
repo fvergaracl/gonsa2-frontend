@@ -1,0 +1,29 @@
+.main-header {
+    position: relative;
+    max-height: 100px;
+    z-index: 1030;
+    background-color: #3c8dbc;
+}
+
+.navbar-brand {
+    float: none;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.navbar-header {
+    margin-right: 0;
+    margin-left: -15px;
+    float: right;
+    position: relative;
+}
+
+.cerrar {
+    float: right;
+}
+
+.logo-lg {
+    color: #fff;
+}

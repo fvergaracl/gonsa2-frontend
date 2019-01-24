@@ -2,7 +2,6 @@ import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 
 import { Routes } from '@angular/router';
-import { EstudianteComponent } from './components/estudiante/estudiante.component';
 import { InicioComponent_p } from './components/profesor/inicio/inicio.component';
 import { Error404Component } from './components/error404/error404.component';
 import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component';
@@ -20,7 +19,6 @@ import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-ag
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent, },
     { path: 'login', component: LoginComponent },
-    { path: 'estudiante', component: EstudianteComponent },
     { path: 'profesor/inicio', component: InicioComponent_p },
     { path: 'profesor/desafios', component: PDesafioComponent },
     { path: 'profesor/desafios/crear', component: PDesafioCrearComponent },
