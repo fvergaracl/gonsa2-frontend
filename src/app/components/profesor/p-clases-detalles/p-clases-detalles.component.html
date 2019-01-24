@@ -40,22 +40,32 @@
                                     <th>Email</th>
                                     <th>Identificador</th>
                                     <th>año</th>
-                                    <th>algo </th>
+                                    <th>Escuela </th>
                                     <th>Desvincular</th>
                                 </tr>
-                                <ng-container *ngFor="let item of clases">
+                                <!-- <ng-container *ngFor="let item of clases">
                                     <tr>
-                                        <td>{{item[0]}}</td>
-                                        <td>{{item[1]}}</td>
+                                        <td>{{item[0]}}</td> 
+                                        <td>{{item[1]}}</td> 
                                         <td>{{item[2]}} </td>
                                         <td>{{item[3]}} </td>
                                         <td>{{item[4]}}</td>
                                         <td>{{item[5]}}</td>
+                                        <td>Prueba</td>
 
-                                        <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="far fa-eye"style="color: black;"></i></button></td>
-                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>
+                                        <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="fa fa-window-close-o"style="color: black;"></i></button></td>
+                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td> 
                                     </tr>
-                                </ng-container>
+                                </ng-container> -->
+                                <tr>
+                                    <th>Alumno prueba</th>
+                                    <th>correo@algo.dom</th>
+                                    <th>id1</th>
+                                    <th>2019</th>
+                                    <th>Principe Asturias</th>
+                                    <th><button class="btn btn-info" style="display: block; margin: auto;" (click)="eliminarAlumno()"><i class="fa fa-window-close-o"style="color: black;"></i></button></th>
+                                </tr>
+
 
                             </tbody>
                         </table>
@@ -71,3 +81,4 @@
     <app-dashboard-footer></app-dashboard-footer>
 
 </mk-layout-wrapper>
+<app-modalalerta></app-modalalerta>

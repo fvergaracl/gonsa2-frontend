@@ -46,6 +46,11 @@ export class LoginComponent implements OnInit {
           } else if (res['code'] >= 400) {
             console.log('no entro algo paso');
             console.log(res);
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+            +  'Usuario o contraseña incorrecto';
+            document.getElementById('activarmodaldashboard').click();
+            this.router.navigate(['/login']);
             //document.getElementById('modalloginid').click();
             //document.getElementById('rectitulo2').innerHTML = 'Ups, algo ha salido mal'
             //document.getElementById('rectext2').innerHTML = res['mensaje']

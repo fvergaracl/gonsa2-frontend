@@ -6,11 +6,11 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { LayoutModule } from 'angular-admin-lte';    //Loading layout module
-import { BoxModule } from 'angular-admin-lte';       //Box component
+import { LayoutModule } from 'angular-admin-lte'; // Loading layout module
+import { BoxModule } from 'angular-admin-lte';       // Box component
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxEditorModule } from 'ngx-editor';
-import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 import { LoginService } from './services/login.service';
 
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { ROUTES } from './app.routes'
+import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -40,6 +40,9 @@ import { ConfiguracionComponent } from './components/configuracion/configuracion
 import { PClasesDetallesComponent } from './components/profesor/p-clases-detalles/p-clases-detalles.component';
 import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
 import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
+import { AlertsModule } from 'angular-alert-module';
+
+import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
 
 
 
@@ -78,7 +81,8 @@ var adminLteConf = {
     ConfiguracionComponent,
     PClasesDetallesComponent,
     PClasesEditarComponent,
-    PClasesAgregaralumnoComponent
+    PClasesAgregaralumnoComponent,
+    ModalalertaComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -90,6 +94,7 @@ var adminLteConf = {
     Ng2SearchPipeModule,
     NgxPaginationModule,
     BrowserModule,
+    AlertsModule.forRoot(),
     FormsModule,
     RouterModule.forRoot(ROUTES),
     LayoutModule.forRoot(adminLteConf),

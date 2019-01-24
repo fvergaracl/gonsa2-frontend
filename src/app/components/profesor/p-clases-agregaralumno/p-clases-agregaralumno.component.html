@@ -9,15 +9,16 @@
 
                 <div class="form-group">
                     <label>Id clase</label>
-                    <input id="idClase" type="text" class="form-control" #school placeholder="{{idclase}}">
+                    <input id="idClase" type="text" class="form-control" #idClase placeholder="{{idclase}}">
 
                     <label>Alumno</label>
-                    <input id="alumno" type="text" class="form-control" #id placeholder="nombre alumno">
+                    <input id="alumno" type="text" class="form-control" #alumno placeholder="nombre alumno">
 
                 </div>
-                <button class="btn btn-primary" (click)="agregarAlumno(idClase,alumno)">Guardar cambios</button>
+                <button class="btn btn-primary" (click)="agregarAlumno(idClase.value,alumno.value)">Guardar cambios</button>
 
             </div>
         </div>
     </mk-layout-content>
 </mk-layout-wrapper>
+<app-modalalerta></app-modalalerta>
