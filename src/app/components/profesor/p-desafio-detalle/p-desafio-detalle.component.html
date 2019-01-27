@@ -1,0 +1,33 @@
+<mk-layout-wrapper>
+  
+  <app-dashboard-header></app-dashboard-header>
+  <app-dashboard-sidebar></app-dashboard-sidebar>
+  <mk-layout-content>
+      <section class="content-header">
+          <h1>Detalle de desafío </h1>
+          <ol class="breadcrumb">
+              <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fa fa-tasks"></i> Desafíos </a></li>
+              <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-info-circle active"></i> Detalle </li>
+          </ol>
+      </section>
+      <section class="content">
+        <div class="row">
+            <div class="col-sm-12" *ngIf="tieneimagen" style="text-align: center; margin: auto;"><img [src]="imagePath" height="100" width="100" ></div>
+            <div class="col-sm-12"><h6><strong>Titulo:</strong> {{titulo}}</h6></div>
+            <div class="col-sm-12"><h6><strong>Resumen:</strong> {{resumen}}</h6></div>
+            <div class="col-sm-12"><h6><strong>Descripción:</strong></h6> <h6 [innerHTML]="descripcion"></h6></div>
+            <div class="col-sm-4"><h6><strong>Categoría:</strong> {{categoria}}</h6></div>
+            <div class="col-sm-4"><h6><strong>Fecha de creación:</strong> {{fcreado | date: 'dd/MM/yyyy'}}</h6></div>
+            <div class="col-sm-4"><h6><strong>Ultima modificación:</strong> {{fmodificado | date: 'dd/MM/yyyy'}}</h6></div>
+            <div class="col-sm-8"><h6><strong>Objetivos:</strong> {{objetivos}}</h6></div>
+            <div class="col-sm-4"><h6><strong>Código interno:</strong> {{token}}</h6></div>
+        </div>
+        <hr> 
+        <div class="row">
+
+        </div>
+      </section>
+  </mk-layout-content>
+  <app-dashboard-footer></app-dashboard-footer>
+ 
+</mk-layout-wrapper>

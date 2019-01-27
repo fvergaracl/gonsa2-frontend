@@ -35,7 +35,7 @@
                   <tbody>
                     <tr>
                         <th>Título</th>
-                        <th>Descripción</th>
+                        <th>Resumen</th>
                         <th>Objetivos</th>
                         <th>F de creación</th>
                         <th>Ulima modificación</th>
@@ -46,9 +46,7 @@
                     <ng-container *ngFor="let item of desafios|filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'desafiosi', currentPage: pd }" [attr.data-index]="i">               
                         <tr>
                             <td id="{{item[0]}}_{{item[1]}}">{{item[2]}}</td>
-                            <td id="{{item[0]}}_foto" style="display: none;">{{item[3]}}</td>
-                            <td id="{{item[0]}}_resumen" style="display: none;">{{item[4]}}</td>
-                            <td>{{item[5]}}</td>
+                            <td>{{item[4]}}</td>
                             <td>{{item[6]}}</td>      
                             <td>{{item[7] | date: 'dd/MM/yyyy'}}</td>
                             <td>{{item[8] | date: 'dd/MM/yyyy'}}</td>
