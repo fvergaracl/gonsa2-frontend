@@ -45,6 +45,7 @@ import { AlertsModule } from 'angular-alert-module';
 
 import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
 import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
+import { PDesafioDetalleComponent } from './components/profesor/p-desafio-detalle/p-desafio-detalle.component';
 
 
 
@@ -86,6 +87,8 @@ var adminLteConf = {
     PClasesAgregaralumnoComponent,
     ModalalertaComponent,
     ETareasComponent
+    ModalalertaComponent,
+    PDesafioDetalleComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
