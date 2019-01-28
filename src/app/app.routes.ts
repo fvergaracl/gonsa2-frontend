@@ -14,7 +14,7 @@ import { ConfiguracionComponent } from './components/configuracion/configuracion
 import { PClasesDetallesComponent } from './components/profesor/p-clases-detalles/p-clases-detalles.component';
 import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
 import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
-
+import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent, },
@@ -28,6 +28,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/clases/editar', component: PClasesEditarComponent},
     { path: 'profesor/clases/agregaralumno', component: PClasesAgregaralumnoComponent},
     { path: 'estudiante/inicio', component: EInicioComponent },
+    { path: 'estudiante/tareas', component: ETareasComponent},
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'Error404', component: Error404Component },

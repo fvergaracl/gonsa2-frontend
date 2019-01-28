@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NguCarouselModule } from '@ngu/carousel';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,6 +44,7 @@ import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-ag
 import { AlertsModule } from 'angular-alert-module';
 
 import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
+import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
 
 
 
@@ -82,7 +84,8 @@ var adminLteConf = {
     PClasesDetallesComponent,
     PClasesEditarComponent,
     PClasesAgregaralumnoComponent,
-    ModalalertaComponent
+    ModalalertaComponent,
+    ETareasComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -99,7 +102,8 @@ var adminLteConf = {
     RouterModule.forRoot(ROUTES),
     LayoutModule.forRoot(adminLteConf),
     HttpClientModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NguCarouselModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
