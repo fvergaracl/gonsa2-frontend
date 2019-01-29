@@ -86,7 +86,7 @@ var adminLteConf = {
     PClasesEditarComponent,
     PClasesAgregaralumnoComponent,
     ModalalertaComponent,
-    ETareasComponent
+    ETareasComponent,
     ModalalertaComponent,
     PDesafioDetalleComponent
   ],
