@@ -1,5 +1,5 @@
 <mk-layout-wrapper>
-  
+
     <app-dashboard-header></app-dashboard-header>
     <app-dashboard-sidebar></app-dashboard-sidebar>
     <mk-layout-content>
@@ -11,67 +11,67 @@
             </ol>
         </section>
         <section class="content">
-          <div class="row">
-            <button class="btn btn-primary" style="display: block; margin: auto;" (click)="clickcreardesafio()"> Crear desafío</button>
-                    
-          </div>
-          <hr> 
-          <div class="row">
-            <div class="box">
-              <div class="box-header">
-                <h3 class="box-title">Desafíos</h3>
-                <div class="box-tools">
-                    <div class="input-group input-group-sm" style="width: 200px;">
-                        <div class="icon-addon addon-lg">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminoabuscar">
-                            <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+            <div class="row">
+                <button class="btn btn-primary" style="display: block; margin: auto;" (click)="clickcreardesafio()"> Crear desafío</button>
+
+            </div>
+            <hr>
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Desafíos</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                                <div class="icon-addon addon-lg">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminoabuscar">
+                                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
                         </div>
-                    </div>  
-                  </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                  <tbody>
-                    <tr>
-                        <th>Título</th>
-                        <th>Resumen</th>
-                        <th>Objetivos</th>
-                        <th>F de creación</th>
-                        <th>Ulima modificación</th>
-                        <th>Categoría</th>
-                        <th>Detalle</th>
-                        <th>Editar</th>
-                    </tr>
-                    <ng-container *ngFor="let item of desafios|filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'desafiosi', currentPage: pd }" [attr.data-index]="i">               
-                        <tr>
-                            <td id="{{item[0]}}_{{item[1]}}">{{item[2]}}</td>
-                            <td>{{item[4]}}</td>
-                            <td>{{item[6]}}</td>      
-                            <td>{{item[7] | date: 'dd/MM/yyyy'}}</td>
-                            <td>{{item[8] | date: 'dd/MM/yyyy'}}</td>
-                            <td>{{item[9]}}</td>
-                            <td><button class="btn btn-info" style="display: block; margin: auto;" (click)="verdesafio(item[0])"><i class="far fa-eye"style="color: black;"></i></button></td>
-                          <td><button class="btn btn-warning" style="display: block; margin: auto;" (click)="editardesafio(item[0])"><i class="fas fa-pen" ></i></button></td>                                                 
-                        </tr>
-                      </ng-container>
-                      
-                    </tbody></table>
-                    <ul style="float:right;">
-                
-                        <pagination-controls id="desafiosi" (pageChange)="pd = $event" previousLabel="Anterior"
-              nextLabel="Siguiente"></pagination-controls>
-                    </ul>
-                  
-                  </div>
-                  </div>
-          </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Resumen</th>
+                                    <th>Objetivos</th>
+                                    <th>F de creación</th>
+                                    <th>Ulima modificación</th>
+                                    <th>Categoría</th>
+                                    <th>Detalle</th>
+                                    <th>Editar</th>
+                                </tr>
+                                <ng-container *ngFor="let item of desafios|filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'desafiosi', currentPage: pd }" [attr.data-index]="i">
+                                    <tr>
+                                        <td id="{{item[0]}}_{{item[1]}}">{{item[2]}}</td>
+                                        <td>{{item[4]}}</td>
+                                        <td>{{item[6]}}</td>
+                                        <td>{{item[7] | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{item[8] | date: 'dd/MM/yyyy'}}</td>
+                                        <td>{{item[9]}}</td>
+                                        <td><button class="btn btn-info" style="display: block; margin: auto;" (click)="verdesafio(item[0])"><i class="far fa-eye"style="color: black;"></i></button></td>
+                                        <td><button class="btn btn-warning" style="display: block; margin: auto;" (click)="editardesafio(item[0],item[2],item[3],item[4],item[5],item[6],item[9])"><i class="fas fa-pen" ></i></button></td>
+                                    </tr>
+                                </ng-container>
+
+                            </tbody>
+                        </table>
+                        <ul style="float:right;">
+
+                            <pagination-controls id="desafiosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
         </section>
     </mk-layout-content>
     <app-dashboard-footer></app-dashboard-footer>
-   
-  </mk-layout-wrapper>
-  <!--
+
+</mk-layout-wrapper>
+<!--
     <div class="box">
                   <div class="box-header">
                     <h3 class="box-title">Desafíos</h3>

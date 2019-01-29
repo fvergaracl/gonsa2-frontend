@@ -1,0 +1,36 @@
+<mk-layout-wrapper>
+
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <h3 class="box-title">Editar Desafio</h3>
+        <div class="box box-success">
+            <div class="box-header with-border">
+
+                <div class="form-group">
+                    <label>Titulo</label>
+                    <input id="titulo" type="text" class="form-control" #title placeholder="{{desafioAEditar.title}}">
+
+                    <label>Photo URL</label>
+                    <input id="photourl" type="text" class="form-control" #photo placeholder="{{desafioAEditar.photourl}}">
+
+                    <label>Summary</label>
+                    <input id="summary" type="text" class="form-control" #summary placeholder="{{desafioAEditar.summary}}">
+
+                    <label>Description</label>
+                    <input id="description" type="text" class="form-control" #description placeholder="{{desafioAEditar.description}}">
+
+                    <label>Aim</label>
+                    <input id="aim" type="text" class="form-control" #aim placeholder="{{desafioAEditar.aim}}">
+
+                    <label>Category</label>
+                    <input id="category" type="text" class="form-control" #category placeholder="{{desafioAEditar.category}}">
+
+                </div>
+                <button class="btn btn-primary" (click)="editarDesafio(title.value,photo.value,summary.value,description.value,aim.value,category.value)">Guardar cambios</button>
+
+            </div>
+        </div>
+    </mk-layout-content>
+</mk-layout-wrapper>
+<app-modalalerta></app-modalalerta>

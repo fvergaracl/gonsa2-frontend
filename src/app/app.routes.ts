@@ -16,7 +16,7 @@ import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-
 import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
 import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
 import { PDesafioDetalleComponent } from './components/profesor/p-desafio-detalle/p-desafio-detalle.component';
-
+import { PDesafioEditarComponent } from './components/profesor/p-desafio-editar/p-desafio-editar.component';
 
 
 export const ROUTES: Routes = [
@@ -26,6 +26,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/desafios', component: PDesafioComponent },
     { path: 'profesor/desafios/crear', component: PDesafioCrearComponent },
     { path: 'profesor/desafios/detalle/:id', component: PDesafioDetalleComponent },
+    { path: 'profesor/desafios/editar', component: PDesafioEditarComponent},
     { path: 'profesor/clases', component: PClasesComponent },
     { path: 'profesor/clases/crear', component: PClasesCrearComponent },
     { path: 'profesor/clases/detalles', component: PClasesDetallesComponent},

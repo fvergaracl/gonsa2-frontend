@@ -10,17 +10,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./p-desafio.component.css']
 })
 export class PDesafioComponent implements OnInit {
-  pd:any;
-  desafios:any
-  terminoabuscar:any
-  
+  pd: any;
+  desafios: any;
+  terminoabuscar: any;
+
   constructor(public http: HttpClient,
     public _LoginService: LoginService,
     public router: Router) {
-      this.terminoabuscar=''
-      this.desafios = []
+      this.terminoabuscar = '';
+      this.desafios = [];
      }
-  
+
   clickcreardesafio(){
     this.router.navigate(['/profesor/desafios/crear']);
   }
@@ -28,9 +28,9 @@ export class PDesafioComponent implements OnInit {
     console.log(id_desafio)
   }
 
-  editardesafio(id_desafio: any){
-    console.log(id_desafio)
-  }
+  // editardesafio(id_desafio: any){
+  //   console.log(id_desafio)
+  // }
 
   obtenertodoslosdesafios(){
     this.desafios = []
@@ -45,7 +45,20 @@ export class PDesafioComponent implements OnInit {
       if (data['code'] === 200){
         this.desafios = data['challenges']
       }
-    });  
+    });
+  }
+  editardesafio(id_desafio: any, title: any, photourl: any, summary: any,
+    desc: any, aim: any, category: any) {
+
+    localStorage.setItem('id_desafio', id_desafio);
+    localStorage.setItem('title', title);
+    localStorage.setItem('photourl', photourl);
+    localStorage.setItem('summary', summary);
+    localStorage.setItem('description', desc);
+    localStorage.setItem('aim', aim);
+    localStorage.setItem('category', category);
+    console.log('Entrando a la edición...');
+    this.router.navigate(['/profesor/desafios/editar']);
   }
 
   ngOnInit() {
