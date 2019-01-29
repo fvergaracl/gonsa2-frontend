@@ -59,7 +59,7 @@ export class DashboardHeaderComponent implements OnInit {
       }
     } else {
       // no es profesor entonces lo redirigo a inicio
-      this.router.navigate(['estudiante/inicio']);
+      this.router.navigate(['/']);
     }
     
     
