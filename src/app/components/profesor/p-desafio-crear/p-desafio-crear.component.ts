@@ -42,17 +42,16 @@ export class PDesafioCrearComponent implements OnInit {
         }
       }
   }
-  dataURItoBlob(dataURI) {
-    const byteString = atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
- 
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([arrayBuffer], { type: 'image/jpeg' });    
-    return blob;
- }
+//   dataURItoBlob(dataURI) {
+//     const byteString = atob(dataURI);
+//     const arrayBuffer = new ArrayBuffer(byteString.length);
+//     const int8Array = new Uint8Array(arrayBuffer);
+//     for (let i = 0; i < byteString.length; i++) {
+//       int8Array[i] = byteString.charCodeAt(i);
+//     }
+//     const blob = new Blob([arrayBuffer], { type: 'image/jpeg' });
+//     return blob;
+//  }
 
   creardesafio(){
     console.log(this.desafiourl)
@@ -62,6 +61,13 @@ export class PDesafioCrearComponent implements OnInit {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
+    let data = {title: this.desafiotitulo,
+    summary: this.desafioresumen,
+    description: this.desafiodescripcion,
+    aims: this.desafioobjetivos,
+    photo: this.desafiourl,
+    category: this.desafiocategoria[0]}
+    console.log(data);
     const req = this.http.post(this._LoginService.getUrlApi()+ 'challenge/new', {
       title: this.desafiotitulo,
       summary: this.desafioresumen,
@@ -109,10 +115,7 @@ export class PDesafioCrearComponent implements OnInit {
     for(let i=0; i<cats.length; i++){
       this.dropdownList.push(cats[i])
     }
-    
   }
-
-  
 
   ngOnInit() {
     this.editorConfig = {

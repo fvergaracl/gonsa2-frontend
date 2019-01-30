@@ -3,34 +3,64 @@
     <app-dashboard-header></app-dashboard-header>
     <app-dashboard-sidebar></app-dashboard-sidebar>
     <mk-layout-content>
-        <h3 class="box-title">Editar Desafio</h3>
-        <div class="box box-success">
+        <section class="content-header">
+            <h1>Editar Desafio </h1>
+            <ol class="breadcrumb">
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fa fa-tasks"></i> Desafíos </a></li>
+                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-plus-square active"></i> Editar </li>
+            </ol>
+        </section>
+
+        <section class="content">
             <div class="box-header with-border">
 
                 <div class="form-group">
-                    <label>Titulo</label>
-                    <input id="titulo" type="text" class="form-control" #title placeholder="{{desafioAEditar.title}}">
+                    <br>
+                    <div class="form-group col-sm-12">
+                        <label>Título<sup style="color:rgb(168, 168, 168); font-size: 9px;">* Requerido</sup> </label>
+                        <input type="text" class="form-control" [(ngModel)]="desafiotitulo" required="true" placeholder="{{desafioAEditar.title}}">
+                    </div>
 
-                    <label>Photo URL</label>
-                    <input id="photourl" type="text" class="form-control" #photo placeholder="{{desafioAEditar.photourl}}">
+                    <label>Imagen</label>
+                    <div class="form-group col-sm-12"><label>Imagen del desafio</label></div>
+                    <div *ngIf="fotosubida" class="form-group col-sm-12">
+                        <img [src]="desafiourl" height="100" width="100"> <br/>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <input type='file' accept='image/*' (change)="onSelectFile($event)">
+                    </div>
 
-                    <label>Summary</label>
-                    <input id="summary" type="text" class="form-control" #summary placeholder="{{desafioAEditar.summary}}">
+                    <div class="form-group col-sm-12">
+                        <label>Resumen (100 caracteres)<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                        <input type="text" class="form-control" [(ngModel)]="desafioresumen" required="true" placeholder="{{desafioAEditar.summary}}">
+                    </div>
 
-                    <label>Description</label>
-                    <input id="description" type="text" class="form-control" #description placeholder="{{desafioAEditar.description}}">
+                    <div class="form-group col-sm-12">
+                        <label>Descripción<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                        <app-ngx-editor [placeholder]="'Ingresa la Descripción del desafío'" [spellcheck]="true" [(ngModel)]="desafiodescripcion" [config]="editorConfig">
+                        </app-ngx-editor>
+                    </div>
 
-                    <label>Aim</label>
-                    <input id="aim" type="text" class="form-control" #aim placeholder="{{desafioAEditar.aim}}">
+                    <div class="form-group col-sm-8">
+                        <label>Objetivos<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                        <tag-input [(ngModel)]='desafioobjetivos' [editable]='true' [placeholder]="'Añade otro objetivo'" [secondaryPlaceholder]="'Objetivo'" (onTagEdited)="onTagEdited($event)">
+                        </tag-input>
+                    </div>
 
-                    <label>Category</label>
-                    <input id="category" type="text" class="form-control" #category placeholder="{{desafioAEditar.category}}">
+                    <div class="form-group col-sm-4">
+                        <label>Categoría<sup style="color:brown; font-size: 9px;">* Requerido</sup> </label>
+                        <ng-multiselect-dropdown [(ngModel)]="desafiocategoria" [ngModelOptions]="{standalone: true}" [placeholder]="'Elije la categoría del desafío'" [data]="dropdownList" [settings]="dropdownSettings">
+                        </ng-multiselect-dropdown>
+                    </div>
 
                 </div>
-                <button class="btn btn-primary" (click)="editarDesafio(title.value,photo.value,summary.value,description.value,aim.value,category.value)">Guardar cambios</button>
+                <button class="btn btn-primary" (click)="editarDesafio()">Guardar cambios</button>
 
             </div>
-        </div>
+        </section>
+
+
+
     </mk-layout-content>
 </mk-layout-wrapper>
 <app-modalalerta></app-modalalerta>

@@ -12,6 +12,17 @@ export class PDesafioEditarComponent implements OnInit {
   // localStorage.getItem('school')
   desafioAEditar: any;
   // id_desafio: any;
+  desafiourl: any;
+  fotosubida: boolean;
+  editorConfig: any;
+  dropdownSettings: any;
+  desafiocategoria: any;
+  dropdownList: any;
+  categoriasopciones: any;
+  desafiotitulo: any;
+  desafioresumen: any;
+  desafiodescripcion: any;
+  desafioobjetivos: any;
   constructor(public http: HttpClient,
     public _loginService: LoginService) {
     this.desafioAEditar = {title: localStorage.getItem('title'),
@@ -21,7 +32,48 @@ export class PDesafioEditarComponent implements OnInit {
                            aim: localStorage.getItem('aim'),
                            category: localStorage.getItem('category') };
   }
-  editarDesafio(title, purl, sum, desc, aim, cat) {
+  onSelectFile(event) { // called each time file input changes
+    this.fotosubida = false;
+    this.desafiourl = null;
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+
+        reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+        reader.onload = (event:any) => { // called once readAsDataURL is completed
+          this.desafiourl = event.target.result;
+          this.fotosubida = true;
+        };
+      }
+  }
+  obtenertodaslascategorias() {
+    let tempp_array = []
+    this.categoriasopciones = ['asd']
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin':'*',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    this.http.get( this._loginService.getUrlApi() +'getallcategories', httpOptions).subscribe(data => {
+      if (data['code'] === 200){
+        for(let i=0; i<data['categories'].length; i++){
+          tempp_array.push(data['categories'][i][0])
+        }
+        localStorage.setItem('categories', JSON.stringify(tempp_array));
+      }
+    });
+    console.log(localStorage.getItem('categories'));
+    let cats = JSON.parse(localStorage.getItem('categories'));
+    this.dropdownList = []
+    for(let i=0; i<cats.length; i++){
+      this.dropdownList.push(cats[i])
+    }
+  }
+
+
+  editarDesafio() { // Arreglar los datos que se envian
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -29,12 +81,17 @@ export class PDesafioEditarComponent implements OnInit {
       })
     };
     console.log('Entro a la edición');
-    const variablerijilla = Number(localStorage.getItem('id_desafio'));
-    console.log(variablerijilla);
-    const data = {idchallenge: variablerijilla, title: title, photourl: purl, summary: sum, description: desc, aim: aim, category: cat};
+    let data = {idchallenge: Number(localStorage.getItem('id_desafio')),
+                  title: this.desafiotitulo,
+                  photourl: this.desafiourl,
+                  summary: this.desafioresumen,
+                  description: this.desafiodescripcion,
+                  aim: this.desafioobjetivos,
+                  category: this.desafiocategoria[0]};
     console.log(data);
 
-    const req = this.http.post(this._loginService.getUrlApi() + '/class/edit_challenge', data, httpOptions )
+    const req = this.http.post(this._loginService.getUrlApi() + '/class/edit_challenge',
+   data, httpOptions )
     .subscribe(res => {
       console.log(res);
       if (res['code'] === 200) {
@@ -54,6 +111,35 @@ export class PDesafioEditarComponent implements OnInit {
   }
   ngOnInit() {
      // this.id_desafio = localStorage.getItem('id_desafio');
+     this.editorConfig = {
+      "editable": true,
+      "spellcheck": true,
+      "height": "auto",
+      "minHeight": "100",
+      "width": "auto",
+      "minWidth": "0",
+      "translate": "yes",
+      "enableToolbar": true,
+      "showToolbar": true,
+      "placeholder": "Ingresa la Descripción del desafío...",
+      "imageEndPoint": "",
+      "toolbar": [
+          ["bold", "italic", "underline", "strikeThrough", "superscript", "subscript"],
+          ["fontName", "fontSize", "color"],
+          ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "indent", "outdent"],
+          ["cut", "copy", "delete", "removeFormat", "undo", "redo"],
+          ["paragraph", "blockquote", "removeBlockquote", "horizontalLine", "orderedList", "unorderedList"]
+      ]
+    };
+    this.dropdownSettings = {
+      singleSelection: true,
+      idField: 'item_id',
+      textField: 'item_text',
+      searchPlaceholderText: 'Buscador',
+      allowSearchFilter: true
+    };
+    this.desafiocategoria =[];
+    this.obtenertodaslascategorias()
   }
 
 }
