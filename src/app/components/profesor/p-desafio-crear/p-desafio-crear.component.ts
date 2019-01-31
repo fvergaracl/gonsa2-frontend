@@ -62,11 +62,11 @@ export class PDesafioCrearComponent implements OnInit {
       })
     };
     let data = {title: this.desafiotitulo,
-    summary: this.desafioresumen,
-    description: this.desafiodescripcion,
-    aims: this.desafioobjetivos,
-    photo: this.desafiourl,
-    category: this.desafiocategoria[0]}
+                summary: this.desafioresumen,
+                description: this.desafiodescripcion,
+                aims: this.desafioobjetivos,
+                photo: this.desafiourl,
+                category: this.desafiocategoria[0]};
     console.log(data);
     const req = this.http.post(this._LoginService.getUrlApi()+ 'challenge/new', {
       title: this.desafiotitulo,

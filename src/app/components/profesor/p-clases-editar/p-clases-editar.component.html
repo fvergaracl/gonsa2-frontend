@@ -9,21 +9,22 @@
 
                 <div class="form-group">
                     <label>school</label>
-                    <input id="school" type="text" class="form-control" #school placeholder="{{claseeditar.school}}">
+                    <input id="school" type="text" class="form-control" #school placeholder="asdasda">
 
                     <label>identificador</label>
-                    <input id="id" type="text" class="form-control" #id placeholder="{{claseeditar.identificator}}">
+                    <input id="id" type="text" class="form-control" #id placeholder="asdasdasdasd">
 
                     <label>class</label>
-                    <input id="class" type="text" class="form-control" #class placeholder="{{claseeditar.clase}}">
+                    <input id="class" type="text" class="form-control" #class placeholder="asdasdsdada">
 
                     <label>year</label>
-                    <input id="year" type="text" class="form-control" #year placeholder="{{claseeditar.year}}">
+                    <input id="year" type="text" class="form-control" #year placeholder="asdasddassda">
 
                 </div>
-                <button class="btn btn-primary">Guardar cambios</button>
+                <button class="btn btn-primary" (click)="editarClase(school.value, id.value, clase.value, year.value)">Guardar cambios</button>
 
             </div>
         </div>
     </mk-layout-content>
 </mk-layout-wrapper>
+<app-modalalerta></app-modalalerta>

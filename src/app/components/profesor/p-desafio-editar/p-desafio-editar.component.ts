@@ -73,7 +73,7 @@ export class PDesafioEditarComponent implements OnInit {
   }
 
 
-  editarDesafio() { // Arreglar los datos que se envian
+  editarDesafio() { 
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -89,6 +89,7 @@ export class PDesafioEditarComponent implements OnInit {
                   aim: this.desafioobjetivos,
                   category: this.desafiocategoria[0]};
     console.log(data);
+    
 
     const req = this.http.post(this._loginService.getUrlApi() + '/class/edit_challenge',
    data, httpOptions )
