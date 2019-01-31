@@ -37,6 +37,13 @@ export class ConfiguracionComponent implements OnInit {
    }
     });
 }
+
+ObtenerRol(): boolean {
+  let rol = this._loginService.getRol();
+  if (rol === 'Professor') {
+    return true;
+  } else {return false; }
+}
   ngOnInit() {
   }
 

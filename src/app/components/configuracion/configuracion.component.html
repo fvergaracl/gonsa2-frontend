@@ -1,5 +1,4 @@
-<mk-layout-wrapper>
-
+<mk-layout-wrapper *ngIf="ObtenerRol()==true">
     <app-dashboard-header></app-dashboard-header>
     <app-dashboard-sidebar></app-dashboard-sidebar>
     <mk-layout-content>
@@ -25,4 +24,29 @@
     </mk-layout-content>
     <app-dashboard-footer></app-dashboard-footer>
 </mk-layout-wrapper>
+
+
+
+<app-estudiante-dashboard-header *ngIf="ObtenerRol()!==true"></app-estudiante-dashboard-header>
+<div class="offset-3 mx-auto col-md-6" *ngIf="ObtenerRol()!==true">
+    <h3 class="box-title">Cambiar contraseña</h3>
+    <div class="box box-success">
+        <div class="box-header with-border">
+
+            <div class="form-group">
+                <label>Contraseña antigua</label>
+                <input id="contra" type="password" class="form-control" #contra>
+
+                <label>Contraseña nueva</label>
+                <input id="nueva1" type="password" class="form-control" #nueva1>
+
+                <label>Repita contraseña</label>
+                <input id="nueva2" type="password" class="form-control" #nueva2>
+
+            </div>
+            <button class="btn btn-primary" (click)="cambiarClave(contra.value, nueva1.value, nueva2.value)">Guardar cambios</button>
+
+        </div>
+    </div>
+</div>
 <app-modalalerta></app-modalalerta>

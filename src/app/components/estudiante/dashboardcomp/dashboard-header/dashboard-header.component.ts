@@ -24,6 +24,9 @@ export class DashboardHeaderComponentEstudiante implements OnInit {
     this._loginService.setToken('');
     this.router.navigate(['/']);
   }
+  configuracion(){
+    this.router.navigate(['configuracion']);
+  }
   ngOnInit() {
   if (this._loginService.getRol() === 'Student'){
       if (this._loginService.getLogged()) {
