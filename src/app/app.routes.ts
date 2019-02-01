@@ -17,6 +17,7 @@ import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-ag
 import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
 import { PDesafioDetalleComponent } from './components/profesor/p-desafio-detalle/p-desafio-detalle.component';
 import { PDesafioEditarComponent } from './components/profesor/p-desafio-editar/p-desafio-editar.component';
+import { EBusquedasComponent } from './components/estudiante/e-busquedas/e-busquedas.component';
 
 
 export const ROUTES: Routes = [
@@ -34,6 +35,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/clases/agregaralumno', component: PClasesAgregaralumnoComponent},
     { path: 'estudiante/inicio', component: EInicioComponent },
     { path: 'estudiante/tareas', component: ETareasComponent},
+    { path: 'estudiante/busquedas', component: EBusquedasComponent},
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'Error404', component: Error404Component },
