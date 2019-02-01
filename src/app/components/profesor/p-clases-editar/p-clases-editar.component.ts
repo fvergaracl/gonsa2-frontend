@@ -17,9 +17,11 @@ export class PClasesEditarComponent implements OnInit {
   constructor(public http: HttpClient,
   public _loginService: LoginService) {
       this.school = localStorage.getItem('school');
+      console.log(this.school);
       this.identificator = localStorage.getItem('identificator');
       this.clase = localStorage.getItem('clase');
       this.year = localStorage.getItem('year');
+      console.log(this.year);
     }
    editarClase(school: any, id: any, clase: any, year: any) {
     const httpOptions = {
@@ -46,7 +48,7 @@ export class PClasesEditarComponent implements OnInit {
       } else {
         console.log('Algo salio mal :c');
         document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: red;"></i> '
         +  'Error al modificar la clase';
         document.getElementById('activarmodaldashboard').click();
    }
