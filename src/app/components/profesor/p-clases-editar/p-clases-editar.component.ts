@@ -48,7 +48,7 @@ export class PClasesEditarComponent implements OnInit {
       } else {
         console.log('Algo salio mal :c');
         document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: red;"></i> '
+        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation" style="color: red;"></i> '
         +  'Error al modificar la clase';
         document.getElementById('activarmodaldashboard').click();
    }
