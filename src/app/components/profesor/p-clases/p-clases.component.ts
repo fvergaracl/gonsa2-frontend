@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from "@angular/router";
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-p-clases',
@@ -53,9 +54,43 @@ export class PClasesComponent implements OnInit {
       console.log('visualizando clase...');
       this.router.navigate(['/profesor/clases/detalles']);
     }
+    verCargarXLSX(){
+      document.getElementById('xlf').style.display = 'block';
+    }
     ngOnInit() {
       this.obtenertodaslasclases();
       console.log(this.obtenertodaslasclases);
+
+      interface HTMLInputEvent extends Event {
+        target: HTMLInputElement & EventTarget;
+      }
+      let rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
+      function handleFile(e: HTMLInputEvent) {
+        let files = e.target.files;
+        let f = files[0];
+        let reader = new FileReader();
+        reader.onload = (event: Event) => {
+          let data = reader.result;
+          if(!rABS) {
+            // data = new Uint8Array(data);
+          }
+          let workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'});
+          /* DO SOMETHING WITH workbook HERE */
+          console.log(workbook);
+          let first_sheet_name = workbook.SheetNames[0];
+          let worksheet = workbook.Sheets[first_sheet_name];
+          // console.log(XLSX.utils.sheet_to_json(worksheet));
+          let dataJSON = XLSX.utils.sheet_to_json(worksheet);
+          console.log(dataJSON);
+        };
+        if(rABS) {
+          reader.readAsBinaryString(f);
+        }  else {reader.readAsArrayBuffer(f); }
+    }
+      let archivo = document.getElementById('xlf');
+      if (archivo) {
+        archivo.addEventListener('change', handleFile, false);
+      } else {console.log('No se puede;'); }
     }
 }
 

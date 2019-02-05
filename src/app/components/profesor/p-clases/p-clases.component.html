@@ -62,10 +62,11 @@
 
                             <pagination-controls id="desafiosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
                         </ul>
-                        <button style="margin-left:10px;margin-top: 5px; " class="btn btn-primary">Cargar XLS</button>
+                        <button style="margin-left:10px;margin-top: 5px; " class="btn btn-primary" (click)="verCargarXLSX()">Cargar planilla XLSX</button>
                         <button style="margin-left:20px;margin-top: 5px " class="btn btn-primary">Cargar </button>
                     </div>
                 </div>
+                <input style='display:none;' class="form-control-file" type="file" name="xlfile" id="xlf">
             </div>
         </section>
     </mk-layout-content>
