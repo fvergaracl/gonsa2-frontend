@@ -12,6 +12,7 @@ import * as XLSX from 'xlsx';
 })
 export class PClasesComponent implements OnInit {
   clases: any;
+  dataJSON: any;
 
   constructor(public http: HttpClient, public router: Router,
     public _LoginService: LoginService) {
@@ -55,8 +56,29 @@ export class PClasesComponent implements OnInit {
       this.router.navigate(['/profesor/clases/detalles']);
     }
     verCargarXLSX(){
-      document.getElementById('xlf').style.display = 'block';
+        document.getElementById('xlf').style.display = 'block';
     }
+
+    cargarEstudiantes(){
+      console.log('Entro!!!!!!');
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'JWT ' + localStorage.getItem('token')
+        })
+      };
+      let i = localStorage.getItem('dataJSON');
+      let newStudents = {newstudents: JSON.parse(i)};
+      console.log(newStudents);
+      this.http.post( this._LoginService.getUrlApi() + 'createstudents', newStudents, httpOptions).subscribe(res => {
+        console.log(res);
+        if (res['code'] === 200) {
+          console.log('Exito!!!!');
+        }
+      });
+      localStorage.removeItem('dataJSON');
+    }
+
     ngOnInit() {
       this.obtenertodaslasclases();
       console.log(this.obtenertodaslasclases);
@@ -80,12 +102,18 @@ export class PClasesComponent implements OnInit {
           let first_sheet_name = workbook.SheetNames[0];
           let worksheet = workbook.Sheets[first_sheet_name];
           // console.log(XLSX.utils.sheet_to_json(worksheet));
-          let dataJSON = XLSX.utils.sheet_to_json(worksheet);
-          console.log(dataJSON);
+          this.dataJSON = XLSX.utils.sheet_to_json(worksheet);
+          console.log(this.dataJSON);
+          console.log(this.dataJSON.length);
+          localStorage.setItem('dataJSON', this.dataJSON);
+          // this.cargarEstudiantes(this.dataJSON);
+          // localStorage.setItem('dataJSON', this.dataJSON);
+          document.getElementById('cargar').style.display = '';
+          localStorage.setItem('dataJSON', JSON.stringify(this.dataJSON));
         };
         if(rABS) {
           reader.readAsBinaryString(f);
-        }  else {reader.readAsArrayBuffer(f); }
+        } // else {reader.readAsArrayBuffer(f); }
     }
       let archivo = document.getElementById('xlf');
       if (archivo) {
