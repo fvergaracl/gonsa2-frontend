@@ -29,6 +29,7 @@ export class PClasesComponent implements OnInit {
         this.http.get( this._LoginService.getUrlApi() +'get_all_classes', httpOptions).subscribe(data => {
           if (data['code'] === 200) {
             this.clases = data['classes'];
+            console.log(this.clases);
           }
         });
     }
@@ -81,7 +82,7 @@ export class PClasesComponent implements OnInit {
 
     ngOnInit() {
       this.obtenertodaslasclases();
-      console.log(this.obtenertodaslasclases);
+      // console.log(this.obtenertodaslasclases);
 
       interface HTMLInputEvent extends Event {
         target: HTMLInputElement & EventTarget;

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from "@angular/router";
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-p-clases-detalles',
@@ -12,9 +13,47 @@ import { Router } from "@angular/router";
 export class PClasesDetallesComponent implements OnInit {
   alumno: any;
   idclase:any;
+  estudiantes: any;
+  rolStudent: any;
   constructor(public router: Router, public http: HttpClient,
     public _loginService: LoginService) {
-    this.idclase = localStorage.getItem('id_desafio');
+    this.idclase = localStorage.getItem('id_desafio'); // id clase
+  }
+
+  traerUsuariosRolStudent() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    const reg = this.http.get(this._loginService.getUrlApi() + 'getallnickstudents', httpOptions )
+    .subscribe(res => {
+      console.log(res);
+      if (res['code'] === 200 ) {
+        this.rolStudent = res['data'];   // Desde por aca
+        console.log('Los nicks de los estudiantes: ');
+        console.log(this.rolStudent[0]);
+      } else {console.log('Error!!!'); }
+    });
+
+  }
+  visualizarAlumnos(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    const req = this.http.get(this._loginService.getUrlApi() + 'getstudentinclass/' + this.idclase, httpOptions )
+    .subscribe(res =>{
+      console.log(res);
+      if (res['code'] === 200) {
+        console.log('Ningun problema detectado, mostrando c');
+        this.estudiantes = res['users'];
+        console.log(this.estudiantes);
+      }
+    });
   }
   agregarAlumno(){
     this.idclase = localStorage.getItem('id_desafio');
@@ -50,7 +89,121 @@ export class PClasesDetallesComponent implements OnInit {
     }
     });
   }
+  verCargarXLSX(){
+    document.getElementById('xlf').style.display = 'block';
+}
+separador(antiguos: any, nuevos: any) {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'JWT ' + localStorage.getItem('token')
+    })
+  };
+  for (let c = 0; c < antiguos.length; c++) {
+    let datos = {class: this.idclase, student: antiguos[c]};
+    const req = this.http.post(this._loginService.getUrlApi() + '/class/add_student', datos, httpOptions )
+    .subscribe(res => {
+    console.log(res);
+  });
+  }
+  if (nuevos.length !== 0) {
+    let data = {newstudents: nuevos};
+    const req = this.http.post( this._loginService.getUrlApi() + 'createstudents', data, httpOptions).subscribe(res => {
+      console.log(res);
+      if (res['code'] === 200) {
+        console.log('Exito!!!!');
+      }
+    });
+  }
+  localStorage.removeItem('dataJSON');
+}
+  cargarEstudiantes(){
+    console.log('Entro!!!!!!');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    let i = localStorage.getItem('dataJSON');
+    let oldStudents = [];
+    let newStudents = [];
+    console.log('La data en JSON...');
+    // i = {estudiantes: JSON.parse(i) };
+
+    // console.log(i);
+
+    let newStudentss = {s: JSON.parse(i)};
+    // console.log(newStudentss.s[0].Nick);
+
+    for (let c = 0; c < newStudentss.s.length; c++) {
+        console.log('en el primer for');
+        // console.log(newStudentss.s[c].Nick);
+        let student = false;
+        for (let d = 0; d < this.rolStudent.length; d++) {
+          console.log('en segundo for');
+          // console.log(this.rolStudent[d][0]);
+          // console.log(newStudentss.s[c].Nick + ' ' + this.rolStudent[d][0]);
+          if ((newStudentss.s[c].nick).toLowerCase() === this.rolStudent[d][0].toLowerCase()) {
+            console.log('Entro al segundo for con un true ');
+            student = true;
+            break;
+          }
+        }
+        if (student) { // Significa que el estudiante existe y hay que agregarlo a la clase
+          oldStudents.push(newStudentss.s[c].nick.toLowerCase());
+          // Enviar estudiantes o a la creacion o hacerlo aca.
+        } else { newStudents.push(newStudentss.s[c]); }
+    }
+    console.log('Salio de los for... Estudiantes viejos: ');
+    console.log(oldStudents);
+    console.log('Estudiantes nuevos: :');
+    console.log(newStudents);
+    this.separador(oldStudents, newStudents);
+
+
+    // Se tiene que crear estudiantes terminado el for y luego asignarlos a la clase
+
+  }
 
     ngOnInit() {
+      this.traerUsuariosRolStudent();
+      this.visualizarAlumnos();
+      interface HTMLInputEvent extends Event {
+        target: HTMLInputElement & EventTarget;
+      }
+      let rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
+      function handleFile(e: HTMLInputEvent) {
+        let files = e.target.files;
+        let f = files[0];
+        let reader = new FileReader();
+        reader.onload = (event: Event) => {
+          let data = reader.result;
+          if(!rABS) {
+            // data = new Uint8Array(data);
+          }
+          let workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'});
+          /* DO SOMETHING WITH workbook HERE */
+          console.log(workbook);
+          let first_sheet_name = workbook.SheetNames[0];
+          let worksheet = workbook.Sheets[first_sheet_name];
+          // console.log(XLSX.utils.sheet_to_json(worksheet));
+          this.dataJSON = XLSX.utils.sheet_to_json(worksheet);
+          console.log(this.dataJSON);
+          console.log(this.dataJSON.length);
+          localStorage.setItem('dataJSON', this.dataJSON);
+          // this.cargarEstudiantes(this.dataJSON);
+          // localStorage.setItem('dataJSON', this.dataJSON);
+          document.getElementById('cargar').style.display = '';
+          localStorage.setItem('dataJSON', JSON.stringify(this.dataJSON));
+        };
+        if (rABS) {
+          reader.readAsBinaryString(f);
+        } // else {reader.readAsArrayBuffer(f); }
+    }
+      let archivo = document.getElementById('xlf');
+      if (archivo) {
+        archivo.addEventListener('change', handleFile, false);
+      } else {console.log('No se puede;'); }
     }
 }
