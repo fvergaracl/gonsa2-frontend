@@ -14,7 +14,10 @@
             <div class="row">
 
                 <button style="margin-left:10px;margin-top: 5px; " class="btn btn-primary" (click)="agregarAlumno()">Nick o email</button>
-                <button style="margin-left:20px;margin-top: 5px " class="btn btn-primary">XLS </button>
+                <button style="margin-left:10px;margin-top: 5px; " class="btn btn-primary" (click)="verCargarXLSX()">Agregar por planilla excel (XLSX)</button>
+
+                <button style="margin-left:20px;margin-top: 5px; display:none;" class="btn btn-success" id="cargar" (click)="cargarEstudiantes()">Cargar planilla </button>
+                <input style='display:none;' class="form-control-file" type="file" name="xlfile" id="xlf">
             </div>
             <hr>
             <div class="row">
@@ -38,33 +41,27 @@
                                 <tr>
                                     <th>Nick</th>
                                     <th>Email</th>
-                                    <th>Identificador</th>
-                                    <th>año</th>
-                                    <th>Escuela </th>
-                                    <th>Desvincular</th>
+                                    <th>Sexo</th>
+                                    <th>Escuela</th>
+                                    <th>Edad </th>
+                                    <th>Pais</th>
+                                    <th>Eliminar</th>
+                                    <th>Editar</th>
                                 </tr>
-                                <!-- <ng-container *ngFor="let item of clases">
+                                <ng-container *ngFor="let item of estudiantes">
                                     <tr>
-                                        <td>{{item[0]}}</td> 
-                                        <td>{{item[1]}}</td> 
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
                                         <td>{{item[2]}} </td>
                                         <td>{{item[3]}} </td>
                                         <td>{{item[4]}}</td>
                                         <td>{{item[5]}}</td>
-                                        <td>Prueba</td>
+                                        <td></td>
 
                                         <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="fa fa-window-close-o"style="color: black;"></i></button></td>
-                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td> 
+                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>
                                     </tr>
-                                </ng-container> -->
-                                <tr>
-                                    <th>Alumno prueba</th>
-                                    <th>correo@algo.dom</th>
-                                    <th>id1</th>
-                                    <th>2019</th>
-                                    <th>Principe Asturias</th>
-                                    <th><button class="btn btn-info" style="display: block; margin: auto;" (click)="eliminarAlumno()"><i class="fa fa-window-close-o"style="color: black;"></i></button></th>
-                                </tr>
+                                </ng-container>
 
 
                             </tbody>

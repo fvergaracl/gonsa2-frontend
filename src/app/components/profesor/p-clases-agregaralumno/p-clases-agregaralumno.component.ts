@@ -2,24 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
-
 @Component({
   selector: 'app-p-clases-agregaralumno',
   templateUrl: './p-clases-agregaralumno.component.html',
   styleUrls: ['./p-clases-agregaralumno.component.css']
 })
 export class PClasesAgregaralumnoComponent implements OnInit {
+  idclase = localStorage.getItem('id_desafio');
   constructor(public http: HttpClient,
     public _LoginService: LoginService) { }
-  agregarAlumno(idclase, alumno){
-    console.log(idclase, alumno);
+  agregarAlumno(alumno){
+    console.log(this.idclase, alumno);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    let data = {class: idclase, student: alumno};
+    let data = {class: this.idclase, student: alumno};
     const req = this.http.post(this._LoginService.getUrlApi()+ 'class/add_student', data, httpOptions)
     .subscribe(
       res => {
@@ -37,8 +37,8 @@ export class PClasesAgregaralumnoComponent implements OnInit {
       }
     );
   }
+  
 
   ngOnInit() {
   }
-
 }
