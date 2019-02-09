@@ -41,8 +41,9 @@ constructor(public http: HttpClient, public router: Router, public _LoginService
 getTareas() {
     this.tareas = [];
     console.log(localStorage.getItem('token'));
-    // console.log(localStorage.getItem('nombreclasecarousel'));
-    const nombreClase = localStorage.getItem('nombreclasecarousel');
+    
+    const nombreClase = (localStorage.getItem('nombreclasecarousel')).toLowerCase();
+    console.log(nombreClase);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
