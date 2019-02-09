@@ -199,3 +199,21 @@ nav h1 {
     min-height: 100%;
     background-color: rgb(235, 233, 233);
 }
+
+.contentinicio {
+    background-color: #ecf0f5;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: -10px 0px 0;
+    padding: 0px 5px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    padding: 20px 20px 0;
+}

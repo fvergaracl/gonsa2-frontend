@@ -37,6 +37,11 @@ export class EInicioComponent implements OnInit {
     });
     return clases;
   }
+  ObtenerNombreClase(elem: any) {
+    console.log('el numbre de la clase es:' + elem);
+    this.router.navigate(['estudiante/tareas']);
+    localStorage.setItem('nombreclasecarousel', elem);
+  }
   ngOnInit() {
     this.nombre = this.obtenerClasesEstudiante();
   }

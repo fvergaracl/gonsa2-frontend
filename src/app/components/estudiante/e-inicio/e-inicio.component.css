@@ -41,6 +41,7 @@ div.tabla-precio {
     padding: 40px 0;
     text-align: center;
     transition: all .3s ease;
+    margin: 0px 10px;
 }
 
 div.tabla-precio ul li {
@@ -91,6 +92,7 @@ ul {
 a.boton {
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 
 .seccion {
@@ -100,4 +102,27 @@ a.boton {
 
 .numero i {
     font-size: 2.5rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    padding: 20px 20px 0;
+}
+
+.contentinicio {
+    background-color: #ecf0f5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: 40px 0px 0;
+    padding: 0px 10px 0;
+}
+
+#categorias {
+    background-color: #ffffff79;
+    box-sizing: border-box;
 }

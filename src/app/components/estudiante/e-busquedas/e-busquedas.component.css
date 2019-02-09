@@ -1,0 +1,227 @@
+.card {
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 0 0 1px rgba(63, 63, 68, .1);
+    background-color: #fff;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+.card .header {
+    padding: 15px 15px 0;
+}
+
+.card .title {
+    margin: 0;
+    color: #333;
+    font-weight: 300;
+}
+
+.card .category,
+.card label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9a9a9a;
+    margin-bottom: 0;
+}
+
+.h4,
+h4 {
+    font-size: 22px;
+    line-height: 30px;
+    padding-left: 20px;
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.accent {
+    background-color: #2b6d400e!important;
+    color: #fff!important;
+    padding-top: 15px;
+    margin-left: -30px;
+    padding-bottom: 5px;
+    margin-right: -15px;
+}
+
+.search-wrapper {
+    width: 100%;
+    max-width: 780px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+    background: #fff;
+    margin-left: 20px;
+}
+
+.search {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 18px;
+}
+
+.search-wrapper .search input {
+    width: 100%;
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+    padding: 0 16px;
+    border: none;
+    outline: 0;
+}
+
+.mat-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+    color: rgba(0, 0, 0, .54);
+}
+
+.mat-raised-button {
+    color: #0d98c7!important;
+    background-color: #fff;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 64px;
+    line-height: 36px;
+    margin-right: 25px
+}
+
+.herramientas {
+    /* min-height: 100%;
+    height: 100%; */
+    /* margin-right: 5px; */
+    max-width: 90%;
+    width: 90%;
+    background-color: #9a9a9a;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+/* 
+span {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 15px 20px 5px 20px;
+    display: inline-block;
+    color: #fff;
+}
+
+.header-menu {
+    background-color: #dd4b39;
+}
+
+p {
+    color: #fff;
+    padding-left: 15px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.main-sidebar {
+    background-color: #2f3035!important;
+    max-height: 100%;
+}
+
+.infor {
+    border-left: 3px solid #212529;
+}
+
+.infor:hover {
+    background-color: #dd4b39!important
+} */
+
+.content-card {
+    background: #fff;
+    border-radius: 8px 8px 0 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+}
+
+#b_content {
+    /* clear: both;
+    min-height: 448px;
+    padding: 13px 0 20px 10px;
+    width: 648px; */
+    clear: both;
+    min-height: 344px;
+    padding: 13px 0 20px 100px;
+    line-height: 1.2em;
+    margin: 0;
+    padding: 0;
+}
+
+.b_algo {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    list-style: none;
+    margin: 0;
+    line-height: 1.2em;
+    font: 13px/normal Arial, Helvetica, Sans-Serif;
+}
+
+h2 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+#b_results>.b_algo {
+    padding: 12px 0px 0;
+}
+
+.b_caption {
+    line-height: 18px;
+    padding-bottom: 10px;
+}
+
+#b_context {
+    width: 432px;
+    top: 88px;
+    position: absolute;
+    right: 0px;
+}
+
+#b_results {
+    margin-top: 0;
+    width: 648px;
+    display: inline-block;
+}
+
+ol {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.b_vList {
+    border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+.wapper {
+    background-color: #ecf0f5;
+    min-height: 636px;
+    position: relative;
+    overflow-y: auto;
+    box-sizing: border-box;
+}

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NguCarouselModule } from '@ngu/carousel';
+import { MatIconModule, MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -112,7 +113,12 @@ var adminLteConf = {
     LayoutModule.forRoot(adminLteConf),
     HttpClientModule,
     AngularFontAwesomeModule,
-    NguCarouselModule
+    NguCarouselModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule
+
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

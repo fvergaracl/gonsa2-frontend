@@ -1,8 +1,92 @@
-<mk-layout-wrapper>
+<div class="wapper">
     <app-estudiante-dashboard-header></app-estudiante-dashboard-header>
     <app-dashboardestu-sidebar></app-dashboardestu-sidebar>
     <mk-layout-content>
 
-    </mk-layout-content>
+        <section style=" padding-top:0px;  margin-top: -15px" class="content">
+            <div style="display: flex;flex-wrap: wrap; margin-right: -30px; margin-left: -15px;" class="row">
+                <div class="col-md-12">
+                    <!-- <div class="card">
 
-</mk-layout-wrapper>
+                    <div class="header"></div>
+                    <h4 class="title">titulo</h4>
+                    <div class="category"></div>
+                </div> -->
+                    <div class="top-bg accent"></div>
+                    <div class="header accent" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+
+                        <div class="search-wrapper offset-3 mx-auto col-md-6" style="flex-direction: row; box-sizing: border-box; display: flex;">
+                            <div class="search" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; flex: 1 1 0%;">
+                                <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="busqueda">
+                            </div>
+
+                        </div><button (click)="ConsultaEstudiante(busqueda.value)" class="btn btn-primary mat-raised-button  ">Buscar</button>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col-md-8"> -->
+                        <ol class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
+                            <li class="b_algo" data-bm="16">
+                                <h2><a href="https://challonge.com/es/jajhgdjhg" h="ID=SERP,5229.1">primero</a></h2>
+                                <div class="b_caption">
+                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>https://challonge.com/es/jajhgdjhg</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
+                                    <p>Código de inserción de la llave. Actualiza a Challonge Premier para quitar los anuncios de la versión insertada y para acceder a la plantilla Challonge Madness.</p>
+                                </div>
+                            </li>
+                        </ol>
+                        <ol class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
+                            <li class="b_algo" data-bm="1">
+                                <h2><a href="https://challonge.com/es/jajhgdjhg" h="ID=SERP,5229.1">segundo</a></h2>
+                                <div class="b_caption">
+                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>https://challonge.com/es/jajhgdjhg</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
+                                    <p>Código de inserción de la llave. Actualiza a Challonge Premier para quitar los anuncios de la versión insertada y para acceder a la plantilla Challonge Madness.</p>
+                                </div>
+                            </li>
+                        </ol>
+                        <!-- </div> -->
+
+
+
+                        <!-- <div class="col-md-4"> -->
+                        <ol class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
+                            <li class="b_ans" data-bm="15">
+                                <div class="b_rrsr">
+                                    <h2 class="">Incormacion adicional</h2>
+                                    <ul class="b_vList">
+                                        <li><a href="/search?q=hfhggh&amp;FORM=R5FD" h="ID=SERP,5372.1"><strong>hfhggh</strong></a></li>
+                                        <li><a href="/search?q=hghhghh&amp;FORM=R5FD1" h="ID=SERP,5373.1"><strong>hghhghh</strong></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-3 herramientas">
+                    <div class="card">
+                        <div class="header"></div>
+                        <h4 class="title">sadas</h4>
+                        <div class="category"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header"></div>
+                        <h4 class="title">sdsadsa</h4>
+                        <div class="category"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header"></div>
+                        <h4 class="title">sadas</h4>
+                        <div class="category"></div>
+                    </div>
+                    <div class="card">
+                        <div class="header"></div>
+                        <h4 class="title">sadas</h4>
+                        <div class="category"></div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </mk-layout-content>
+</div>

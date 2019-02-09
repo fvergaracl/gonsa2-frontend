@@ -2,7 +2,8 @@
     position: relative;
     max-height: 100px;
     z-index: 1030;
-    background-color: #3c8dbc;
+    /* background-color: #3c8dbc; */
+    background-color: #0d98c7!important
 }
 
 .navbar-brand {
@@ -11,6 +12,7 @@
     padding: 15px 15px;
     font-size: 18px;
     display: inline-block;
+    color: rgb(24, 23, 23)
 }
 
 .navbar-header {
@@ -25,5 +27,36 @@
 }
 
 .logo-lg {
-    color: #fff;
+    /* color: #fff; */
+    color: black;
+}
+
+.text-simple {
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+    font-size: 1em;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 30px;
+    overflow: hidden;
+    display: block;
+    opacity: 1;
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+    padding: 10px 65px 0;
+}
+
+.ml-1:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.1875rem;
+    color: #ffff;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+    padding: .5rem;
 }

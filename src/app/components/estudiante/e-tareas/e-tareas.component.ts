@@ -41,13 +41,15 @@ constructor(public http: HttpClient, public router: Router, public _LoginService
 getTareas() {
     this.tareas = [];
     console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('nombreclasecarousel'));
+    const nombreClase = localStorage.getItem('nombreclasecarousel');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    this.http.get( this._LoginService.getUrlApi() + '/getallchallenges/matematicas', httpOptions).subscribe(data => {
+    this.http.get( this._LoginService.getUrlApi() + '/getallchallenges/' + nombreClase , httpOptions).subscribe(data => {
       if (data['code'] === 200) {
         for (let i = 0; i < data['challenges'].length; i++) {
           let id = data['challenges'][i][0];
@@ -83,12 +85,12 @@ getTareas() {
 // constructor(private cdr: ChangeDetectorRef) {}
 
 ngOnInit() {
-  let asd=  JSON.parse(localStorage.getItem('tareas'));
-  let asd2= Object.keys(asd).length;
+  let parsetareas=  JSON.parse(localStorage.getItem('tareas'));
+  let obtareas= Object.keys(parsetareas).length;
   this.tempData = [];
   this.carouselTileItems$ = interval(500).pipe(
     startWith(-1),
-    take(asd2),
+    take(obtareas),
     map(val => {
       const data = (this.tempData = [
         ...this.tempData,
