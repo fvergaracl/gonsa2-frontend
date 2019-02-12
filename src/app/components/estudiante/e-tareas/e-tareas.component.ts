@@ -41,7 +41,6 @@ constructor(public http: HttpClient, public router: Router, public _LoginService
 getTareas() {
     this.tareas = [];
     console.log(localStorage.getItem('token'));
-    
     const nombreClase = (localStorage.getItem('nombreclasecarousel')).toLowerCase();
     console.log(nombreClase);
     const httpOptions = {
@@ -75,19 +74,12 @@ getTareas() {
 
   return tareas2;
   }
-//   ngOnInit() {
-//     this.tareascate = this.getTareas();
-//   }
-
-// }
-
-
-
-// constructor(private cdr: ChangeDetectorRef) {}
 
 ngOnInit() {
+  this.tareascate = this.getTareas();
   let parsetareas=  JSON.parse(localStorage.getItem('tareas'));
   let obtareas= Object.keys(parsetareas).length;
+  console.log(obtareas);
   this.tempData = [];
   this.carouselTileItems$ = interval(500).pipe(
     startWith(-1),
@@ -100,7 +92,6 @@ ngOnInit() {
       return data;
     })
   );
-  this.tareascate = this.getTareas();
 }
 
 }
