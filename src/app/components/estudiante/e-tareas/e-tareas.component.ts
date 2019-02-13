@@ -50,7 +50,7 @@ getTareas() {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    this.http.get( this._LoginService.getUrlApi() + '/getallchallenges/' + nombreClase , httpOptions).subscribe(data => {
+    this.http.get( this._LoginService.getUrlApi() + '/getallchallenges/matematicas'  , httpOptions).subscribe(data => {
       if (data['code'] === 200) {
         for (let i = 0; i < data['challenges'].length; i++) {
           let id = data['challenges'][i][0];
@@ -86,8 +86,16 @@ getTareas() {
 // constructor(private cdr: ChangeDetectorRef) {}
 
 ngOnInit() {
+  this.tareascate = this.getTareas();
   let parsetareas=  JSON.parse(localStorage.getItem('tareas'));
+  console.log('parsetareas: ');
+  console.log(parsetareas);
   let obtareas= Object.keys(parsetareas).length;
+  console.log('obtareas: ');
+  console.log(obtareas);
+  console.log(parsetareas.length);
+
+  // let asd = parsetareas
   this.tempData = [];
   this.carouselTileItems$ = interval(500).pipe(
     startWith(-1),
@@ -100,7 +108,7 @@ ngOnInit() {
       return data;
     })
   );
-  this.tareascate = this.getTareas();
+  
 }
 
 }
