@@ -15,6 +15,7 @@ export class PClasesDetallesComponent implements OnInit {
   idclase:any;
   estudiantes: any;
   rolStudent: any;
+  pd: any;
   constructor(public router: Router, public http: HttpClient,
     public _loginService: LoginService) {
     this.idclase = localStorage.getItem('id_desafio'); // id clase
