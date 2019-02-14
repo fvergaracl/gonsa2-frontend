@@ -13,8 +13,8 @@
 
         <div class="contenedor">
             <ul class="lista-precios clearfix ">
-                <li *ngFor="let nom of nombre; let i= index">
-                    <div class="tabla-precio">
+                <!-- <li *ngFor="let nom of nombre; let i= index">
+                    <div class="tabla-precio col-md-4 mx-auto">
                         <h3 #nombreclase>{{nom.nombre}}</h3>
                         <p class="numero"><i class="fas fa-brain"></i></p>
                         <ul>
@@ -23,12 +23,31 @@
                         </ul>
                         <a (click)="ObtenerNombreClase(nom.nombre)" class="boton btn-outline-primary">Ver tareas...</a>
                     </div>
-                </li>
+                </li> -->
+                <div class="row">
+                    <div *ngFor="let nom of nombre" class="col-xs-3 mx-auto" id="tabla-precio">
+                        <mat-card>
+
+                            <mat-card-title>
+                                <h3 id="tph3">{{nom.nombre}}</h3>
+                            </mat-card-title>
+
+                            <mat-card-content>
+                                <p class="numero"><i class="fas fa-brain"></i></p>
+                                <ul id="tdes">
+                                    <li id="tpli"><i class="fas fa-check"></i>{{nom.descripcion}}</li>
+                                </ul>
+                                <a (click)="ObtenerNombreClase(nom.nombre)" class="boton btn-outline-primary">Ver tareas...</a>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </div>
             </ul>
 
         </div>
     </section>
 </div>
 
-<!-- 
-[routerLink]="['tareas',i]" -->
+
+<!--[routerLink]="['tareas',i]" -->
