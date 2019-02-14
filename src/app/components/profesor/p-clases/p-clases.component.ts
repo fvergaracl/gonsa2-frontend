@@ -58,10 +58,10 @@ export class PClasesComponent implements OnInit {
       this.router.navigate(['/profesor/clases/detalles']);
     }
     verCargarXLSX(){
-        document.getElementById('xlf').style.display = 'block';
+        document.getElementById('xlf').style.display = '';
     }
 
-    cargarEstudiantes(){
+    cargarClases(){
       console.log('Entro!!!!!!');
       const httpOptions = {
         headers: new HttpHeaders({
@@ -69,16 +69,35 @@ export class PClasesComponent implements OnInit {
           'Authorization': 'JWT ' + localStorage.getItem('token')
         })
       };
-      let i = localStorage.getItem('dataJSON');
-      let newStudents = {newstudents: JSON.parse(i)};
-      console.log(newStudents);
-      this.http.post( this._LoginService.getUrlApi() + 'createstudents', newStudents, httpOptions).subscribe(res => {
-        console.log(res);
-        if (res['code'] === 200) {
-          console.log('Exito!!!!');
-        }
-      });
-      localStorage.removeItem('dataJSON');
+      let i = localStorage.getItem('dataClasesJSON');
+      let newClasses = JSON.parse(i);
+      console.log('Mis clases: ');
+      console.log(newClasses[0]);
+      console.log(newClasses[1]);
+
+      console.log(Object.keys(newClasses[0]));
+      let l = Object.keys(newClasses[0]);
+
+      for (let f = 0; f < newClasses.length; f++) {
+        newClasses[f]['school'] = newClasses[f][l[0]];
+        delete newClasses[f][l[0]];
+
+        newClasses[f]['identificator'] = newClasses[f][l[1]];
+        delete newClasses[f][l[1]];
+
+        newClasses[f]['class'] = newClasses[f][l[2]];
+        delete newClasses[f][l[2]];
+
+        newClasses[f]['year'] = newClasses[f][l[3]];
+        delete newClasses[f][l[3]];
+        this.http.post( this._LoginService.getUrlApi() + '/class/new', newClasses[f], httpOptions).subscribe(res => {
+          console.log(res);
+          if (res['code'] === 200) {
+            console.log('Exito!!!!');
+          }
+        });
+      }
+      localStorage.removeItem('dataClasesJSON');
     }
 
     ngOnInit() {
@@ -107,11 +126,11 @@ export class PClasesComponent implements OnInit {
           this.dataJSON = XLSX.utils.sheet_to_json(worksheet);
           console.log(this.dataJSON);
           console.log(this.dataJSON.length);
-          localStorage.setItem('dataJSON', this.dataJSON);
+          // localStorage.setItem('dataJSON', this.dataJSON);
           // this.cargarEstudiantes(this.dataJSON);
           // localStorage.setItem('dataJSON', this.dataJSON);
           document.getElementById('cargar').style.display = '';
-          localStorage.setItem('dataJSON', JSON.stringify(this.dataJSON));
+          localStorage.setItem('dataClasesJSON', JSON.stringify(this.dataJSON));
         };
         if(rABS) {
           reader.readAsBinaryString(f);

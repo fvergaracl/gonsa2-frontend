@@ -56,9 +56,8 @@
                                         <td>{{item[3]}} </td>
                                         <td>{{item[4]}}</td>
                                         <td>{{item[5]}}</td>
-                                        <td></td>
 
-                                        <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="fa fa-window-close-o"style="color: black;"></i></button></td>
+                                        <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="fa fa-window-close-o"style="color: black;" (click)="eliminarAlumno(item[0])"></i></button></td>
                                         <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>
                                     </tr>
                                 </ng-container>

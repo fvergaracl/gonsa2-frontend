@@ -19,6 +19,7 @@ import { PDesafioDetalleComponent } from './components/profesor/p-desafio-detall
 import { PDesafioEditarComponent } from './components/profesor/p-desafio-editar/p-desafio-editar.component';
 import { PClasesXLSXComponent } from './components/profesor/p-clases-xlsx/p-clases-xlsx.component';
 import { EBusquedasComponent } from './components/estudiante/e-busquedas/e-busquedas.component';
+import { PDesafioDetallesComponent } from './components/profesor/p-desafio-detalles/p-desafio-detalles.component';
 
 
 export const ROUTES: Routes = [
