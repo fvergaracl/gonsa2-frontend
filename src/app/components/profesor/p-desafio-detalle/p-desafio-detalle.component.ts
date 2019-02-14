@@ -21,15 +21,18 @@ export class PDesafioDetalleComponent implements OnInit {
   categoria = ''
   imagePath = ''
   tieneimagen: boolean = false;
+  users_evaluated = [];
+  users_in_challenge = [];
+  users_without_init: any;
   constructor(private _Activatedroute:ActivatedRoute,
     private router: Router, 
     public _LoginService: LoginService, 
     public http: HttpClient) {
     this.id_=this._Activatedroute.snapshot.params['id'];
-    this.Getallbydetalle()
+    this.Getallbydetalle();
   }
 
-  Getallbydetalle(){
+  Getallbydetalle() {
     this.tieneimagen = false;
     const httpOptions = {
       headers: new HttpHeaders({
@@ -58,6 +61,36 @@ export class PDesafioDetalleComponent implements OnInit {
         console.log(data['code']);
      }
     });
+    this.http.get(this._LoginService.getUrlApi() + 'getstatusresponses/by_challenge/' + this.id_, httpOptions)
+    .subscribe(res => {
+      //console.log(res);
+      if (res['code'] === 200) {
+        // console.log(res['users_evaluated']);
+        // console.log(res['users_in_challenge']);
+        // console.log(res['without_init']);
+
+        // this.users_evaluated = res['users_evaluated'];
+        // this.users_in_challenge = res['users_in_challenge'];
+        let u_e = res['users_evaluated']
+        let u_i_c = res['users_in_challenge'];
+        this.users_without_init = res['without_init'];
+
+        for (let i = 0; i < u_e.length; i++) {
+          // console.log(this.users_evaluated[i][1]);
+          this.users_evaluated.push(u_e[i][1]);
+        }
+        console.log('Estudiantes que fueron evaluados: ' + this.users_evaluated);
+
+        for (let i = 0; i < u_i_c.length; i++) {
+          // console.log(this.users_in_challenge[i][1]);
+          this.users_in_challenge.push(u_i_c[i][1]);
+        }
+        console.log('Estudiantes que estan en el desafio: ' + this.users_in_challenge);
+
+        console.log('Estudiantes que no han iniciado el desafio: ' + this.users_without_init);
+      }
+    });
+
   }
 
 

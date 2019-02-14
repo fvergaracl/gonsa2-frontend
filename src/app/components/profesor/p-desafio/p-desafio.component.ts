@@ -24,8 +24,10 @@ export class PDesafioComponent implements OnInit {
   clickcreardesafio(){
     this.router.navigate(['/profesor/desafios/crear']);
   }
-  verdesafio(id_desafio: any){
-    console.log(id_desafio)
+  verdesafio(id_desafio: any) {
+    console.log(id_desafio);
+    this.router.navigate(['/profesor/desafios/detalle', id_desafio]);
+    
   }
 
   // editardesafio(id_desafio: any){

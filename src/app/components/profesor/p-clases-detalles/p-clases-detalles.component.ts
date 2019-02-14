@@ -15,6 +15,7 @@ export class PClasesDetallesComponent implements OnInit {
   idclase:any;
   estudiantes: any;
   rolStudent: any;
+  pd: any;
   constructor(public router: Router, public http: HttpClient,
     public _loginService: LoginService) {
     this.idclase = localStorage.getItem('id_desafio'); // id clase
@@ -38,7 +39,7 @@ export class PClasesDetallesComponent implements OnInit {
     });
 
   }
-  visualizarAlumnos(){
+  visualizarAlumnos() {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -59,7 +60,7 @@ export class PClasesDetallesComponent implements OnInit {
     this.idclase = localStorage.getItem('id_desafio');
     this.router.navigate(['/profesor/clases/agregaralumno']);
   }
-  eliminarAlumno() {
+  eliminarAlumno(alumno: any) {
     this.idclase = localStorage.getItem('id_desafio');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -67,7 +68,7 @@ export class PClasesDetallesComponent implements OnInit {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    let data = {class: 1, student: 'test_student1' };
+    let data = {class: this.idclase, student: alumno };
 
     const req = this.http.post(this._loginService.getUrlApi() + '/class/remove_student', data, httpOptions )
     .subscribe(res => {
@@ -79,8 +80,7 @@ export class PClasesDetallesComponent implements OnInit {
         +  'Alumno eliminado de la clase satisfactoriamente';
         document.getElementById('activarmodaldashboard').click();
 
-      }
-      else {
+      } else {
         console.log('Algo salio mal');
         document.getElementById('modaldashboardtitulo').innerHTML = 'Error';
         document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
