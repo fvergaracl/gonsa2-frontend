@@ -11,84 +11,8 @@
 
 
     <div class="contanedor mb-1">
-        <!-- <div class="col-md-12 mb-5">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h4 class="box-title">En proceso</h4>
-                </div>
-                <ngu-carousel #myCarousel [inputs]="carouselTileConfig2" [dataSource]="carouselTileItems2$ | async">
-                    <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
-                        [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations
-                        <div class="card-body">
-                            <h5 style="text-align: center;" class="card-title">{{tareasNoFinish[i].titulo}}</h5>
-                            <p style="text-align: center;" class="card-text">{{tareasNoFinish[i].descripcion}}</p>
-                            <div style="text-align:center">
-                                <a [routerLink]="['/estudiante/busquedas']" class="btn btn-primary ">Volver</a>
-                            </div>
-                        </div>
-                    </ngu-tile>
-
-                    <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
-                    <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
-
-                    <ul class="myPoint" NguCarouselPoint>
-                        <li *ngFor="let i of myCarousel.pointNumbers; let i = index" [class.active]="i==myCarousel.activePoint" (click)="myCarousel.moveTo(i)"></li>
-                    </ul>
-                </ngu-carousel>
-            </div>
-        </div> -->
-
-
-        <div class="col-md-12 mb-5">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h4 class="box-title">Terminado</h4>
-                </div>
-                <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
-                    <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
-                        <div class="card-body">
-                            <h5 class="card-title">{{tareasFinish[i].titulo}}</h5>
-                            <p class="card-text">{{tareasFinish[i].descripcion}}</p>
-                            <div style="text-align:center">
-                                <a href="#" class="btn btn-primary ">-</a>
-                            </div>
-                        </div>
-                    </ngu-tile>
-
-                    <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
-                    <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
-
-                    <ul class="myPoint" NguCarouselPoint>
-                        <li *ngFor="let i of myCarousel.pointNumbers; let i = index" [class.active]="i==myCarousel.activePoint" (click)="myCarousel.moveTo(i)"></li>
-                    </ul>
-                </ngu-carousel>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h4 class="box-title">No iniciado</h4>
-                </div>
-                <ngu-carousel #myCarousel2 [inputs]="carouselTileConfig2" [dataSource]="carouselTileItems2$ | async">
-                    <ngu-tile *nguCarouselDef="let carouselTileItems2; let j = index; let ani = animate">
-                        <div class="card-body">
-                            <h5 class="card-title">{{tareasNoInit[0].titulo}}</h5>
-                            <p class="card-text">{{tareasNoInit[0].descripcion}}</p>
-                            <div style="text-align:center">
-                                <a href="#" class="btn btn-primary ">Iniciar desafio</a>
-                            </div>
-                        </div>
-                    </ngu-tile>
-
-                    <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel2.isFirst ? 0.5:1">&lt;</button>
-                    <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel2.isLast ? 0.5:1">&gt;</button>
-
-                    <ul class="myPoint" NguCarouselPoint>
-                        <li *ngFor="let j of myCarousel2.pointNumbers; let j = index" [class.active]="j==myCarousel2.activePoint" (click)="myCarousel2.moveTo(j)"></li>
-                    </ul>
-                </ngu-carousel>
-            </div>
-        </div>
+        <app-noiniciada></app-noiniciada>
+        <app-terminada></app-terminada>
+        <app-noterminada></app-noterminada>
     </div>
 </div>

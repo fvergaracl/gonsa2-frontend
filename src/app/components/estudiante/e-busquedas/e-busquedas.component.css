@@ -187,6 +187,7 @@ h2 {
     top: 88px;
     position: absolute;
     right: 0px;
+    margin-bottom: 30px;
 }
 
 #b_results {
@@ -220,7 +221,8 @@ ol {
 
 .wapper {
     background-color: #ecf0f5;
-    min-height: 636px;
+    min-height: 635px;
+    height: auto;
     position: relative;
     overflow-y: auto;
     box-sizing: border-box;

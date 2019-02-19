@@ -52,6 +52,9 @@ import { PClasesXLSXComponent } from './components/profesor/p-clases-xlsx/p-clas
 import { EBusquedasComponent } from './components/estudiante/e-busquedas/e-busquedas.component';
 import { DashboardestuSidebarComponent } from './components/estudiante/dashboardcomp/dashboardestu-sidebar/dashboardestu-sidebar.component';
 import { PDesafioDetallesComponent } from './components/profesor/p-desafio-detalles/p-desafio-detalles.component';
+import { NoiniciadaComponent } from './components/estudiante/e-tareas/carouselcomp/noiniciada/noiniciada.component';
+import { TerminadaComponent } from './components/estudiante/e-tareas/carouselcomp/terminada/terminada.component';
+import { NoterminadaComponent } from './components/estudiante/e-tareas/carouselcomp/noterminada/noterminada.component';
 
 
 
@@ -99,8 +102,11 @@ var adminLteConf = {
     PClasesXLSXComponent,
     EBusquedasComponent,
     DashboardestuSidebarComponent,
-    PDesafioDetallesComponent
-  ],
+    PDesafioDetallesComponent,
+    NoiniciadaComponent,
+    TerminadaComponent,
+    NoterminadaComponent,
+   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
     SelectDropDownModule,
