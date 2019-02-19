@@ -126,3 +126,41 @@ h1 {
     background-color: #ffffff79;
     box-sizing: border-box;
 }
+
+#tabla-precio {
+    border: 1px solid #e1e1e1;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 40px 0;
+    text-align: center;
+    transition: all .3s ease;
+    margin: 0px 10px;
+    /* width: 378px; */
+}
+
+#tabla-precio:hover {
+    transform: scale(1.2);
+    border: 1px solid #fe4918;
+    box-shadow: 0px 0px 50px #666;
+    transition: all .3s ease;
+}
+
+#tpli {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #868686;
+    line-height: 26px;
+}
+
+#tph3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    justify-content: center;
+}
+
+#tdes {
+    width: 378px;
+}

@@ -1,0 +1,25 @@
+<div *ngIf="show" class="col-md-12 mb-5">
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">No terminadas</h4>
+        </div>
+        <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
+            <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
+                <div class="card-body">
+                    <h5 style="text-align: center;" class="card-title">{{tareasnofinish[i].titulo}}</h5>
+                    <p style="text-align: center;" class="card-text">{{tareasnofinish[i].descripcion}}</p>
+                    <div style="text-align:center">
+                        <a [routerLink]="['/estudiante/busquedas']" class="btn btn-primary ">Volver a intentar</a>
+                    </div>
+                </div>
+            </ngu-tile>
+
+            <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
+            <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
+
+            <ul class="myPoint" NguCarouselPoint>
+                <li *ngFor="let i of myCarousel.pointNumbers; let i = index" [class.active]="i==myCarousel.activePoint" (click)="myCarousel.moveTo(i)"></li>
+            </ul>
+        </ngu-carousel>
+    </div>
+</div>

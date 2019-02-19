@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSource } from '@angular/cdk/table';
+
 
 @Component({
   selector: 'app-dashboardestu-sidebar',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardestuSidebarComponent implements OnInit {
 
+
+    objetivosidebar: string = localStorage.getItem('objetivosidebar');
+    descripcionsidebar: string = localStorage.getItem('descripcionsidebar');
+    curso: string = localStorage.getItem('nombreclasecarousel');
   constructor() { }
 
   ngOnInit() {
+  
   }
-
 }

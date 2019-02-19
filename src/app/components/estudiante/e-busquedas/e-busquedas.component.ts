@@ -16,6 +16,11 @@ export class EBusquedasComponent implements OnInit {
     }
     console.log(busqueda);
   }
+
+
+  TerminarDesafio(respuesta: any) {
+
+  }
   ngOnInit() {
 
   }
