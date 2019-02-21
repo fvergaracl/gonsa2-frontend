@@ -46,107 +46,70 @@
             </div>
 
         </section>
-        <section class="content">
-            <div class="col-sm-4" display>
-                <h5>Estudiantes sin iniciar</h5>
-                <table class="table table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Nick</th>
-                        </tr>
-                        <ng-container *ngFor="let item of users_without_init">
-                            <tr>
-                                <td>{{item}}</td>
-                            </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="col-sm-4">
-                <h5>Estudiantes en desafio</h5>
-                <table class="table table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Nick</th>
-                        </tr>
-                        <ng-container *ngFor="let item of users_in_challenge">
-                            <tr>
-                                <td>{{item}}</td>
-                            </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
-            </div>
 
-            <div class="col-sm-4">
-                <h5>Estudiantes evaluados</h5>
-                <table class="table table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Nick</th>
-                        </tr>
-                        <ng-container *ngFor="let item of users_evaluated">
-                            <tr>
-                                <td>{{item}}</td>
-                            </tr>
-                        </ng-container>
-                    </tbody>
-                </table>
-            </div>
-
-        </section>
-
-        <div class="card">
+        <div class="card" style="width: 400px !important; align: center">
             <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
+                <h3 class="card-title">Estudiantes</h3>
 
-                <div class="card-tools">
+                <!-- <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse">
                   <i class="fa fa-minus"></i>
                 </button>
                     <button type="button" class="btn btn-tool" data-widget="remove">
                   <i class="fa fa-times"></i>
                 </button>
-                </div>
+                </div> -->
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <div class="table-responsive">
-                    <table class="table m-0">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Status</th>
-                                <th>Popularity</th>
-                            </tr>
-                        </thead>
+                    <table class="table m-sm-0">
                         <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="badge badge-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="badge badge-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Nick</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <ng-container *ngFor="let item of users_evaluated">
+                                        <tr>
+                                            <td><a>{{item}}</a></td>
+                                            <td><span class="badge badge-success">Finalizado</span></td>
+                                            <br>
+                                        </tr>
+
+                                    </ng-container>
+
+
+                                </tr>
+                                <tr>
+                                    <ng-container *ngFor="let item of users_in_challenge">
+                                        <tr>
+                                            <td><a>{{item}}</a></td>
+                                            <td><span class="badge badge-warning">En proceso</span></td>
+                                            <br>
+                                        </tr>
+
+                                    </ng-container>
+
+
+                                </tr>
+                                <tr>
+                                    <ng-container *ngFor="let item of users_without_init">
+                                        <tr>
+                                            <td><a>{{item}}</a></td>
+                                            <td><span class="badge badge-danger">No iniciado</span></td>
+                                            <br>
+                                        </tr>
+
+                                    </ng-container>
+
+
+                                </tr>
+                                <!-- 
                             <tr>
                                 <td><a href="pages/examples/invoice.html">OR7429</a></td>
                                 <td>Samsung Smart TV</td>
@@ -178,8 +141,8 @@
                                 <td>
                                     <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                                 </td>
-                            </tr>
-                        </tbody>
+                            </tr> -->
+                            </tbody>
                     </table>
                 </div>
                 <!-- /.table-responsive -->

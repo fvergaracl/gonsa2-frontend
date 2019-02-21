@@ -74,9 +74,8 @@ export class PDesafioDetalleComponent implements OnInit {
         let u_e = res['users_evaluated']
         let u_i_c = res['users_in_challenge'];
         this.users_without_init = res['without_init'];
-
+        
         for (let i = 0; i < u_e.length; i++) {
-          // console.log(this.users_evaluated[i][1]);
           this.users_evaluated.push(u_e[i][1]);
         }
         console.log('Estudiantes que fueron evaluados: ' + this.users_evaluated);
@@ -88,6 +87,13 @@ export class PDesafioDetalleComponent implements OnInit {
         console.log('Estudiantes que estan en el desafio: ' + this.users_in_challenge);
 
         console.log('Estudiantes que no han iniciado el desafio: ' + this.users_without_init);
+        let estudiantes;
+        estudiantes =  {evaluados: this.users_evaluated,
+                        evaluando: this.users_in_challenge,
+                        no_iniciados: this.users_without_init
+        };
+        console.log('asdasdasdasdas ' + estudiantes.no_iniciados[0]);
+        console.log('Todos los estudiantes: ' + Object.values(estudiantes));
       }
     });
 
