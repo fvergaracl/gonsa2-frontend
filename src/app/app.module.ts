@@ -55,6 +55,9 @@ import { PDesafioDetallesComponent } from './components/profesor/p-desafio-detal
 import { NoiniciadaComponent } from './components/estudiante/e-tareas/carouselcomp/noiniciada/noiniciada.component';
 import { TerminadaComponent } from './components/estudiante/e-tareas/carouselcomp/terminada/terminada.component';
 import { NoterminadaComponent } from './components/estudiante/e-tareas/carouselcomp/noterminada/noterminada.component';
+import { InformesComponent } from './components/profesor/informes/informes.component';
+
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -106,6 +109,7 @@ var adminLteConf = {
     NoiniciadaComponent,
     TerminadaComponent,
     NoterminadaComponent,
+    InformesComponent,
    ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -127,8 +131,8 @@ var adminLteConf = {
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    ChartsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

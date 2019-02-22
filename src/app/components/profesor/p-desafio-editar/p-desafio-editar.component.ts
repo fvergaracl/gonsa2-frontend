@@ -81,18 +81,33 @@ export class PDesafioEditarComponent implements OnInit {
       })
     };
     console.log('Entro a la edición');
+    let aim1 = [];
+    for (let i = 0; i < this.desafioobjetivos.length; i++) {
+      aim1.push(this.desafioobjetivos[i]['value']);
+    }
+    let objetivos = '';
+    for (let i = 0; i < aim1.length; i++) {
+      objetivos = objetivos.concat(aim1[i]);
+      if ((i + 1) === aim1.length) {
+        break;
+      }
+      objetivos = objetivos.concat(', ');
+    }
+
+    console.log(aim1);
     let data = {idchallenge: Number(localStorage.getItem('id_desafio')),
                   title: this.desafiotitulo,
                   photourl: this.desafiourl,
                   summary: this.desafioresumen,
                   description: this.desafiodescripcion,
-                  aim: this.desafioobjetivos,
+                  aim: objetivos,
                   category: this.desafiocategoria[0]};
     console.log(data);
+    console.log('jiji ' + data.aim);
     
 
     const req = this.http.post(this._loginService.getUrlApi() + '/class/edit_challenge',
-   data, httpOptions )
+    data, httpOptions )
     .subscribe(res => {
       console.log(res);
       if (res['code'] === 200) {
