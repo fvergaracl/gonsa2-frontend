@@ -1,0 +1,48 @@
+<mk-layout-wrapper>
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <!-- <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/bar-chart">Bar Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/doughnut-chart">Doughnut Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/radar-chart">Radar Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/pie-chart">Pie Chart</a>
+                </li>
+            </ul>
+        </div> -->
+
+        <div>
+
+            <div style="display: block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType">
+            </canvas>
+            </div>
+
+            <div style="display: block">
+                <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
+            </canvas>
+            </div>
+
+            <div style="display: block">
+                <canvas baseChart [datasets]="radarChartData" [labels]="radarChartLabels" [chartType]="radarChartType">
+            </canvas>
+            </div>
+
+            <div style="display: block">
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType">
+            </canvas>
+            </div>
+
+        </div>
+
+
+    </mk-layout-content>
+</mk-layout-wrapper>
