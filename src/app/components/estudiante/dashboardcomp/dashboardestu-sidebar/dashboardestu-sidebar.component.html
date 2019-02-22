@@ -1,5 +1,5 @@
-<aside style="padding-top: 34px;" class="main-sidebar">
-    <section class="sidebar">
+<aside style="padding-top: 34px; position:fixed" class="main-sidebar">
+    <section style="padding-top: 15px!important" class="sidebar">
         <div class="user-panel">
             <div class="pull-left image">
                 <img _ngcontent-c12="" alt="Usuario" class="img-circle" src="../../../../../assets/img/profesor_avatar.png">
@@ -9,7 +9,7 @@
                 <a style="color:rgb(241, 233, 233) "><i  class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        <div class="sidebar-menu" data-widget="tree">
+        <div style="overflow: inherit;" class="sidebar-menu" data-widget="tree">
             <li class="header-menu">
 
                 <p style="color: #2b6d40c4" class="span2"><i class="fa fa-flag-o icontarea"></i>{{curso}}</p>
@@ -23,8 +23,8 @@
                         <i class="fa fa-quote-left"></i>
                         <span>objetivo</span>
                     </p>
-                    <a style="color:rgb(241, 233, 233) " class="infor">
-                        <!-- {{objetivosidebar}} -->
+                    <a style="color:rgb(241, 233, 233);width: 200px" class="infor">
+                       {{objetivosidebar}} 
                     </a>
                 </li>
 
@@ -33,9 +33,18 @@
                         <i class="fa fa-info"></i>
                         <span class="titlesibar">Descripcion </span>
                     </p>
-                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar}}
-                </a>
+                    <!-- <p>{{descripcionsidebar.length}}</p> -->
+
+                    <a style="color:rgb(241, 233, 233)" class="infor">
+                        <p [innerHTML]="descripcionsidebar |slice:0:40"></p>
+                    </a>
+
+                    <!-- <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
+                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:51:78 }}</a><br>
+                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:80:109 }}</a><br>
+                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br> -->
                 </li>
+
             </div>
         </div>
 

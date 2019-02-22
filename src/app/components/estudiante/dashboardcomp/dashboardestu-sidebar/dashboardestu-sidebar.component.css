@@ -6,9 +6,14 @@ span {
     color: #fff;
 }
 
+titlesibar {
+    width: 200px!important;
+}
+
 .titlesibar:hover {
     background-color: #2b6d40c4 !important;
     color: #FFFFFF;
+    width: 200px!important;
 }
 
 .header-menu {
@@ -28,11 +33,17 @@ span {
 
 p {
     color: #fff;
-    padding-left: 15px;
+    padding-left: 8px;
     margin-right: 2px;
     margin-left: 2px;
     margin-top: 1rem;
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
+    max-width: 100px!important;
+}
+
+a {
+    max-width: 100px!important;
+    width: 100px!important;
 }
 
 .main-sidebar {
@@ -41,6 +52,7 @@ p {
     font-size: 14px;
     font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
     box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.2), 0px 2px 30px 0 rgba(0, 0, 0, 0.35);
+    height: 100% !important;
 }
 
 .infor {
@@ -48,11 +60,13 @@ p {
     padding: 1px 8px;
     font-size: 0.7142em;
     color: #fff;
+    width: 30px;
 }
 
 .infor:hover {
     background-color: #2b6d40!important;
     color: #fff;
+    position: relative;
 }
 
 .user-panel::after {
@@ -67,10 +81,10 @@ p {
 }
 
 .sidebar-menu {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin: 10px 15px 0;
     text-transform: uppercase;
-    position: absolute;
+    ;
 }
 
 .icontarea {
@@ -87,3 +101,14 @@ p {
     -webkit-box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
     box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.63);
 } */
+
+#text {
+    width: 100px!important;
+    height: 100px!important;
+    text-overflow: clip;
+}
+
+blockquote {
+    width: 100px!important;
+    height: 200px!important;
+}

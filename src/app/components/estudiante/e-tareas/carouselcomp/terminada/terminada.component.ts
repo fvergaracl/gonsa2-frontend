@@ -97,13 +97,7 @@ tempData: any[];
         this.carouselTileItems$ = interval(500).pipe(
           startWith(-1),
           take(obnofinish),
-          map(val => {
-            const data = (this.tempData = [
-              ...this.tempData,
-              this.imgags[Math.floor(Math.random() * this.imgags.length)]
-            ]);
-            return data;
-          })
+          map(val => this.tareasfinish)
         );
       }
   }

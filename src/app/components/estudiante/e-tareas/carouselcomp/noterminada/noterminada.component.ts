@@ -85,6 +85,15 @@ export class NoterminadaComponent implements OnInit {
   });
   return tareasNoFinish;
 }
+setInfoNoTerminada (objetivo: any, descripcion: any, id: any ) {
+  console.log(objetivo);
+  console.log(descripcion);
+  console.log(id);
+  localStorage.setItem('idsidebar', id);
+  localStorage.setItem('objetivosidebar', objetivo);
+  localStorage.setItem('descripcionsidebar', descripcion);
+  this.router.navigate(['/estudiante/busquedas']);
+}
 
   ngOnInit() {
     if (localStorage.getItem('tareasnofinish')) {
@@ -95,13 +104,7 @@ export class NoterminadaComponent implements OnInit {
         this.carouselTileItems$ = interval(500).pipe(
           startWith(-1),
           take(obnofinish),
-          map(val => {
-            const data = (this.tempData = [
-              ...this.tempData,
-              this.imgags[Math.floor(Math.random() * this.imgags.length)]
-            ]);
-            return data;
-          })
+          map(val => this.tareasnofinish)
         );
       }
   }

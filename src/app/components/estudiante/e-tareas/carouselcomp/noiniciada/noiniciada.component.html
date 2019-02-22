@@ -6,12 +6,12 @@
         <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
             <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
                 <div class="card-body">
-                    <h5 id="" class="card-title">{{tareasnoinit[i].titulo}}</h5>
-                    <p #objetivo class="card-text">{{tareasnoinit[i].objetivo}}</p>
-                    <p #descripcion class="card-text">{{tareasnoinit[i].descripcion}}</p>
-
+                    <h5 id="" class="card-title">{{tareasnoinit[i].titulo | uppercase }}</h5>
+                    <p #objetivo class="card-text">{{tareasnoinit[i].objetivo | slice:0:200 }}</p>
+                    <p hidden="true" #descripcion class="card-text">{{tareasnoinit[i].descripcion}}</p>
+                    <p hidden="true">{{tareasnoinit[i].id}}</p>
                     <div style="text-align:center">
-                        <a (click)="setInfoNoIniciada(tareasnoinit[i].objetivo,tareasnoinit[i].descripcion)" class="btn btn-primary ">Iniciar desafio</a>
+                        <a (click)="setInfoNoIniciada(tareasnoinit[i].objetivo,tareasnoinit[i].descripcion, tareasnoinit[i].id)" class="btn btn-primary ">Iniciar desafio</a>
                     </div>
                 </div>
             </ngu-tile>

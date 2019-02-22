@@ -17,40 +17,27 @@
 
                         <div class="search-wrapper offset-3 mx-auto col-md-6" style="flex-direction: row; box-sizing: border-box; display: flex;">
                             <div class="search" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; flex: 1 1 0%;">
-                                <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="busqueda">
+                                <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
                             </div>
 
                         </div><button (click)="ConsultaEstudiante(busqueda.value)" class="btn btn-primary mat-raised-button  ">Buscar</button>
                     </div>
-                    <div class="row">
+                    <div *ngIf="show==true" class="row">
                         <!-- <div class="col-md-8"> -->
-                        <ol class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
+                        <ol *ngFor="let res of resBUSQUEDA" class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
                             <li class="b_algo" data-bm="16">
-                                <h2><a href="https://challonge.com/es/jajhgdjhg" h="ID=SERP,5229.1">primero</a></h2>
+                                <h2><a href="{{res.webSearchUrl}}" h="ID=SERP,5229.1">{{res.displayText}}</a></h2>
                                 <div class="b_caption">
-                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>https://challonge.com/es/jajhgdjhg</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
-                                    <p>Código de inserción de la llave. Actualiza a Challonge Premier para quitar los anuncios de la versión insertada y para acceder a la plantilla Challonge Madness.</p>
+                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>{{res.webSearchUrl}}</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
+                                    <p>{{res.text}}</p>
                                 </div>
                             </li>
                         </ol>
-                        <ol class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
-                            <li class="b_algo" data-bm="1">
-                                <h2><a href="https://challonge.com/es/jajhgdjhg" h="ID=SERP,5229.1">segundo</a></h2>
-                                <div class="b_caption">
-                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>https://challonge.com/es/jajhgdjhg</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
-                                    <p>Código de inserción de la llave. Actualiza a Challonge Premier para quitar los anuncios de la versión insertada y para acceder a la plantilla Challonge Madness.</p>
-                                </div>
-                            </li>
-                        </ol>
-                        <!-- </div> -->
-
-
-
                         <!-- <div class="col-md-4"> -->
                         <ol class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
                             <div class="mat-form-field">
                                 <label>Respuesta</label>
-                                <textarea class="form-control" rows="3" placeholder="Respuesta ..." style="margin: 0px 9.5px 0px 0px; height: 200px; width: 300px;"></textarea>
+                                <textarea #respuesta class="form-control" rows="3" placeholder="Respuesta ..." style="margin: 0px 9.5px 0px 0px; height: 200px; max-width: 300px!important;"></textarea>
 
                             </div>
                             <!-- <div style="margin-top: 10px">
@@ -65,7 +52,7 @@
                                 </li>
                             </div> -->
                             <div style="margin-top:10px" class="respuesta pull-right">
-                                <button (clic)="TerminarDesafio(respuesta)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
+                                <button (click)="TerminarDesafio(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
                             </div>
 
                         </ol>
@@ -113,3 +100,4 @@
         </section>
     </mk-layout-content>
 </div>
+<app-modalalerta></app-modalalerta>

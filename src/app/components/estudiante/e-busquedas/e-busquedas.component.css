@@ -226,4 +226,5 @@ ol {
     position: relative;
     overflow-y: auto;
     box-sizing: border-box;
+    height: 100%;
 }
