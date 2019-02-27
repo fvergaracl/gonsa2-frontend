@@ -92,10 +92,10 @@ export class PDesafioCrearComponent implements OnInit {
     };
     this.http.get( this._LoginService.getUrlApi() +'getallcategories', httpOptions).subscribe(data => {
       if (data['code'] === 200){
+        console.log(data);
         for(let i=0; i<data['categories'].length; i++){
           tempp_array.push(data['categories'][i][0])
         }
-        
         localStorage.setItem('categories', JSON.stringify(tempp_array));
       }
     });
