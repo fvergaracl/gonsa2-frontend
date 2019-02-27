@@ -231,12 +231,12 @@ h1 {
 }
 
 .card-body:hover {
-    border: 1px solid #fe4918;
-    box-shadow: 0px 0px 50px #666;
+    border: 1px solid #9e0678;
+    box-shadow: 0px 0px 50px #810562;
     transition: all .3s ease;
 }
 
 #btn:hover {
-    background-color: #fe4918;
+    background-color: #9e0678;
     border-color: transparent;
 }

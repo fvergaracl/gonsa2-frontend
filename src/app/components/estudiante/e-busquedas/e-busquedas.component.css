@@ -187,7 +187,7 @@ h2 {
     top: 88px;
     position: absolute;
     right: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 #b_results {
@@ -227,4 +227,13 @@ ol {
     overflow-y: auto;
     box-sizing: border-box;
     height: 100%;
+}
+
+.urlstyle {
+    color: #001ba0;
+}
+
+.urlstyle:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

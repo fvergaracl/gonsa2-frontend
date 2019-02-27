@@ -3,7 +3,7 @@
     <app-dashboardestu-sidebar></app-dashboardestu-sidebar>
     <mk-layout-content>
 
-        <section style=" padding-top:0px;  margin-top: -15px" class="content">
+        <section style=" padding-top:0px;  margin-top: -15px; padding-bottom: -15px" class="content">
             <div style="display: flex;flex-wrap: wrap; margin-right: -30px; margin-left: -15px;" class="row">
                 <div class="col-md-12">
                     <!-- <div class="card">
@@ -20,55 +20,56 @@
                                 <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
                             </div>
 
-                        </div><button (click)="ConsultaEstudiante(busqueda.value)" class="btn btn-primary mat-raised-button  ">Buscar</button>
+                        </div><button (click)="ConsultaEstudiante(busqueda.value); LibreriaEstudiante()" class="btn btn-primary mat-raised-button  ">Buscar</button>
                     </div>
-                    <div *ngIf="show==true" class="row">
+                    <div *ngIf="show==true" style="background-color: white; padding-top: 20px;    margin-right: 0px;" class="row">
                         <!-- <div class="col-md-8"> -->
                         <ol *ngFor="let res of resBUSQUEDA" class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
                             <li class="b_algo" data-bm="16">
-                                <h2><a href="{{res.webSearchUrl}}" h="ID=SERP,5229.1">{{res.displayText}}</a></h2>
+                                <h2 class="urlstyle">
+                                    <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a></h2> <a (click)="GuardarApunte(res.webSearchUrl,res.text); LibreriaEstudiante()"><i style="margin-left: 6px; color:dimgrey;"class="fa fa-heart-o"></i></a>
                                 <div class="b_caption">
-                                    <div class="b_attribution" u="7|5055|4590067768233703|wIsnRP2CxjAnUnYfjfThb5kxO0EqYxPl"><cite>{{res.webSearchUrl}}</cite><a href="#" aria-label="Acciones para este sitio" aria-haspopup="true" role="button"><span class="c_tlbxTrg"><span class="c_tlbxTrgIcn sw_ddgn"></span><span class="c_tlbxH" h="BASE:CACHEDPAGEDEFAULT" k="SERP,5230.1"></span></span></a></div>
-                                    <p>{{res.text}}</p>
+                                    <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
+                                    <p #textLibreria>{{res.text}}</p>
                                 </div>
                             </li>
                         </ol>
                         <!-- <div class="col-md-4"> -->
                         <ol class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
-                            <div class="mat-form-field">
-                                <label>Respuesta</label>
-                                <textarea #respuesta class="form-control" rows="3" placeholder="Respuesta ..." style="margin: 0px 9.5px 0px 0px; height: 200px; max-width: 300px!important;"></textarea>
+                            <div id="crespuesta">
+                                <div class="mat-form-field">
+                                    <label>Respuesta</label>
+                                    <textarea #respuesta class="form-control" rows="3" placeholder="Respuesta ..." style="margin: 0px 9.5px 0px 0px; height: 200px; max-width: 300px!important;"></textarea>
 
+                                </div>
+                                <div style="margin-top:10px" class="respuesta pull-left">
+                                    <button (click)="TerminarDesafio(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
+                                </div>
                             </div>
-                            <!-- <div style="margin-top: 10px">
-                                <li class="b_ans" data-bm="15">
-                                    <div class="b_rrsr">
-                                        <h2 class="">Incormacion adicional</h2>
-                                        <ul class="b_vList">
-                                            <li><a href="/search?q=hfhggh&amp;FORM=R5FD" h="ID=SERP,5372.1"><strong>hfhggh</strong></a></li>
-                                            <li><a href="/search?q=hghhghh&amp;FORM=R5FD1" h="ID=SERP,5373.1"><strong>hghhghh</strong></a></li>
+                            <div *ngIf="showH==true" style="margin-top: 50px; position: absolute; width: 283px; min-width: 10px;padding-top: 20px">
+                                <div class="box box-primary ">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Libreria</h3>
+
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        <ul class="products-list product-list-in-box">
+                                            <li *ngFor="let item of resLIBRERIA" class="item">
+                                                <div class="">
+                                                    <a href="" class="product-title">{{item[0]}}</a>
+                                                    <span class="product-description">{{item[1]}}</span>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
-                                </li>
-                            </div> -->
-                            <div style="margin-top:10px" class="respuesta pull-right">
-                                <button (click)="TerminarDesafio(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
-                            </div>
 
-                        </ol>
-                        <!-- <ol class="col-md-4">
-                            <li class="b_ans" data-bm="15">
-                                <div class="b_rrsr">
-                                    <h2 class="">Incormacion adicional</h2>
-                                    <ul class="b_vList">
-                                        <li><a href="/search?q=hfhggh&amp;FORM=R5FD" h="ID=SERP,5372.1"><strong>hfhggh</strong></a></li>
-                                        <li><a href="/search?q=hghhghh&amp;FORM=R5FD1" h="ID=SERP,5373.1"><strong>hghhghh</strong></a></li>
-                                    </ul>
                                 </div>
-                            </li>
-                        </ol>  -->
-
-                        <!-- </div> -->
+                            </div>
+                        </ol>
                     </div>
                 </div>
 
