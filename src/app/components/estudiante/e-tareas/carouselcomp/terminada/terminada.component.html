@@ -1,7 +1,8 @@
-<div *ngIf="show" class="col-md-12 mb-5">
-    <div class="box">
-        <div class="box-header with-border">
-            <h4 class="box-title">tareas terminadas</h4>
+<div *ngIf="show" style="margin-top: 5px" class="col-md-12 mb-5">
+    <div style="border-top: 3px solid rgb(25, 114, 112); box-shadow: 0 1px 1px rgba(0, 0, 0, 0);" class="box">
+        <div style="background-color: #149290;
+        color: white;text-align:center" class="box-header with-border">
+            <h4 class="box-title">Tareas terminadas</h4>
         </div>
         <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
             <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">

@@ -193,6 +193,7 @@ nav h1 {
     font-size: 18px;
     margin: 0;
     line-height: 1;
+    text-align: center;
 }
 
 .contanedor {
@@ -231,12 +232,12 @@ h1 {
 }
 
 .card-body:hover {
-    border: 1px solid #fe4918;
-    box-shadow: 0px 0px 50px #666;
+    border: 1px solid #2fccca;
+    box-shadow: 0px 0px 50px #20918f;
     transition: all .3s ease;
 }
 
 #btn:hover {
-    background-color: #fe4918;
+    background-color: #2fccca;
     border-color: transparent;
 }

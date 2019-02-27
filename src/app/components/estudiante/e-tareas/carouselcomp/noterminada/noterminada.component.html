@@ -1,13 +1,13 @@
-<div *ngIf="show" class="col-md-12 mb-5">
-    <div class="box">
-        <div class="box-header with-border">
+<div *ngIf="show" style="margin-top: 5px" class="col-md-12 mb-5">
+    <div style="border-top: 3px solid #bd3610; box-shadow: 0 1px 1px rgba(0, 0, 0, 0);" class="box">
+        <div style="background-color: #ec4618; color:#fff; text-align: center" class="box-header with-border">
             <h4 class="box-title">No terminadas</h4>
         </div>
         <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
             <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
                 <div class="card-body">
                     <h5 class="card-title">{{tareasnofinish[i].titulo| uppercase }}</h5>
-                    <p class="card-text">{{tareasnofinish[i].descripcion | slice:0:200 }}</p>
+                    <p class="card-text" [innerHTML]="tareasnofinish[i].descripcion | slice:0:200"></p>
                     <p hidden="true">{{tareasnofinish[i].id}}</p>
                     <div style="text-align:center">
                         <a id="btn" (click)="setInfoNoTerminada(tareasnofinish[i].titulo,tareasnofinish[i].descripcion, tareasnofinish[i].id)" class="btn btn-primary" style="color: #fff">Volver a intentar</a>
