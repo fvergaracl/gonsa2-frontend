@@ -26,10 +26,9 @@
                         <h3 class="box-title">Nomina de estudiantes</h3>
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 200px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar por categoría">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                <div class="icon-addon addon-lg">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminoabuscar">
+                                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +47,7 @@
                                     <th>Eliminar</th>
                                     <th>Editar</th>
                                 </tr>
-                                <ng-container *ngFor="let item of estudiantes">
+                                <ng-container *ngFor="let item of estudiantes |filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'estudiantei', currentPage: pd }">
                                     <tr>
                                         <td>{{item[0]}}</td>
                                         <td>{{item[1]}}</td>
@@ -67,10 +66,122 @@
                         </table>
                         <ul style="float:right;">
 
-                            <pagination-controls id="desafiosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                            <pagination-controls id="estudiantei" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
                         </ul>
                     </div>
                 </div>
+            </div>
+
+
+            <div>
+
+            </div>
+        </section>
+        <section class="content-header">
+            <h1>Desafios </h1>
+            <ol class="breadcrumb">
+                <li><a href="#" style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Profesor </a></li>
+                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fas fa-tachometer-alt active"></i> Vista General </li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <hr>
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Desafios actuales</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                                <div class="icon-addon addon-lg">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminoa">
+                                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre Desafio</th>
+                                    <th>Categoria</th>
+                                </tr>
+                                <ng-container *ngFor="let item of desafio |filter:terminoa | paginate: { itemsPerPage: 5, id: 'desafioi', currentPage: pdi }">
+                                    <tr>
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
+                                        <td>{{item[2]}} </td>
+                                    </tr>
+                                </ng-container>
+
+
+                            </tbody>
+                        </table>
+                        <ul style="float:right;">
+
+                            <pagination-controls id="desafioi" (pageChange)="pdi = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+
+            </div>
+        </section>
+
+        <section class="content">
+            <hr>
+            <div class="row">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"> Todos los Desafios</h3>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 200px;">
+                                <div class="icon-addon addon-lg">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscador ..." [(ngModel)]="terminob">
+                                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre Desafio</th>
+                                    <th>Categoria</th>
+                                    <th>Agregar a la clase</th>
+                                </tr>
+                                <ng-container *ngFor="let item of allchallenges |filter:terminob | paginate: { itemsPerPage: 5, id: 'desafioj', currentPage: pdj }">
+                                    <tr>
+                                        <td>{{item[0]}}</td>
+                                        <td>{{item[1]}}</td>
+                                        <td>{{item[2]}} </td>
+                                        <td><button class="btn btn-info" style="align-self: center; margin-left: 45px;" (click)="vincularDesafioClase(item[0])"><i class="fa fa-check-square"style="color: black;"></i></button></td>
+                                    </tr>
+                                </ng-container>
+
+
+                            </tbody>
+                        </table>
+                        <ul style="float:right;">
+
+                            <pagination-controls id="desafioj" (pageChange)="pdj = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+
             </div>
         </section>
     </mk-layout-content>

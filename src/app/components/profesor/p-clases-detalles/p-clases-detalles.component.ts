@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -12,10 +12,14 @@ import * as XLSX from 'xlsx';
 })
 export class PClasesDetallesComponent implements OnInit {
   alumno: any;
-  idclase:any;
+  idclase: any;
   estudiantes: any;
   rolStudent: any;
   pd: any;
+  pdi: any;
+  pdj: any;
+  desafio: any;
+  allchallenges: any;
   constructor(public router: Router, public http: HttpClient,
     public _loginService: LoginService) {
     this.idclase = localStorage.getItem('id_desafio'); // id clase
@@ -47,7 +51,7 @@ export class PClasesDetallesComponent implements OnInit {
       })
     };
     const req = this.http.get(this._loginService.getUrlApi() + 'getstudentinclass/' + this.idclase, httpOptions )
-    .subscribe(res =>{
+    .subscribe(res => {
       console.log(res);
       if (res['code'] === 200) {
         console.log('Ningun problema detectado, mostrando c');
@@ -56,7 +60,7 @@ export class PClasesDetallesComponent implements OnInit {
       }
     });
   }
-  agregarAlumno(){
+  agregarAlumno() {
     this.idclase = localStorage.getItem('id_desafio');
     this.router.navigate(['/profesor/clases/agregaralumno']);
   }
@@ -68,7 +72,7 @@ export class PClasesDetallesComponent implements OnInit {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    let data = {class: this.idclase, student: alumno };
+    const data = {class: this.idclase, student: alumno };
 
     const req = this.http.post(this._loginService.getUrlApi() + '/class/remove_student', data, httpOptions )
     .subscribe(res => {
@@ -89,7 +93,7 @@ export class PClasesDetallesComponent implements OnInit {
     }
     });
   }
-  verCargarXLSX(){
+  verCargarXLSX() {
     document.getElementById('xlf').style.display = 'block';
 }
 separador(antiguos: any, nuevos: any) {
@@ -100,15 +104,16 @@ separador(antiguos: any, nuevos: any) {
     })
   };
   for (let c = 0; c < antiguos.length; c++) {
-    let datos = {class: this.idclase, student: antiguos[c]};
+    const datos = {class: this.idclase, student: antiguos[c]};
     const req = this.http.post(this._loginService.getUrlApi() + '/class/add_student', datos, httpOptions )
     .subscribe(res => {
     console.log(res);
   });
   }
   if (nuevos.length !== 0) {
-    let data = {newstudents: nuevos};
-    const req = this.http.post( this._loginService.getUrlApi() + 'createstudents', data, httpOptions).subscribe(res => {
+    const data = {newstudents: nuevos};
+    const req = this.http.post( this._loginService.getUrlApi() + 'createstudents', data, httpOptions)
+    .subscribe(res => {
       console.log(res);
       if (res['code'] === 200) {
         console.log('Exito!!!!');
@@ -117,7 +122,7 @@ separador(antiguos: any, nuevos: any) {
   }
   localStorage.removeItem('dataJSON');
 }
-  cargarEstudiantes(){
+  cargarEstudiantes() {
     console.log('Entro!!!!!!');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -165,45 +170,112 @@ separador(antiguos: any, nuevos: any) {
     // Se tiene que crear estudiantes terminado el for y luego asignarlos a la clase
 
   }
+  obtenerDesafiosClase() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    console.log('el id de la clase: ' + this.idclase);
+    console.log('tipo de variable: ' + typeof(this.idclase));
+    const req = this.http.get(this._loginService.getUrlApi() + 'getallchallengesinclass/' + this.idclase, httpOptions)
+    .subscribe(res => {
+      console.log('la respuesta fue: ' + res['challenges']);
+      console.log('el largo de la respuesta: ' + res['challenges'].length);
+      this.desafio = new Array(res['challenges'].length);
 
-    ngOnInit() {
-      this.traerUsuariosRolStudent();
-      this.visualizarAlumnos();
-      interface HTMLInputEvent extends Event {
-        target: HTMLInputElement & EventTarget;
+      for (let i = 0; i < res['challenges'].length; i++) {
+        this.desafio[i] = new Array(3);
+        this.desafio[i][0] = res['challenges'][i][0]
+        this.desafio[i][1] = res['challenges'][i][1];
+        this.desafio[i][2] = res['challenges'][i][9];
       }
-      let rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
-      function handleFile(e: HTMLInputEvent) {
-        let files = e.target.files;
-        let f = files[0];
-        let reader = new FileReader();
-        reader.onload = (event: Event) => {
-          let data = reader.result;
-          if(!rABS) {
-            // data = new Uint8Array(data);
-          }
-          let workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'});
-          /* DO SOMETHING WITH workbook HERE */
-          console.log(workbook);
-          let first_sheet_name = workbook.SheetNames[0];
-          let worksheet = workbook.Sheets[first_sheet_name];
-          // console.log(XLSX.utils.sheet_to_json(worksheet));
-          this.dataJSON = XLSX.utils.sheet_to_json(worksheet);
-          console.log(this.dataJSON);
-          console.log(this.dataJSON.length);
-          localStorage.setItem('dataJSON', this.dataJSON);
-          // this.cargarEstudiantes(this.dataJSON);
-          // localStorage.setItem('dataJSON', this.dataJSON);
-          document.getElementById('cargar').style.display = '';
-          localStorage.setItem('dataJSON', JSON.stringify(this.dataJSON));
-        };
-        if (rABS) {
-          reader.readAsBinaryString(f);
-        } // else {reader.readAsArrayBuffer(f); }
+      console.log('informacion en el arreglo: ');
+      console.log(this.desafio);
+    });
+
+    this.http.get(this._loginService.getUrlApi() + 'getallchallenges', httpOptions)
+    .subscribe( res => {
+      if (res['code'] === 200) {
+        this.allchallenges = new Array(res['challenges'].length);
+        for (let i = 0; i < res['challenges'].length; i++) {
+          this.allchallenges[i] = new Array(3);
+          this.allchallenges[i][0] = res['challenges'][i][0]
+          this.allchallenges[i][1] = res['challenges'][i][2];
+          this.allchallenges[i][2] = res['challenges'][i][9];
+        }
+        console.log('Todos los desafios: ...');
+        console.log(this.allchallenges);
+      }
+    });
+  }
+  vincularDesafioClase(desafioid: any) {
+    console.log(desafioid);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    let data = {idclass: this.idclase, idchallenge: desafioid};
+    this.http.post(this._loginService.getUrlApi() + 'class/add_challenge', data, httpOptions)
+    .subscribe( res => {
+      if (res['code'] === 500) {
+        document.getElementById('modaldashboardtitulo').innerHTML = 'Error al ingresar';
+        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle" style="color: red;"></i> '
+        +  res['data'];
+        document.getElementById('activarmodaldashboard').click();
+      } else {
+        if (res['code'] === 200) {
+          document.getElementById('modaldashboardtitulo').innerHTML = 'Desafio agregado correctamente';
+          document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+          +  res['data'];
+          document.getElementById('activarmodaldashboard').click();
+        }
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.traerUsuariosRolStudent();
+    this.visualizarAlumnos();
+    this.obtenerDesafiosClase();
+    interface HTMLInputEvent extends Event {
+      target: HTMLInputElement & EventTarget;
     }
-      let archivo = document.getElementById('xlf');
-      if (archivo) {
-        archivo.addEventListener('change', handleFile, false);
-      } else {console.log('No se puede;'); }
-    }
+    let rABS = true; // true: readAsBinaryString ; false: readAsArrayBuffer
+    function handleFile(e: HTMLInputEvent) {
+      let files = e.target.files;
+      let f = files[0];
+      let reader = new FileReader();
+      reader.onload = (event: Event) => {
+        let data = reader.result;
+        if(!rABS) {
+          // data = new Uint8Array(data);
+        }
+        let workbook = XLSX.read(data, {type: rABS ? 'binary' : 'array'});
+        /* DO SOMETHING WITH workbook HERE */
+        console.log(workbook);
+        let first_sheet_name = workbook.SheetNames[0];
+        let worksheet = workbook.Sheets[first_sheet_name];
+        // console.log(XLSX.utils.sheet_to_json(worksheet));
+        this.dataJSON = XLSX.utils.sheet_to_json(worksheet);
+        console.log(this.dataJSON);
+        console.log(this.dataJSON.length);
+        localStorage.setItem('dataJSON', this.dataJSON);
+        // this.cargarEstudiantes(this.dataJSON);
+        // localStorage.setItem('dataJSON', this.dataJSON);
+        document.getElementById('cargar').style.display = '';
+        localStorage.setItem('dataJSON', JSON.stringify(this.dataJSON));
+      };
+      if (rABS) {
+        reader.readAsBinaryString(f);
+      } // else {reader.readAsArrayBuffer(f); }
+  }
+    let archivo = document.getElementById('xlf');
+    if (archivo) {
+      archivo.addEventListener('change', handleFile, false);
+    } else {console.log('No se puede;'); }
+  }
 }
