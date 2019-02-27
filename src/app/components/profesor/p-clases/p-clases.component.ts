@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from 'src/app/services/login.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -27,7 +27,7 @@ export class PClasesComponent implements OnInit {
             'Authorization': 'JWT ' + localStorage.getItem('token')
           })
         };
-        this.http.get( this._LoginService.getUrlApi() +'get_all_classes', httpOptions).subscribe(data => {
+        this.http.get( this._LoginService.getUrlApi() + 'get_all_classes', httpOptions).subscribe(data => {
           if (data['code'] === 200) {
             this.clases = data['classes'];
             console.log(this.clases);
@@ -37,7 +37,7 @@ export class PClasesComponent implements OnInit {
     direccionarCrearClase() {
       this.router.navigate(['/profesor/clases/crear']);
     }
-    editardesafio(id_desafio: any, school: any, identificator: any, clase: any, year: any ){
+    editardesafio(id_desafio: any, school: any, identificator: any, clase: any, year: any ) {
       console.log(id_desafio, school, identificator, clase, year);
       localStorage.setItem('id_desafio', id_desafio);
       localStorage.setItem('school', school);
@@ -47,21 +47,21 @@ export class PClasesComponent implements OnInit {
       console.log('entro al editar');
       this.router.navigate(['/profesor/clases/editar']);
     }
-    visualizarClase(id_desafio: any, school: any, identificator: any, clase: any, year: any){
-      console.log(id_desafio,school, identificator,clase, year);
-      localStorage.setItem('id_desafio',id_desafio);
-      localStorage.setItem('school',school);
-      localStorage.setItem('identificator',identificator);
-      localStorage.setItem('clase',clase);
-      localStorage.setItem('year',year);
+    visualizarClase(id_desafio: any, school: any, identificator: any, clase: any, year: any) {
+      console.log(id_desafio, school, identificator, clase, year);
+      localStorage.setItem('id_desafio', id_desafio);
+      localStorage.setItem('school', school);
+      localStorage.setItem('identificator', identificator);
+      localStorage.setItem('clase', clase);
+      localStorage.setItem('year', year);
       console.log('visualizando clase...');
       this.router.navigate(['/profesor/clases/detalles']);
     }
-    verCargarXLSX(){
+    verCargarXLSX() {
         document.getElementById('xlf').style.display = '';
     }
 
-    cargarClases(){
+    cargarClases() {
       console.log('Entro!!!!!!');
       const httpOptions = {
         headers: new HttpHeaders({
