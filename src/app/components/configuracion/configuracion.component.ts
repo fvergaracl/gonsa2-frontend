@@ -28,6 +28,7 @@ export class ConfiguracionComponent implements OnInit {
         +  'Contraseña cambiada exitosamente';
         document.getElementById('activarmodaldashboard').click();
         console.log('Enviado correctamente');
+        
       } else {
         console.log('Algo salio mal :c');
         document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
