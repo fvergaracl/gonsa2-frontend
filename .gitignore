@@ -5407,3 +5407,11 @@ node_modules/@angular/animations/browser/browser.d.ts
 node_modules/@angular/animations/browser.metadata.json
 node_modules/@angular/animations/browser.d.ts
 node_modules/@angular/animations/animations.d.ts
+node_modules/@angular/animations/animations.d.ts
+node_modules/@angular/animations/browser.d.ts
+node_modules/@angular/animations/browser.metadata.json
+node_modules/@angular/animations/browser/browser.d.ts
+node_modules/@angular/animations/browser/index.d.ts
+node_modules/@angular/animations/browser/package.json
+node_modules/@angular/animations/browser/public_api.d.ts
+node_modules/@angular/animations/browser/src/browser.d.ts

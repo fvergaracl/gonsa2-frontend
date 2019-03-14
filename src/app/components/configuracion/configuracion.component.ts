@@ -28,10 +28,11 @@ export class ConfiguracionComponent implements OnInit {
         +  'Contraseña cambiada exitosamente';
         document.getElementById('activarmodaldashboard').click();
         console.log('Enviado correctamente');
+        
       } else {
         console.log('Algo salio mal :c');
         document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
         +  'Error al cambiar la contraseña';
         document.getElementById('activarmodaldashboard').click();
    }
