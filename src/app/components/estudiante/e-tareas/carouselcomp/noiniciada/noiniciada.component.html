@@ -1,6 +1,6 @@
 <div *ngIf="show" style="margin-top: 5px" class="col-md-12">
-    <div style="border-top: 3px solid #9e0678;" class="box">
-        <div class="box-header with-border">
+    <div style="border-top: 3px solid rgb(131, 4, 99);box-shadow: 0 1px 1px rgba(0, 0, 0, 0);" class="box">
+        <div style="text-align: center;background-color: #6d0553;color:white" class="box-header with-border">
             <h4 class="box-title">No iniciado</h4>
         </div>
         <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
@@ -11,7 +11,7 @@
                     <p hidden="true" #descripcion class="card-text">{{tareasnoinit[i].descripcion}}</p>
                     <p hidden="true">{{tareasnoinit[i].id}}</p>
                     <div style="text-align:center">
-                        <a (click)="setInfoNoIniciada(tareasnoinit[i].objetivo,tareasnoinit[i].descripcion, tareasnoinit[i].id)" class="btn btn-primary ">Iniciar desafio</a>
+                        <a (click)="setInfoNoIniciada(tareasnoinit[i].objetivo,tareasnoinit[i].descripcion, tareasnoinit[i].id)" style="background-color: #6d0553;color:white" class="btn">Iniciar desafio</a>
                     </div>
                 </div>
             </ngu-tile>
@@ -25,3 +25,4 @@
         </ngu-carousel>
     </div>
 </div>
+<app-mensaje *ngIf="show==false"></app-mensaje>

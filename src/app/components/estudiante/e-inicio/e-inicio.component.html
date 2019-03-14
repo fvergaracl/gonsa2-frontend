@@ -33,11 +33,14 @@
                             </mat-card-title>
 
                             <mat-card-content>
-                                <p class="numero"><i class="fas fa-brain"></i></p>
+                                <p class="numero"><i *ngIf="nom.nombre=='Ciencias'" class="fab fa-react"></i></p>
+                                <p class="numero"><i *ngIf="nom.nombre=='Historias'" class="fas fa-church"></i></p>
+                                <p class="numero"><i *ngIf="nom.nombre=='Matematicas'" class="fas fa-square-root-alt"></i></p>
+                                <p class="numero"><i *ngIf="nom.nombre=='Lenguaje'" class="fas fa-book-open"></i></p>
                                 <ul id="tdes">
                                     <li id="tpli"><i class="fas fa-check"></i>{{nom.descripcion}}</li>
                                 </ul>
-                                <a (click)="ObtenerNombreClase(nom.nombre)" class="boton btn-outline-primary">Ver tareas...</a>
+                                <a id="vertareas" (click)="ObtenerNombreClase(nom.nombre)" class="boton btn-outline-primary">Ver tareas...</a>
                             </mat-card-content>
                         </mat-card>
 

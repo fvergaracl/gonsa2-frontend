@@ -8,6 +8,7 @@
             <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
                 <div class="card-body">
                     <h5 class="card-title">{{tareasfinish[i].titulo | uppercase }}</h5>
+                    <p id="fechaText" class="card-subtitle">Terminada el: {{tareasfinish[i].ffin|date:'shortDate'}}</p>
                     <p class="card-text">{{tareasfinish[i].descripcion | slice:0:200 }}</p>
                     <div style="text-align:center">
                         <!-- <a href="#" class="btn btn-primary ">-</a> -->
@@ -24,3 +25,4 @@
         </ngu-carousel>
     </div>
 </div>
+<app-mensaje *ngIf="show==false"></app-mensaje>

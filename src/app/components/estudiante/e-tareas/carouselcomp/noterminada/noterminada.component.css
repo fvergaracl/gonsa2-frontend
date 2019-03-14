@@ -208,7 +208,7 @@ nav h1 {
     left: 0;
     right: 0;
     overflow: hidden;
-    margin: -10px 0px 0;
+    margin: -12px 0px 0!important;
     padding: 0px 5px 0;
 }
 
@@ -219,7 +219,7 @@ h1 {
 }
 
 .card-text {
-    height: 130px;
+    height: 110px;
     background: -webkit-linear-gradient(#151515, #bdbdbd8a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -239,4 +239,12 @@ h1 {
 #btn:hover {
     background-color: #fe4918;
     border-color: transparent;
+}
+
+#fechaText {
+    color: rgb(158, 149, 147);
+}
+
+#btn {
+    top: 0px;
 }

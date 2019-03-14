@@ -164,3 +164,8 @@ h1 {
 #tdes {
     width: 378px;
 }
+
+#vertareas:hover {
+    color: white;
+    background-color: #0d98c7;
+}

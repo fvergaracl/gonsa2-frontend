@@ -220,7 +220,7 @@ h1 {
 }
 
 .card-text {
-    height: 130px;
+    height: 100px;
     background: -webkit-linear-gradient(#151515, #bdbdbd8a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -228,7 +228,7 @@ h1 {
 
 .card-body {
     text-align: center;
-    height: 150px;
+    height: 200px;
 }
 
 .card-body:hover {
@@ -240,4 +240,8 @@ h1 {
 #btn:hover {
     background-color: #2fccca;
     border-color: transparent;
+}
+
+#fechaText {
+    color: rgb(158, 149, 147);
 }

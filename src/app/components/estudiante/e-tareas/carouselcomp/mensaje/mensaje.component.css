@@ -1,0 +1,12 @@
+#textMensaje {
+    margin-left: 10px;
+}
+
+#mensaje {
+    min-width: 10%;
+    max-width: 100%;
+}
+
+#cerrar {
+    color: white;
+}

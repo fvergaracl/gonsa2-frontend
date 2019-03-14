@@ -6,12 +6,12 @@ span {
     color: #fff;
 }
 
-titlesibar {
+.titlesibar {
     width: 200px!important;
 }
 
 .titlesibar:hover {
-    background-color: #2b6d40c4 !important;
+    background-color: #1d4e2d !important;
     color: #FFFFFF;
     width: 200px!important;
 }
@@ -38,7 +38,7 @@ p {
     margin-left: 2px;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    max-width: 100px!important;
+    max-width: 190px!important;
 }
 
 a {
@@ -47,7 +47,7 @@ a {
 }
 
 .main-sidebar {
-    background-color: #2b6d40!important;
+    background-color: #1d4e2d!important;
     max-height: 100%;
     font-size: 14px;
     font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -60,14 +60,28 @@ a {
     padding: 1px 8px;
     font-size: 0.7142em;
     color: #fff;
-    width: 30px;
+    width: 100px;
+    /* overflow: scroll; */
+    width: 210px;
+    height: 30px;
+    min-height: 10%;
+    max-height: 300px;
+    min-width: 0px;
+    max-width: 100%;
+    /* white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border-radius: 10px;
+    -webkit-overflow-scrolling: 10px; */
 }
 
+
+/* 
 .infor:hover {
-    background-color: #2b6d40!important;
+    background-color: #1d4e2d!important;
     color: #fff;
     position: relative;
-}
+} */
 
 .user-panel::after {
     content: '';
@@ -111,4 +125,8 @@ a {
 blockquote {
     width: 100px!important;
     height: 200px!important;
+}
+
+#test {
+    overflow: scroll;
 }
