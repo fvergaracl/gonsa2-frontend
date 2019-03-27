@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk/table';
-
+import { LoginService } from '../../../../services/login.service';
 
 @Component({
   selector: 'app-dashboardestu-sidebar',
@@ -9,12 +8,27 @@ import { DataSource } from '@angular/cdk/table';
 })
 export class DashboardestuSidebarComponent implements OnInit {
 
-
+  minutos: number;
+  segundos: number;
     objetivosidebar: string = localStorage.getItem('objetivosidebar');
     descripcionsidebar: string = localStorage.getItem('descripcionsidebar');
     curso: string = localStorage.getItem('nombreclasecarousel');
-  constructor() { }
-
+    nick: string = this._LoginService.getNick();
+  constructor(public _LoginService: LoginService) {
+    this.minutos = 45;
+    this.segundos = 59;
+    setInterval(() => this.tick(), 1000);
+   }
+  
+  private tick(): void {
+    if (--this.segundos < 0) {
+      this.segundos = 59;
+      if (--this.minutos < 0) {
+        this.minutos = 45;
+        this.segundos = 59;
+      }
+    }
+   }
   ngOnInit() {
   
   }

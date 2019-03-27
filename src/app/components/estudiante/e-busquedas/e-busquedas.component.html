@@ -20,20 +20,27 @@
                                 <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
                             </div>
 
-                        </div><button (click)="ConsultaEstudiante(busqueda.value); LibreriaEstudiante()" class="btn btn-primary mat-raised-button  ">Buscar</button>
+                        </div><button (click)="ConsultaEstudiante(busqueda.value)" class="btn btn-primary mat-raised-button  ">Buscar</button>
                     </div>
                     <div *ngIf="show==true" style="background-color: white; padding-top: 20px;    margin-right: 0px;" class="row">
-                        <!-- <div class="col-md-8"> -->
-                        <ol *ngFor="let res of resBUSQUEDA" class="col-md-8" id="b_results" role="main" aria-label="Resultados de la búsqueda">
-                            <li class="b_algo" data-bm="16">
-                                <h2 class="urlstyle">
-                                    <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a></h2> <a (click)="GuardarApunte(res.webSearchUrl,res.text); LibreriaEstudiante()"><i style="margin-left: 6px; color:dimgrey;"class="fa fa-heart-o"></i></a>
-                                <div class="b_caption">
-                                    <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
-                                    <p #textLibreria>{{res.text}}</p>
-                                </div>
-                            </li>
-                        </ol>
+                        <div class="col-md-8">
+                            <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 8, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
+                                <li class="b_algo">
+                                    <h2 class="urlstyle">
+                                        <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a>
+                                    </h2> <a (click)="GuardarApunte(res.webSearchUrl,res.text, i)"><i id="icon{{i}}"  class="fa fa-heart-o"></i></a>
+                                    <a (click)="EliminarApunte(i)"><i id="icon{{i}}"  class="fa fa-heart"></i></a>
+                                    <div class="b_caption">
+                                        <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
+                                        <p #textLibreria>{{res.text}}</p>
+                                    </div>
+                                </li>
+                            </ol>
+                            <ul style="float:none; text-align: center;">
+
+                                <pagination-controls id="documentosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                            </ul>
+                        </div>
                         <!-- <div class="col-md-4"> -->
                         <ol class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
                             <div id="crespuesta">
@@ -43,8 +50,10 @@
 
                                 </div>
                                 <div style="margin-top:10px" class="respuesta pull-left">
-                                    <button (click)="TerminarDesafio(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
+                                    <button id="guardar" (click)="guardarRepuestaEstudiante(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
+                                    <button id="enviar" (click)="TerminarDesafio(respuesta.value)" class="btn btn-success pull-right">Enviar</button>
                                 </div>
+
                             </div>
                             <div *ngIf="showH==true" style="margin-top: 50px; position: absolute; width: 283px; min-width: 10px;padding-top: 20px">
                                 <div class="box box-primary ">
@@ -60,8 +69,11 @@
                                         <ul class="products-list product-list-in-box">
                                             <li *ngFor="let item of resLIBRERIA" class="item">
                                                 <div class="">
-                                                    <a href="" class="product-title">{{item[0]}}</a>
-                                                    <span class="product-description">{{item[1]}}</span>
+                                                    <div class="box-tools pull-right">
+                                                        <button (click)="removeLibreria(item.text,item.url)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                    </div>
+                                                    <a #textL href="" class="product-title">{{item.text}}</a>
+                                                    <span #urlL class="product-description">{{item.url}}</span>
                                                 </div>
                                             </li>
                                         </ul>

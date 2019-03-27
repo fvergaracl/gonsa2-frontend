@@ -1,53 +1,68 @@
 <aside style="padding-top: 34px; position:fixed" class="main-sidebar">
     <section style="padding-top: 15px!important" class="sidebar">
-        <div class="user-panel">
+        <div class="user-panel container">
             <div class="pull-left image">
                 <img _ngcontent-c12="" alt="Usuario" class="img-circle" src="../../../../../assets/img/profesor_avatar.png">
             </div>
             <div class="pull-left">
-                <p>Alumno</p>
+                <p>{{nick|titlecase}}</p>
                 <a style="color:rgb(241, 233, 233) "><i  class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        <div style="overflow: inherit;" class="sidebar-menu" data-widget="tree">
+        <!-- <div style="overflow: inherit;" class="sidebar-menu" data-widget="tree">
             <li class="header-menu">
-
-                <p style="color: #2b6d40c4" class="span2"><i class="fa fa-flag-o icontarea"></i>{{curso}}</p>
-
+                <p style="color: #1d4e2d" class="span2"><i class="fa fa-flag-o icontarea"></i>{{curso}}</p>
             </li>
-
             <div class="titlesibar">
-
                 <li>
-                    <p>
-                        <i class="fa fa-quote-left"></i>
-                        <span>objetivo</span>
-                    </p>
-                    <a style="color:rgb(241, 233, 233);width: 200px" class="infor">
-                       {{objetivosidebar}} 
-                    </a>
+                    <p><i class="fa fa-quote-left"></i><span>objetivo</span></p>
+                    <div class="infor">
+
+                        {{objetivosidebar}}
+
+                    </div>
                 </li>
-
                 <li>
-                    <p>
-                        <i class="fa fa-info"></i>
-                        <span class="titlesibar">Descripcion </span>
-                    </p>
-                    <!-- <p>{{descripcionsidebar.length}}</p> -->
+                    <p><i class="fa fa-info"></i><span class="titlesibar">Descripcion </span></p>
+                    <p>{{descripcionsidebar.length}}</p> 
+                    <div class="row">
+                        <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
 
-                    <a style="color:rgb(241, 233, 233)" class="infor">
-                        <p [innerHTML]="descripcionsidebar |slice:0:40"></p>
-                    </a>
+                    </div>
 
-                    <!-- <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
+
+         <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
                     <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:51:78 }}</a><br>
                     <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:80:109 }}</a><br>
-                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br> -->
+                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br>
                 </li>
+      <mat-card id="test" style="width:100px">
+                    <mat-card-title style="overflow:hidden;">jorge asdhasjdhjahsdjhasjd</mat-card-title>
+                    <mat-card-header></mat-card-header>
+
+                </mat-card> 
 
             </div>
+
         </div>
+        <div class="sidebar-menu2">
+
+        </div> -->
 
     </section>
+    <li>
+        <p><i class="fa fa-info"></i><span class="titlesibar">Descripcion </span></p>
+        <!-- <p>{{descripcionsidebar.length}}</p> -->
+        <div class="row">
+            <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
 
+        </div>
+
+
+        <!-- <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
+                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:51:78 }}</a><br>
+                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:80:109 }}</a><br>
+                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br> -->
+    </li>
+    <li style="color:beige;">Tiempo restante: {{minutos}}:{{segundos}} </li>
 </aside>

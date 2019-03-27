@@ -33,7 +33,7 @@ h4 {
 }
 
 .accent {
-    background-color: #2b6d400e!important;
+    background-color: #c1c1c100!important;
     color: #fff!important;
     padding-top: 15px;
     margin-left: -30px;
@@ -186,7 +186,7 @@ h2 {
     width: 432px;
     top: 88px;
     position: absolute;
-    right: 0px;
+    right: 25px;
     margin-bottom: 0px;
 }
 
@@ -221,12 +221,13 @@ ol {
 
 .wapper {
     background-color: #ecf0f5;
-    min-height: 635px;
+    min-height: 500px;
     height: auto;
     position: relative;
     overflow-y: auto;
     box-sizing: border-box;
     height: 100%;
+    overflow: initial !important;
 }
 
 .urlstyle {
@@ -236,4 +237,36 @@ ol {
 .urlstyle:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+#enviar {
+    min-width: 10%;
+    max-width: 100%;
+    width: 100px;
+}
+
+.respuesta {
+    width: 300px;
+    min-width: 10%;
+    max-width: 100%;
+}
+
+
+/* #icon:active {
+    background-color: aqua;
+} */
+
+#icon {
+    color: red;
+}
+
+#guardar {
+    width: 160px;
+    min-width: 10%;
+    max-width: 100%;
+    margin-right: 0px;
+}
+
+#icon2 {
+    color: red;
 }
