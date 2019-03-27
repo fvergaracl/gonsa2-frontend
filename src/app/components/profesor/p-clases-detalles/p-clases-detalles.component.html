@@ -45,7 +45,6 @@
                                     <th>Edad </th>
                                     <th>Pais</th>
                                     <th>Eliminar</th>
-                                    <th>Editar</th>
                                 </tr>
                                 <ng-container *ngFor="let item of estudiantes |filter:terminoabuscar | paginate: { itemsPerPage: 5, id: 'estudiantei', currentPage: pd }">
                                     <tr>
@@ -57,7 +56,7 @@
                                         <td>{{item[5]}}</td>
 
                                         <td><button class="btn btn-info" style="display: block; margin: auto;"><i class="fa fa-window-close-o"style="color: black;" (click)="eliminarAlumno(item[0])"></i></button></td>
-                                        <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td>
+                                        <!-- <td><button class="btn btn-warning" style="display: block; margin: auto;"><i class="fas fa-pen" ></i></button></td> -->
                                     </tr>
                                 </ng-container>
 
