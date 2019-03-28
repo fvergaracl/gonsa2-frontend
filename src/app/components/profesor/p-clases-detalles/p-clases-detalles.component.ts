@@ -20,6 +20,9 @@ export class PClasesDetallesComponent implements OnInit {
   pdj: any;
   desafio: any;
   allchallenges: any;
+  terminoabuscar: any;
+  terminoa: any;
+  terminob: any;
   constructor(public router: Router, public http: HttpClient,
     public _loginService: LoginService) {
     this.idclase = localStorage.getItem('id_desafio'); // id clase

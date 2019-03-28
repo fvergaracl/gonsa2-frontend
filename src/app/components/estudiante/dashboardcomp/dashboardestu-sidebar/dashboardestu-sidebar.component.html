@@ -9,60 +9,30 @@
                 <a style="color:rgb(241, 233, 233) "><i  class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        <!-- <div style="overflow: inherit;" class="sidebar-menu" data-widget="tree">
-            <li class="header-menu">
-                <p style="color: #1d4e2d" class="span2"><i class="fa fa-flag-o icontarea"></i>{{curso}}</p>
-            </li>
-            <div class="titlesibar">
-                <li>
-                    <p><i class="fa fa-quote-left"></i><span>objetivo</span></p>
-                    <div class="infor">
-
-                        {{objetivosidebar}}
-
-                    </div>
-                </li>
-                <li>
-                    <p><i class="fa fa-info"></i><span class="titlesibar">Descripcion </span></p>
-                    <p>{{descripcionsidebar.length}}</p> 
-                    <div class="row">
-                        <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
-
-                    </div>
-
-
-         <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
-                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:51:78 }}</a><br>
-                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:80:109 }}</a><br>
-                    <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br>
-                </li>
-      <mat-card id="test" style="width:100px">
-                    <mat-card-title style="overflow:hidden;">jorge asdhasjdhjahsdjhasjd</mat-card-title>
-                    <mat-card-header></mat-card-header>
-
-                </mat-card> 
-
-            </div>
-
+    </section>
+    <section class="InfoSidebar">
+        <li class="header-menu">
+            <p style="color: #1d4e2d" class="span2">{{curso}}</p>
+        </li>
+        <li>
+            <p><i class="fab fa-font-awesome-flag"></i><span>Objetivo </span></p>
+        </li>
+        <div class="inf2">
+            <p>{{objetivosidebar}}</p>
         </div>
-        <div class="sidebar-menu2">
 
-        </div> -->
+        <li>
+            <p><i class="fas fa-info"></i><span>Descripción </span></p>
+        </li>
+
+
+        <div class="inf2">
+            <p>{{descripcionsidebar}} </p>
+        </div>
+
+
+        <li style="color:beige;margin-left: 10px;">Tiempo restante: {{minutos}}:{{segundos}} </li>
+
 
     </section>
-    <li>
-        <p><i class="fa fa-info"></i><span class="titlesibar">Descripcion </span></p>
-        <!-- <p>{{descripcionsidebar.length}}</p> -->
-        <div class="row">
-            <p>bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla </p>
-
-        </div>
-
-
-        <!-- <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:24:51 }}</a><br>
-                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:51:78 }}</a><br>
-                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:80:109 }}</a><br>
-                <a style="color:rgb(241, 233, 233) " class="infor">{{descripcionsidebar | slice:110:138 }}</a><br> -->
-    </li>
-    <li style="color:beige;">Tiempo restante: {{minutos}}:{{segundos}} </li>
 </aside>

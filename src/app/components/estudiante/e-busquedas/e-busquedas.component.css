@@ -43,12 +43,11 @@ h4 {
 
 .search-wrapper {
     width: 100%;
-    max-width: 780px;
+    max-width: 480px;
     border-radius: 28px;
     overflow: hidden;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
     background: #fff;
-    margin-left: 20px;
 }
 
 .search {
@@ -183,11 +182,14 @@ h2 {
 }
 
 #b_context {
-    width: 432px;
+    width: 372px;
     top: 88px;
     position: absolute;
-    right: 25px;
+    right: 15px;
     margin-bottom: 0px;
+    height: auto;
+    background-color: #ecf0f5;
+    box-shadow: 7px 3px 3px 7px rgba(0, 0, 0, 0), 5px 3px 5px 7px rgba(0, 0, 0, 0), 1px 0px 0px 0px rgba(25, 22, 22, 0.09);
 }
 
 #b_results {
@@ -261,12 +263,49 @@ ol {
 }
 
 #guardar {
-    width: 160px;
+    width: auto;
     min-width: 10%;
     max-width: 100%;
     margin-right: 0px;
 }
 
-#icon2 {
+.fa-heart {
     color: red;
+}
+
+.fa-heart-o {
+    color: red;
+}
+
+#ti {
+    font-weight: 200 !important;
+}
+
+#ur {
+    font-size: 13px!important;
+}
+
+#crespuesta {
+    height: auto;
+    padding-bottom: 50px;
+}
+
+.btn-link {
+    border: 0;
+    padding: .5rem .7rem;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.busquedasrelacionadas .ul {
+    height: 5px!important;
+}
+
+.busquedasrelacionadas .ul .item {
+    font-size: 14px!important;
+    list-style-type: none !important;
+}
+
+html {
+    background-color: aliceblue !important;
 }

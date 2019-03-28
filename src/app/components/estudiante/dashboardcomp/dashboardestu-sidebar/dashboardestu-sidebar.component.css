@@ -7,7 +7,9 @@ span {
 }
 
 .titlesibar {
-    width: 200px!important;
+    width: 150px!important;
+    min-width: 50%;
+    max-width: 100%;
 }
 
 .titlesibar:hover {
@@ -20,7 +22,7 @@ span {
     background-color: #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
-    margin: 10px 15px 0;
+    margin: 10px 10px 0;
     border-radius: 30px;
     display: block;
     text-decoration: none;
@@ -103,18 +105,12 @@ a {
 
 .icontarea {
     width: 34px;
+    margin-left: 5px;
 }
 
 .user-panel {
     margin: 10px 15px 0;
 }
-
-
-/* .span2 {
-    background-color: #FFFFFF;
-    -webkit-box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
-    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.63);
-} */
 
 #text {
     width: 100px!important;
@@ -129,4 +125,29 @@ blockquote {
 
 #test {
     overflow: scroll;
+}
+
+.InfoSidebar {
+    position: absolute !important;
+    padding-left: 5px;
+    list-style-type: none;
+}
+
+.InfoSidebar li {
+    padding-left: 5px !important;
+    width: 200px !important;
+}
+
+.InfoSidebar span {
+    max-width: 190px!important;
+}
+
+.InfoSidebar .inf2 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.InfoSidebar .header-menu .span2 {
+    text-align: center;
+    margin-left: -2px;
 }

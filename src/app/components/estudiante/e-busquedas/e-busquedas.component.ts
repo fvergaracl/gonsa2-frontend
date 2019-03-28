@@ -13,11 +13,12 @@ export class EBusquedasComponent implements OnInit {
   show: boolean;
   showH: boolean;
   noF: boolean;
-  siF: boolean;
+  siF = false;
 
   busqueda: any;
   respuesta: [];
   resBUSQUEDA: any;
+  resBUSQUEDASRELACIONADAS: any;
   resLIBRERIA: any;
   constructor(public http: HttpClient, public router: Router, public _LoginService: LoginService) {
     this.noF = true;
@@ -29,7 +30,7 @@ export class EBusquedasComponent implements OnInit {
     console.log('libreria estudiante:');
     const id = localStorage.getItem('idsidebar');
     this.showH = true;
-    let resLibreria = [];
+    const resLibreria = [];
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -39,10 +40,10 @@ export class EBusquedasComponent implements OnInit {
     this.http.get( this._LoginService.getUrlApi() + '/getallmylibrary/' + id, httpOptions).subscribe(data => {
       if (data['code'] === 200) {
         for (let i = 0; i < data['message'].length; i++) {
-          if (data['message'][i][3] == '0') {
-            let tex = data['message'][i][0];
-            let url = data['message'][i][1];
-            let item = {text: tex, url: url};
+          if (data['message'][i][3] ===  '0') {
+            const tex = data['message'][i][0];
+            const url = data['message'][i][1];
+            const item = {text: tex, url: url};
             resLibreria.push(item);
         }
       }
@@ -52,7 +53,7 @@ export class EBusquedasComponent implements OnInit {
      } else {console.log(data['code']);
     }
     });
-    console.log(this.resLIBRERIA);
+    return (resLibreria);
   }
 
 // agregar apunte
@@ -76,6 +77,7 @@ AgregarApunteNuevo (text: any, url: any) {
 // termino de agregar apunte
 
   GuardarApunte(urlLibreria: any, textLibreria: any, indice: any) {
+    this.siF = true;
     const iddd = 'icon' + indice;
     document.getElementById(iddd).classList.remove('fa-heart-o');
     document.getElementById(iddd).classList.add('fa-heart');
@@ -89,12 +91,12 @@ AgregarApunteNuevo (text: any, url: any) {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    let data = {idchallenge: id , text: textLibreria, url: urlLibreria, action: accion};
+    const data = {idchallenge: id , text: textLibreria, url: urlLibreria, action: accion};
     console.log(data);
     this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
-      if (res['code'] === 200 || res['message'] === 'The resource has been successfully modified') {
-        console.log('se agrego a la libreria'); this.LibreriaEstudiante();
-
+      if (res['code'] === 200) {
+        console.log('se agrego a la libreria');
+        this.LibreriaEstudiante();
      } else if (res['message'] === 'You are not allowed to access this page') {
        console.log('aqui meto la funcion, aca vaaaa');
        this.AgregarApunteNuevo(textLibreria, urlLibreria);
@@ -103,7 +105,6 @@ AgregarApunteNuevo (text: any, url: any) {
        console.log(res['code']);
     }
     });
-    
   }
 
 
@@ -118,7 +119,9 @@ AgregarApunteNuevo (text: any, url: any) {
 
   ConsultaEstudiante(busqueda: any) {
     this.show = true;
+    // let boo: Boolean;
     let resBusqueda = [];
+    let resBusquedasRelacionadas = [];
     console.log(busqueda);
     const id = localStorage.getItem('idsidebar');
     console.log(id);
@@ -135,13 +138,32 @@ AgregarApunteNuevo (text: any, url: any) {
 
     this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/ejecucion', httpOptions).subscribe(data => {
       if (data['code'] === 200) {
+        this.LibreriaEstudiante();
         resBusqueda = data['message']['relatedSearches']['value'];
         this.resBUSQUEDA = resBusqueda;
         console.log(this.resBUSQUEDA);
+        // console.log(data['message']['relatedSearches']['value'].length);
+        // for (let i = 0; i < data['message']['relatedSearches']['value'].length; i++) {
+
+        //   const dis =  data['message']['relatedSearches']['value'][i].displayText;
+        //   const tex =  data['message']['relatedSearches']['value'][i].text;
+        //   const web = data['message']['relatedSearches']['value'][i].webSearchUrl;
+        //   boo = this.Esdelalibreria(web);
+        //   const re = {displayText: dis, text: tex, webSearchUrl: web, esta: boo};
+        //   console.log(re);
+        // resBusqueda.push(re);
+        //   this.resBUSQUEDA = resBusqueda;
+       // }
+
+       // busquedas relacionadas
+resBusquedasRelacionadas = data['message']['webPages']['value'][0]['deepLinks'];
+this.resBUSQUEDASRELACIONADAS = resBusquedasRelacionadas;
+console.log(this.resBUSQUEDASRELACIONADAS);
+       // fin de busquedas relacionadas
      } else {console.log(data['code']);
     }
     });
-    this.LibreriaEstudiante();
+
   }
 
 
@@ -155,7 +177,7 @@ AgregarApunteNuevo (text: any, url: any) {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-   let data = {idchallenge: id, solution: respuesta};
+   const data = {idchallenge: id, solution: respuesta};
     console.log(data);
     this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
@@ -180,7 +202,7 @@ removeLibreria(text: any, url: any) {
   console.log(url);
   const id = Number (localStorage.getItem('idsidebar'));
   const accion = 'remove';
-  let data = {idchallenge: id, text: text, url: url, action: accion};
+  const data = {idchallenge: id, text: text, url: url, action: accion};
   console.log(data);
   const httpOptions = {
     headers: new HttpHeaders({
@@ -189,7 +211,7 @@ removeLibreria(text: any, url: any) {
     })
   };
   this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
-    if (res['code'] === 500) {
+    if (res['code'] === 200) {
       console.log('se borro el recurso');
       this.LibreriaEstudiante();
     } else {
@@ -205,38 +227,36 @@ guardarRepuestaEstudiante(text: any) {
     const id = Number (localStorage.getItem('idsidebar'));
     const data = {idchallenge: id, solution: text };
     console.log(data);
-document.getElementById('modaldashboardtitulo').innerHTML = 'Respuesta Guardada';
+
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    this.http.post( this._LoginService.getUrlApi() + '/new_response', data, httpOptions).subscribe(res => {
+      if (res['code'] === 200) {
+        console.log('respuesta guardada');
+        document.getElementById('modaldashboardtitulo').innerHTML = 'Respuesta Guardada';
         document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
         +  'Respuesta guardada';
         document.getElementById('activarmodaldashboard').click();
         console.log('Guardada correctamente');
-
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type':  'application/json',
-    //     'Authorization': 'JWT ' + localStorage.getItem('token')
-    //   })
-    // };
-    // this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
-    //   if (res['code'] === 500) {
-    //     console.log('respuesta guardada');
-        
-    //   } else {console.log('respuesta no guardada');
-            // console.log('Algo salio mal :c');
-            // document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-            // document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation" style="color: red;"></i> '
-            // +  'Error al enviar respuesta';
-            // document.getElementById('activarmodaldashboard').click();
-    // }
-    // });
+      } else {console.log('respuesta no guardada');
+            console.log('Algo salio mal :c');
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation" style="color: red;"></i> '
+            +  'Error al enviar respuesta';
+            document.getElementById('activarmodaldashboard').click();
+    }
+    });
 
   }
 
-    // this.router.navigate(['/estudiante/tareas']);
-
 
   ngOnInit() {
-
+    this.LibreriaEstudiante();
   }
 
 }

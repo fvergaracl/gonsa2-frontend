@@ -1,91 +1,110 @@
-<div class="wapper">
-    <app-estudiante-dashboard-header></app-estudiante-dashboard-header>
-    <app-dashboardestu-sidebar></app-dashboardestu-sidebar>
-    <mk-layout-content>
+<body style="    background-color: #ecf0f5;">
+    <div class="wapper">
+        <app-estudiante-dashboard-header></app-estudiante-dashboard-header>
+        <app-dashboardestu-sidebar></app-dashboardestu-sidebar>
+        <mk-layout-content>
 
-        <section style=" padding-top:0px;  margin-top: -15px; padding-bottom: -15px" class="content">
-            <div style="display: flex;flex-wrap: wrap; margin-right: -30px; margin-left: -15px;" class="row">
-                <div class="col-md-12">
-                    <!-- <div class="card">
+            <div style=" padding-top:0px;  margin-top: -15px; padding-bottom: -15px" class="content">
+                <div style="display: flex;flex-wrap: wrap; margin-right: -30px; margin-left: -15px;" class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="card">
 
                     <div class="header"></div>
                     <h4 class="title">titulo</h4>
                     <div class="category"></div>
                 </div> -->
-                    <div class="top-bg accent"></div>
-                    <div class="header accent" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
+                        <div class="top-bg accent"></div>
+                        <div class="header accent row" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center space-between; align-items: center;">
 
-                        <div class="search-wrapper offset-3 mx-auto col-md-6" style="flex-direction: row; box-sizing: border-box; display: flex;">
-                            <div class="search" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; flex: 1 1 0%;">
-                                <mat-icon class="fa fa-search fa-fw"></mat-icon><input (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
+                            <div class="search-wrapper offset-3 mx-auto col-md-8" style="flex-direction: row; box-sizing: border-box; display: flex;">
+                                <div class="search" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; flex: 1 1 0%;">
+                                    <mat-icon class="fa fa-search fa-fw"></mat-icon>
+                                    <input style="margin-left: 5px; margin-right: 5px;" (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
+                                    <button class="btn btn-link btn-default" (click)="ConsultaEstudiante(busqueda.value)" style="color: #757575;">Buscar</button>
+                                </div>
+
                             </div>
-
-                        </div><button (click)="ConsultaEstudiante(busqueda.value)" class="btn btn-primary mat-raised-button  ">Buscar</button>
-                    </div>
-                    <div *ngIf="show==true" style="background-color: white; padding-top: 20px;    margin-right: 0px;" class="row">
-                        <div class="col-md-8">
-                            <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 8, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
-                                <li class="b_algo">
-                                    <h2 class="urlstyle">
-                                        <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a>
-                                    </h2> <a (click)="GuardarApunte(res.webSearchUrl,res.text, i)"><i id="icon{{i}}"  class="fa fa-heart-o"></i></a>
-                                    <a (click)="EliminarApunte(i)"><i id="icon{{i}}"  class="fa fa-heart"></i></a>
-                                    <div class="b_caption">
-                                        <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
-                                        <p #textLibreria>{{res.text}}</p>
-                                    </div>
-                                </li>
-                            </ol>
-                            <ul style="float:none; text-align: center;">
-
-                                <pagination-controls id="documentosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-                            </ul>
+                            <!-- -->
+                            <div class="col-md-4"></div>
                         </div>
-                        <!-- <div class="col-md-4"> -->
-                        <ol class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
-                            <div id="crespuesta">
-                                <div class="mat-form-field">
-                                    <label>Respuesta</label>
-                                    <textarea #respuesta class="form-control" rows="3" placeholder="Respuesta ..." style="margin: 0px 9.5px 0px 0px; height: 200px; max-width: 300px!important;"></textarea>
-
-                                </div>
-                                <div style="margin-top:10px" class="respuesta pull-left">
-                                    <button id="guardar" (click)="guardarRepuestaEstudiante(respuesta.value)" class="btn btn-primary mat-raised-button center">Guardar respuesta</button>
-                                    <button id="enviar" (click)="TerminarDesafio(respuesta.value)" class="btn btn-success pull-right">Enviar</button>
-                                </div>
-
-                            </div>
-                            <div *ngIf="showH==true" style="margin-top: 50px; position: absolute; width: 283px; min-width: 10px;padding-top: 20px">
-                                <div class="box box-primary ">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Libreria</h3>
-
-                                        <div class="box-tools pull-right">
-                                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                            </button>
+                        <div *ngIf="show==true" style="background-color: white; padding-top: 20px;    margin-right: 0px;     height:auto;" class="row">
+                            <div class="col-md-8">
+                                <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 5, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
+                                    <li class="b_algo">
+                                        <h2 class="urlstyle">
+                                            <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a>
+                                        </h2> <a (click)="GuardarApunte(res.webSearchUrl,res.text, i)"><i id="icon{{i}}"  class="fa fa-heart-o"></i></a>
+                                        <!-- <a *ngIf="siF==true" (click)="EliminarApunte(i)"><i id="icon{{i}}"  class="fa fa-heart"></i></a> -->
+                                        <div class="b_caption">
+                                            <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
+                                            <p #textLibreria>{{res.text}}</p>
                                         </div>
+                                    </li>
+                                </ol>
+                                <div style="float:none; text-align: left;" class="pull-left">
+
+                                    <pagination-controls id="documentosi" (pageChange)="pd = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4"> -->
+                            <div class="col-md-4" id="b_context" role="complementary" aria-label="Resultados">
+                                <div id="crespuesta" class="box box-primary">
+                                    <div class="mat-form-field box-header with-border">
+                                        <h3 class="box-title">Respuesta</h3>
                                     </div>
-                                    <div class="box-body">
-                                        <ul class="products-list product-list-in-box">
-                                            <li *ngFor="let item of resLIBRERIA" class="item">
-                                                <div class="">
-                                                    <div class="box-tools pull-right">
-                                                        <button (click)="removeLibreria(item.text,item.url)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                                    </div>
-                                                    <a #textL href="" class="product-title">{{item.text}}</a>
-                                                    <span #urlL class="product-description">{{item.url}}</span>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    <div> <textarea id="resp2" #respuesta class="form-control" rows="3" placeholder="Escribe tu respuesta aquí..." style="height: 200px; max-width: 100%; margin:auto"></textarea>
+
+                                    </div>
+                                    <div style="margin-top:10px; width: 100%;" class="respuesta pull-left">
+                                        <button id="guardar" (click)="guardarRepuestaEstudiante(respuesta.value)" class="btn btn-primary mat-raised-button center pull-left">Guardar respuesta</button>
+                                        <button id="enviar" (click)="TerminarDesafio(respuesta.value)" class="btn btn-success pull-right">Enviar</button>
                                     </div>
 
                                 </div>
-                            </div>
-                        </ol>
-                    </div>
-                </div>
 
-                <!-- <div class="col-md-3 herramientas">
+                                <div class="box box-primary busquedasrelacionadas">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Búsquedas relacionadas</h3>
+                                    </div>
+                                    <ul>
+                                        <li *ngFor="let rela of resBUSQUEDASRELACIONADAS" class="item" style="list-style-type:none;">
+                                            <a style="font-size: 14px;text-align: -webkit-match-parent;font: Helvetica,Sans-Serif">{{rela.name}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <div *ngIf="showH==true" style="width: initial; min-width: 20% !important; max-width: 100%;">
+                                    <div class="box box-primary ">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Libreria</h3>
+
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                            </button>
+                                            </div>
+                                        </div>
+                                        <div style="background: #5f9ea00a;" class="box-body ">
+                                            <ul class="products-list product-list-in-box">
+                                                <li *ngFor="let item of resLIBRERIA" class="item">
+                                                    <div class="">
+                                                        <div class="box-tools pull-right">
+                                                            <button (click)="removeLibreria(item.text,item.url)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                        </div>
+                                                        <a id="ti" #textL href="" class="product-title">{{item.text}}</a>
+                                                        <span id="ur" #urlL class="product-description">{{item.url}}</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-md-3 herramientas">
                     <div class="card">
                         <div class="header"></div>
                         <h4 class="title">sadas</h4>
@@ -109,8 +128,9 @@
                         <div class="category"></div>
                     </div>
                 </div> -->
+                </div>
             </div>
-        </section>
-    </mk-layout-content>
-</div>
+        </mk-layout-content>
+    </div>
+</body>
 <app-modalalerta></app-modalalerta>

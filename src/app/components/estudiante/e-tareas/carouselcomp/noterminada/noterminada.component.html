@@ -9,9 +9,10 @@
                     <h5 class="card-title">{{tareasnofinish[i].titulo| uppercase }}</h5>
                     <p id="fechaText" class="card-subtitle">La tarea termina: {{tareasnofinish[i].fecha|date:'shortDate'}}</p>
                     <p class="card-text" [innerHTML]="tareasnofinish[i].descripcion | slice:0:200"></p>
+                    <p hidden="true" class="card-text" [innerHTML]="tareasnofinish[i].objetivo"></p>
                     <p hidden="true">{{tareasnofinish[i].id}}</p>
                     <div style="text-align:center">
-                        <a id="btn" (click)="setInfoNoTerminada(tareasnofinish[i].titulo,tareasnofinish[i].descripcion, tareasnofinish[i].id)" class="btn" style="background-color: #c73b14;color: #fff">Volver a intentar</a>
+                        <a id="btn" (click)="setInfoNoTerminada(tareasnofinish[i].objetivo,tareasnofinish[i].descripcion, tareasnofinish[i].id)" class="btn" style="background-color: #c73b14;color: #fff">Volver a intentar</a>
                     </div>
                 </div>
             </ngu-tile>
