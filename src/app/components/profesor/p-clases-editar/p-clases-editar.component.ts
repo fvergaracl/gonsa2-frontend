@@ -44,6 +44,7 @@ export class PClasesEditarComponent implements OnInit {
         document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
         +  'Clase modificada exitosamente';
         document.getElementById('activarmodaldashboard').click();
+        document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/clases"');
         console.log('Enviado correctamente');
       } else {
         console.log('Algo salio mal :c');

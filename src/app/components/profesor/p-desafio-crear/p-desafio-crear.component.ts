@@ -69,10 +69,18 @@ export class PDesafioCrearComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          if (res['codigo'] === 200) {
-            null
-          } else if (res['codigo'] === 400) {
-            null
+          if (res['code'] === 200) {
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Desafío creado exitosamente';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+            +  'El desafío se creó exitosamente';
+            document.getElementById('activarmodaldashboard').click();
+            document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/desafios"');
+          } else if (res['code'] === 500) {
+            console.log('No se pudo crear el desafío');
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
+            +  'Error al crear desafío';
+            document.getElementById('activarmodaldashboard').click();
           }
         },
         err => {

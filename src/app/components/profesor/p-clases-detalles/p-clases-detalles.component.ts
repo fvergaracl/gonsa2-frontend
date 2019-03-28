@@ -111,7 +111,8 @@ separador(antiguos: any, nuevos: any) {
   });
   }
   if (nuevos.length !== 0) {
-    const data = {newstudents: nuevos};
+    const data = {newstudents: nuevos
+    };
     const req = this.http.post( this._loginService.getUrlApi() + 'createstudents', data, httpOptions)
     .subscribe(res => {
       console.log(res);

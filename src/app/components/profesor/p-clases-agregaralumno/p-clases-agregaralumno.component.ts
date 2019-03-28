@@ -32,7 +32,10 @@ export class PClasesAgregaralumnoComponent implements OnInit {
           console.log('Estudiante agregado exitosamente');
         } else {
           console.log(res);
-          console.log('Algo salio mal');
+          document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
+          document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
+          +  'Error al agregar alumno';
+          document.getElementById('activarmodaldashboard').click();
         }
       }
     );
