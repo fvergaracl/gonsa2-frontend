@@ -98,6 +98,17 @@ export class PClasesComponent implements OnInit {
           console.log(res);
           if (res['code'] === 200) {
             console.log('Exito!!!!');
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Clase creada correctamente';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
+            +  'La clase con los estudiantes se ha creado correctamente';
+            document.getElementById('activarmodaldashboard').click();
+            document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/clases"');
+          }
+          else {
+            document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
+            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
+            +  'Error al crear la clase';
+            document.getElementById('activarmodaldashboard').click();
           }
         });
       }
