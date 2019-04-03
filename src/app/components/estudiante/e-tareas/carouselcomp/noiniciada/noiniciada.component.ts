@@ -9,6 +9,7 @@ import { Observable, interval } from 'rxjs';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+
 @Component({
   selector: 'app-noiniciada',
   templateUrl: './noiniciada.component.html',
@@ -16,6 +17,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export class NoiniciadaComponent implements OnInit {
   show: boolean;
+
   tareasnoinit: any[] = [];
   curso: string = localStorage.getItem('nombreclasecarousel');
   @Input() name: string;
@@ -77,7 +79,10 @@ tempData: any[];
           localStorage.setItem('tareasnoinit', JSON.stringify(tareasNoInit));
           console.log(tareasNoInit);
           this.show = true;
-        }else{this.show = false;}
+        }else{
+          this.show = false;
+
+        }
       } else {console.log(data['code']);
     }
   });

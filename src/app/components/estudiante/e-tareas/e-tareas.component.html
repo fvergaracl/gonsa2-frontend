@@ -1,23 +1,27 @@
-<div style="height: calc(100% - 5px); ">
-    <div class="col-xs-12">
-        <app-estudiante-dashboard-header>
-        </app-estudiante-dashboard-header>
-    </div>
-    <div class="contentinicio">
-        <section class="content-header">
-            <h1>Tareas: </h1>
-            <ol class="breadcrumb">
-                <li (click)="atras()"><a style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
-                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fa fa-flag"></i> Tareas</li>
-            </ol>
-        </section>
+<body style="background-color:#ecf0f5">
 
 
-        <div class="contanedor mb-1">
-            <app-noterminada></app-noterminada>
-            <app-noiniciada></app-noiniciada>
-            <app-terminada></app-terminada>
+    <div style="height: calc(100% - 5px); ">
+        <div class="col-xs-12">
+            <app-estudiante-dashboard-header>
+            </app-estudiante-dashboard-header>
+        </div>
+        <div class="contentinicio">
+            <section class="content-header">
+                <h1>Estas son tus tareas asignadas: </h1>
+                <ol class="breadcrumb">
+                    <li (click)="atras()"><a style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
+                    <li class="active" style="color: rgb(68, 68, 68)"> <i class="fa fa-flag"></i> Tareas</li>
+                </ol>
+            </section>
 
+
+            <div class="content mb-1">
+                <app-noterminada></app-noterminada>
+                <app-noiniciada></app-noiniciada>
+                <app-terminada></app-terminada>
+
+            </div>
         </div>
     </div>
-</div>
+</body>
