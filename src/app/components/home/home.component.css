@@ -262,3 +262,8 @@ h2::after {
     width: calc(100% - 30px);
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+body {
+    background-image: url(../../../assets/nfon.jpg);
+    background-size: cover
+}
