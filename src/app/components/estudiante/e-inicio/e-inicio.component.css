@@ -112,13 +112,12 @@ h1 {
 
 .contentinicio {
     background-color: #ecf0f5;
-    position: absolute;
+    /* position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: hidden;
-    margin: 40px 0px 0;
+    margin: 40px 0px 0; */
     padding: 0px 10px 0;
 }
 
