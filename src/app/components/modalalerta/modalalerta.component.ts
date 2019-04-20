@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-modalalerta',
   templateUrl: './modalalerta.component.html',
@@ -8,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class ModalalertaComponent implements OnInit {
 
   constructor() { }
+
+  
 
   ngOnInit() {
   }

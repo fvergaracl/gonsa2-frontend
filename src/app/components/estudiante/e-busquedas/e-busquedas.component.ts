@@ -184,11 +184,21 @@ console.log(this.resBUSQUEDASRELACIONADAS);
 
 
   }
-
+ConfirmarTermino() {
+  document.getElementById('modaldashboardtitulo').innerHTML = 'Esta seguro?';
+  document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-circle" style="color: orange;"></i> '
+  +  '¿Estas seguro que quieres terminar el desafió?';
+  document.getElementById('activarmodaldashboard').click();
+  document.getElementById('bClose').setAttribute('style', 'display: none');
+  document.getElementById('cosa').innerHTML = '<button class="btn" (click)="TerminarDesafio(respuesta.value)" data-dismiss="modal">OK</button>';
+  // document.getElementById('cosa2').setAttribute('onclick','TerminarDesafio(respuesta.value)');
+  // console.log('');
+}
   TerminarDesafio(respuesta: any) {
     const id = Number(localStorage.getItem('idsidebar'));
     console.log(respuesta);
     console.log(id);
+    console.log('se ejecuto terminar desafio');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -197,6 +207,7 @@ console.log(this.resBUSQUEDASRELACIONADAS);
     };
    const data = {idchallenge: id, solution: respuesta};
     console.log(data);
+    console.log('desafio terminado');
     this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
         document.getElementById('modaldashboardtitulo').innerHTML = 'Desafio terminado';

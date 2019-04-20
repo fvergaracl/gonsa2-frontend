@@ -25,22 +25,23 @@
                     </div>
                 </li> -->
                 <div class="row">
-                    <div *ngFor="let nom of nombre" class="col-xs-3 mx-auto" id="tabla-precio">
+                    <div *ngFor="let nom of categorias" class="col-xs-3 mx-auto" id="tabla-precio">
                         <mat-card>
 
                             <mat-card-title>
-                                <h3 id="tph3">{{nom.nombre}}</h3>
+                                <h3 id="tph3">{{nom}}</h3>
                             </mat-card-title>
 
                             <mat-card-content>
-                                <p class="numero"><i *ngIf="nom.nombre=='Ciencias'" class="fab fa-react"></i></p>
-                                <p class="numero"><i *ngIf="nom.nombre=='Historias'" class="fas fa-church"></i></p>
-                                <p class="numero"><i *ngIf="nom.nombre=='Matematicas'" class="fas fa-square-root-alt"></i></p>
-                                <p class="numero"><i *ngIf="nom.nombre=='Lenguaje'" class="fas fa-book-open"></i></p>
+                                <p class="numero"><i *ngIf="nom=='Ciencias'" class="fab fa-react"></i></p>
+                                <p class="numero"><i *ngIf="nom=='Historias'" class="fas fa-church"></i></p>
+                                <p class="numero"><i *ngIf="nom=='Matematicas'" class="fas fa-square-root-alt"></i></p>
+                                <p class="numero"><i *ngIf="nom=='Lenguaje'" class="fas fa-book-open"></i></p>
+                                <p class="numero"><i *ngIf="nom=='Actualidad'" class="fas fa-globe-americas"></i></p>
                                 <ul id="tdes">
-                                    <li id="tpli"><i class="fas fa-check"></i>{{nom.descripcion}}</li>
+                                    <!-- <li id="tpli"><i class="fas fa-check"></i>{{nom.descripcion}}</li> -->
                                 </ul>
-                                <a id="vertareas" (click)="ObtenerNombreClase(nom.nombre)" class="boton btn-outline-primary">Ver tareas...</a>
+                                <a id="vertareas" (click)="ObtenerNombreClase(nom)" class="boton btn-outline-primary">Ver tareas...</a>
                             </mat-card-content>
                         </mat-card>
 
