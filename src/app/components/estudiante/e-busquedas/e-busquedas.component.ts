@@ -27,6 +27,7 @@ export class EBusquedasComponent implements OnInit {
 
 
   LibreriaEstudiante() {
+    let urlparaverificar = [];
     console.log('libreria estudiante:');
     const id = localStorage.getItem('idsidebar');
     this.showH = true;
@@ -45,11 +46,13 @@ export class EBusquedasComponent implements OnInit {
             const url = data['message'][i][1];
             const item = {text: tex, url: url};
             resLibreria.push(item);
+            urlparaverificar.push(url);
         }
       }
       // resLibreria = data['message'];
         this.resLIBRERIA = resLibreria;
         console.log(this.resLIBRERIA);
+        localStorage.setItem('urlparaverificar', JSON.stringify(urlparaverificar));
      } else {console.log(data['code']);
     }
     });
@@ -118,6 +121,7 @@ AgregarApunteNuevo (text: any, url: any) {
   }
 
   ConsultaEstudiante(busqueda: any) {
+    let boo: any;
     this.show = true;
     // let boo: Boolean;
     let resBusqueda = [];
@@ -138,22 +142,22 @@ AgregarApunteNuevo (text: any, url: any) {
 
     this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/ejecucion', httpOptions).subscribe(data => {
       if (data['code'] === 200) {
-        this.LibreriaEstudiante();
-        resBusqueda = data['message']['relatedSearches']['value'];
-        this.resBUSQUEDA = resBusqueda;
-        console.log(this.resBUSQUEDA);
-        // console.log(data['message']['relatedSearches']['value'].length);
-        // for (let i = 0; i < data['message']['relatedSearches']['value'].length; i++) {
+        // this.LibreriaEstudiante();
+        // resBusqueda = data['message']['relatedSearches']['value'];
+        // this.resBUSQUEDA = resBusqueda;
+        // console.log(this.resBUSQUEDA);
+        console.log(data['message']['relatedSearches']['value'].length);
+        for (let i = 0; i < data['message']['relatedSearches']['value'].length; i++) {
 
-        //   const dis =  data['message']['relatedSearches']['value'][i].displayText;
-        //   const tex =  data['message']['relatedSearches']['value'][i].text;
-        //   const web = data['message']['relatedSearches']['value'][i].webSearchUrl;
-        //   boo = this.Esdelalibreria(web);
-        //   const re = {displayText: dis, text: tex, webSearchUrl: web, esta: boo};
-        //   console.log(re);
-        // resBusqueda.push(re);
-        //   this.resBUSQUEDA = resBusqueda;
-       // }
+          const dis =  data['message']['relatedSearches']['value'][i].displayText;
+          const tex =  data['message']['relatedSearches']['value'][i].text;
+          const web = data['message']['relatedSearches']['value'][i].webSearchUrl;
+          boo = this.Esdelalibreria(web);
+          const re = {displayText: dis, text: tex, webSearchUrl: web, esta: boo};
+          console.log(re);
+        resBusqueda.push(re);
+          this.resBUSQUEDA = resBusqueda;
+       }
 
        // busquedas relacionadas
 resBusquedasRelacionadas = data['message']['webPages']['value'][0]['deepLinks'];
@@ -165,12 +169,36 @@ console.log(this.resBUSQUEDASRELACIONADAS);
     });
 
   }
+  Esdelalibreria( web: any) {
+    console.log(web);
+    const array = localStorage.getItem('urlparaverificar');
+
+    if (array.indexOf(web) !== -1) {
+      console.log('si esta en la libreria');
+      return true;
+    }
+    else {
+      console.log('no esta en la libreria');
+      return false;
+    }
 
 
+  }
+ConfirmarTermino() {
+  document.getElementById('modaldashboardtitulo').innerHTML = 'Esta seguro?';
+  document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-circle" style="color: orange;"></i> '
+  +  '¿Estas seguro que quieres terminar el desafió?';
+  document.getElementById('activarmodaldashboard').click();
+  document.getElementById('bClose').setAttribute('style', 'display: none');
+  document.getElementById('cosa').innerHTML = '<button class="btn" (click)="TerminarDesafio(respuesta.value)" data-dismiss="modal">OK</button>';
+  // document.getElementById('cosa2').setAttribute('onclick','TerminarDesafio(respuesta.value)');
+  // console.log('');
+}
   TerminarDesafio(respuesta: any) {
     const id = Number(localStorage.getItem('idsidebar'));
     console.log(respuesta);
     console.log(id);
+    console.log('se ejecuto terminar desafio');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -179,6 +207,7 @@ console.log(this.resBUSQUEDASRELACIONADAS);
     };
    const data = {idchallenge: id, solution: respuesta};
     console.log(data);
+    console.log('desafio terminado');
     this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
         document.getElementById('modaldashboardtitulo').innerHTML = 'Desafio terminado';

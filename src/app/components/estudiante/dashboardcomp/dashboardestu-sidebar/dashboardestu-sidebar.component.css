@@ -55,6 +55,20 @@ a {
     font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
     box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.2), 0px 2px 30px 0 rgba(0, 0, 0, 0.35);
     height: 100% !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.main-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3); */
+    background-color: rgba(29, 78, 45);
+}
+
+.main-sidebar::-webkit-scrollbar {
+    width: 7px;
+    height: 200px;
+    background-color: rgba(245, 245, 245, 0);
 }
 
 .infor {
@@ -129,8 +143,11 @@ blockquote {
 
 .InfoSidebar {
     position: absolute !important;
-    padding-left: 5px;
+    margin-left: 7px;
     list-style-type: none;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    background-color: currentColor;
 }
 
 .InfoSidebar li {

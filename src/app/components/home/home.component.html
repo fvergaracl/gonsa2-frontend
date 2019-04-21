@@ -1,33 +1,34 @@
-<body>
-    <div class="hero">
-        <div class="contenido-header">
-            <nav style="background-color:white; height: 7%;" class="navbar navbar-expand-lg fixed-top" color-on-scroll="500">
-                <div class="container">
-                    <div class="navbar-translate">
-                        <a class="navbar-brand" [routerLink]="['/']" style="color:#2e2239">
-                            <img style="width:10%;" src="../../..//assets/logo2.png" alt="">
-                        </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <nav style="background-color:white;" class="navbar navbar-expand-lg fixed-top" color-on-scroll="500">
+            <div class="container">
+                <div class="navbar-translate">
+                    <a class="navbar-brand" [routerLink]="['/']" style="color:#2e2239; margin-bottom: 5px;">
+                        <img style="width:10%;" src="../../..//assets/logo2.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
                 </button>
-                    </div>
-                    <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a style="    color: rgba(0,0,0,.54);" class="nav-link" target="_blank">Bienvenido   
+                </div>
+                <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a style="    color: rgba(0,0,0,.54);" class="nav-link" target="_blank">Bienvenido   
 
                                     <button  class="btn btn-default"(click)="redireccion()" style="    color: #9d5757; margin-left: 20px;
                                     background-color: white;
                                     border-radius: 10px;
                                     width: 90px;border-color:#9d5757; cursor: pointer">Empezar</button>
                                 </a>
-                            </li>
-                        </ul>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
+
+        <main class="inner cover">
             <div style="margin-top:10% " class="informacion-evento">
 
                 <h1 class="nombre-sitio">GoNSA2</h1>
@@ -36,9 +37,42 @@
 
             </div>
 
-            <!-- <div class="ingresar">
-                <span class="boton-ingresar" (click)="redireccion()">Ingresar</span>
-            </div> -->
-        </div>
+        </main>
+
     </div>
+    <footer style="    bottom: auto;
+width: 100%;
+min-width: 980px;
+background-color:rgb(8, 20, 46)">
+        <div id="cajon" style="position: static;
+    height: auto;
+    width: 100%;
+    min-height: auto;margin:auto;padding-top:10px" class=" container row">
+
+            <div class="col-md-3">
+                <img style="   
+            width: 193px;
+            height: 73px;" src="../../../assets/ingenieria.webp" alt="">
+            </div>
+            <div class="col-md-3">
+                <img style="   
+            width: 192px;
+            height: 116px;" src="../../../assets/uach.webp" alt="">
+            </div>
+            <div class="col-md-3">
+                <img style="   
+            width: 192px;
+            height: 116px;" src="../../../assets/inno.webp" alt="">
+            </div>
+            <div class="col-md-3">
+                <img style="height: 80px; margin-top: 15px;" src="../../../assets/open.png" alt="">
+            </div>
+
+
+        </div>
+        <div style="padding-top:5px" class=" container col-md-6 offset-3 text-center ">
+            <span style="color:#f9f9fa; font-family: normal normal normal 16px/1.4em avenir-lt-w01_35-light1475496,sans-serif; font-size:12px;">OpenTera 2019</span>
+        </div>
+
+    </footer>
 </body>

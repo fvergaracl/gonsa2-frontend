@@ -1,8 +1,8 @@
-<div *ngIf="show" style="margin-top: 5px" class="col-md-12 mb-5">
+<div *ngIf="show" style="margin-top: 5px" class="content col-md-12 mb-5">
     <div style="border-top: 3px solid rgb(25, 114, 112); box-shadow: 0 1px 1px rgba(0, 0, 0, 0);" class="box">
         <div style="background-color: #149290;
         color: white;text-align:center" class="box-header with-border">
-            <h4 class="box-title">Tareas terminadas</h4>
+            <h4 class="box-title">Tareas finalizadas</h4>
         </div>
         <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
             <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
@@ -25,4 +25,20 @@
         </ngu-carousel>
     </div>
 </div>
-<app-mensaje *ngIf="show==false"></app-mensaje>
+<div *ngIf="show==false">
+    <div id="mensaje" class="row">
+        <div class="col-md-6 mx-auto offset-3">
+            <div role="alert" style="background-color: #149290!important;    border: none;" class="alert alert-info alert-with-icon">
+                <div class="container">
+                    <span data-notify="icon" class="icon fa fa-info"></span>
+                    <span id="textMensaje" data-notify="message">No posees tareas terminadas</span>
+                    <button aria-hidden="true" data-dismiss="alert" class="close">
+
+                  <i style="color:white"  id="cerrar"class="fa fa-times"></i>
+
+              </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

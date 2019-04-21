@@ -1,4 +1,4 @@
-.bannerStyle div {
+/* .bannerStyle div {
     background-color: #ccc;
     background-size: cover !important;
     height: 100%;
@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .tile {
     min-height: 200px;
@@ -70,124 +70,6 @@ nav h1 {
     text-align: center;
 }
 
-.carBtn {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-}
-
-.leftRs {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-    left: 0;
-}
-
-.rightRs {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-    right: 0;
-}
-
-.leftRs1 {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-    right: 0;
-}
-
-.rightRs1 {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    height: 50px;
-    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 999px;
-    left: 0;
-}
-
-.myPoint {
-    list-style-type: none;
-    text-align: center;
-    padding: 12px;
-    margin: 0;
-    white-space: nowrap;
-    overflow: auto;
-    box-sizing: border-box;
-}
-
-.myPoint li {
-    display: inline-block;
-    border-radius: 50%;
-    border: 2px solid rgba(0, 0, 0, 0.55);
-    padding: 4px;
-    margin: 0 3px;
-    transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-    transition: 0.4s;
-}
-
-.myPoint li.active {
-    background: #6b6b6b;
-    transform: scale(1.2);
-}
-
-.carouselHoved {
-    opacity: 0.4;
-}
-
-.myBannerPoint {
-    position: absolute;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    padding: 0;
-    color: beige;
-    justify-content: center;
-    list-style-type: none;
-    background: rgba(0, 0, 0, 0.34);
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.myBannerPoint li {
-    background: #6b6b6b;
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.myBannerPoint li.active {
-    transform: translateY(-10px);
-    transition: .3s ease all;
-}
-
 .box-title {
     display: inline-block;
     font-size: 18px;
@@ -216,4 +98,312 @@ h1 {
     margin: 0;
     font-size: 24px;
     padding: 20px 20px 0;
+}
+
+.card {
+    position: relative;
+    /* top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); */
+    width: 300px;
+    min-height: 300px;
+    background: #202E42;
+    box-shadow: 0 20px 50px rgba(80, 78, 10, 0.212);
+    transition: all .3s ease;
+    /* margin: auto; */
+    margin-top: 15px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 336px;
+}
+
+.card2 {
+    position: relative;
+    width: 300px;
+    min-height: 300px;
+    background: #17a2b8;
+    box-shadow: 0 20px 50px rgba(23, 162, 184, 0.26);
+    /* border-radius: 20px; */
+    transition: all .3s ease;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 380px;
+    border: 1px solid #17a2b8;
+}
+
+.card3 {
+    position: relative;
+    width: 300px;
+    min-height: 300px;
+    background: #be174f;
+    box-shadow: 0 20px 50px rgba(228, 27, 138, 0.16);
+    /* border-radius: 20px; */
+    transition: all .3s ease;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 356px;
+    border: 1px solid #be174f;
+}
+
+.card:hover {
+    box-shadow: 0 30px 70px rgba(78, 55, 12, 0.623);
+    transition: all .3s ease;
+    transform: scale(1.2);
+}
+
+.card2:hover {
+    box-shadow: 0 30px 70px rgba(13, 134, 2, 0.767);
+    transition: all .3s ease;
+    transform: scale(1.2);
+}
+
+.card3:hover {
+    box-shadow: 0 30px 70px rgba(187, 3, 3, 0.514);
+    transition: all .3s ease;
+    transform: scale(1.2);
+}
+
+.card .box {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    background-color: transparent;
+    top: 30px;
+    /* height: 309px; */
+    border-radius: none! important;
+    border-top: none !important;
+}
+
+.card2 .box {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    /* margin-top: 20px; */
+    /* box-sizing: border-box;
+    border-radius: 12px!important; */
+    width: 100%;
+    background-color: transparent;
+    top: 30px;
+    height: 304px;
+    border-radius: none! important;
+    border-top: none !important;
+}
+
+.card3 .box {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    /* margin-top: 20px; */
+    /* box-sizing: border-box;
+    border-radius: 12px!important; */
+    width: 100%;
+    background-color: transparent;
+    top: 30px;
+    height: 304px;
+    border-radius: none! important;
+    border-top: none !important;
+}
+
+.box:hover {
+    border: none!important;
+}
+
+.card .box .img {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card .box .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.card .box h2 {
+    font-size: 20px;
+    color: #fff;
+    background-color: #202E42;
+    /* margin: 20px auto; */
+    padding-bottom: 15px;
+}
+
+.card2 .box h2 {
+    font-size: 20px;
+    color: #fff;
+    background-color: #17a2b8;
+    /* margin: 20px auto; */
+    padding-bottom: 15px;
+}
+
+.card3 .box h2 {
+    font-size: 20px;
+    color: #fff;
+    background-color: #be174f;
+    /* margin: 20px auto; */
+    padding-bottom: 15px;
+    /* padding-top: 15px; */
+}
+
+.card .box h2 span {
+    font-size: 14px;
+    background: #e91e63;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+.card2 .box h2 span {
+    font-size: 14px;
+    background: #e91e63;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+.card3 .box h2 span {
+    font-size: 14px;
+    background: #0C7D9C;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+}
+
+.card .box p {
+    color: #262626;
+}
+
+.card2 .box p {
+    color: #262626;
+}
+
+.card3 .box p {
+    color: #262626;
+}
+
+.card .box span {
+    display: inline-flex;
+}
+
+.card2 .box span {
+    display: inline-flex;
+}
+
+.card3 .box span {
+    display: inline-flex;
+}
+
+.card .box ul {
+    margin: 0;
+    padding: 0;
+}
+
+.card2 .box ul {
+    margin: 0;
+    padding: 0;
+}
+
+.card3 .box ul {
+    margin: 0;
+    padding: 0;
+}
+
+.card .box ul li {
+    list-style: none;
+    float: left;
+}
+
+.card2 .box ul li {
+    list-style: none;
+    float: left;
+}
+
+.card3 .box ul li {
+    list-style: none;
+    float: left;
+}
+
+.card .box ul li a {
+    display: block;
+    color: #aaa;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.card2 .box ul li a {
+    display: block;
+    color: #aaa;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.card3 .box ul li a {
+    display: block;
+    color: #aaa;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.card .box ul li:hover a {
+    color: #e91e63;
+    transform: rotateY(360deg);
+}
+
+#descripcion {
+    padding-top: 5px;
+    height: 125px;
+    background: -webkit-linear-gradient(#262626, #bdbdbd8a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#cont {
+    background-color: white;
+    height: 231px;
+}
+
+#cont2 {
+    background-color: white;
+    height: 261px;
+}
+
+#cont1 {
+    background-color: white;
+    height: 211px;
+}
+
+#iniciar {
+    font-size: 14px;
+    background: #be174f;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#volver {
+    font-size: 14px;
+    background: #17a2b8;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    cursor: pointer;
 }

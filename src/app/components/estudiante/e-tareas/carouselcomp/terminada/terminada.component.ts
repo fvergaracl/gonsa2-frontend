@@ -81,7 +81,12 @@ tempData: any[];
             localStorage.setItem('tareasfinish', JSON.stringify(tareasFinish));
             console.log(tareasFinish);
             this.show = true;
-         } else {this.show = false; }
+         } else {
+           console.log('asdhasdjashdjhasjdhj');
+          this.show = false;
+          
+          document.getElementById('textMensaje').textContent = 'No posees tareas terminadas';
+         }
         } else {
         console.log(data['code']);
        }

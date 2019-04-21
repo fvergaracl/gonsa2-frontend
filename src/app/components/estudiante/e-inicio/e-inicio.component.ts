@@ -10,32 +10,38 @@ import { LoginService } from '../../../services/login.service';
   styleUrls: ['./e-inicio.component.css']
 })
 export class EInicioComponent implements OnInit {
-  nombre:any[]=[];
-  constructor(private router: Router, public _LoginService: LoginService, public http: HttpClient) {  }
-
+  nombre:any;
+  categorias: any;
+  item: {};
+  constructor(private router: Router, public _LoginService: LoginService, public http: HttpClient) { 
+    this.categorias = [];
+   }
   obtenerClasesEstudiante() {
-    let clases = [];
+    this.categorias = [];
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    this.http.get( this._LoginService.getUrlApi() +'/getallcategories', httpOptions).subscribe(data => {
+    this.http.get( this._LoginService.getUrlApi() +'/getallchallenges', httpOptions).subscribe(data => {
       if (data['code'] === 200) {
-        for (let i = 0; i < data['categories'].length; i++) {
-          let temitem = data['categories'][i][1];
-          let item = {nombre: data['categories'][i][0], descripcion: temitem};
-          clases.push(item);
+        for (let i = 0; i < data['challenges'].length; i++) {
+         const temitem = data['challenges'][i][8];
+          // this.categorias.push(temitem);
+          // console.log(this.categorias);
+          if ( (this.categorias.includes(temitem) === false)) {
+              this.categorias.push(temitem);
+          }
+          // clases.push(nombre);
         }
-        console.log(clases);
-        localStorage.setItem('clasescategoria', JSON.stringify(clases));
-        console.log(localStorage.getItem('clases'));
+        // localStorage.setItem('clasescategoria', JSON.stringify(clases));
+        // console.log(localStorage.getItem('clases'));
       } else {
         console.log(data['code']);
-     }
+     }console.log(this.categorias);
     });
-    return clases;
+    // return clases;
   }
   ObtenerNombreClase(elem: any) {
     this.router.navigate(['estudiante/tareas']);

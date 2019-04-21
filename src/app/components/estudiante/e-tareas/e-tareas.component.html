@@ -1,23 +1,97 @@
-<div style="height: calc(100% - 5px); ">
-    <div class="col-xs-12">
-        <app-estudiante-dashboard-header>
-        </app-estudiante-dashboard-header>
-    </div>
-    <div class="contentinicio">
-        <section class="content-header">
-            <h1>Tareas: </h1>
-            <ol class="breadcrumb">
-                <li (click)="atras()"><a style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
-                <li class="active" style="color: rgb(68, 68, 68)"> <i class="fa fa-flag"></i> Tareas</li>
-            </ol>
-        </section>
+<body style="background-color:#ecf0f5">
 
 
-        <div class="contanedor mb-1">
-            <app-noterminada></app-noterminada>
-            <app-noiniciada></app-noiniciada>
-            <app-terminada></app-terminada>
+    <div style="height: calc(100% - 5px); ">
+        <div class="col-xs-12">
+            <app-estudiante-dashboard-header>
+            </app-estudiante-dashboard-header>
+        </div>
+        <div class="contentinicio">
+            <section class="content-header">
+                <h1>Estas son tus tareas asignadas: </h1>
+                <ol class="breadcrumb">
+                    <li (click)="atras()"><a style="pointer-events: none; cursor: default; color: #000;"><i class="fas fa-home"></i> Inicio </a></li>
+                    <li class="active" style="color: rgb(68, 68, 68)"> <i class="fa fa-flag"></i> Tareas</li>
+                </ol>
+            </section>
 
+
+            <div style="justify-content: center" class="content mb-1 row">
+                <div *ngFor="let desa1 of alldesafios1" class="card3">
+                    <div class="box">
+                        <h2>{{desa1.titulo | uppercase }}<br><span>Estado: Sin iniciar</span></h2>
+                        <div id="cont">
+                            <p id="descripcion" [innerHTML]="desa1.descripcion | slice:0:200"> </p>
+                            <p><b>Creado el:</b> {{desa1.fecha| date: 'dd/MM/yyyy'}}</p>
+                            <!-- <p><b>Intentos:</b>{{desa1.intentos}}</p> -->
+                            <span id="iniciar" (click)="setInfoNoIniciada(desa1.objetivo,desa1.descripcion, desa1.id)">Iniciar
+                        <!----<ul>
+                            <li><a href="#">Iniciar</a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                             <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>--> 
+                        </span></div>
+
+                    </div>
+                </div>
+                <div *ngFor="let desa2 of alldesafios2" class="card2">
+                    <div class="box">
+                        <h2>{{desa2.titulo | uppercase }}<br><span style="background: #0c972a!important;">Estado: Pendiente</span></h2>
+                        <div id="cont2">
+                            <p id="descripcion" [innerHTML]="desa2.descripcion | slice:0:200"> </p>
+                            <p><b>Creado el:</b> {{desa2.fecha| date: 'dd/MM/yyyy'}}</p>
+                            <!-- <p><b>Última modificación:</b>{{desa2.modificacion |date: 'dd/MM/yyyy'}}</p> -->
+                            <p><b>Intentos:</b>{{desa2.intentos}}</p>
+
+                            <span id="volver" (click)="setInfoNoTerminada(desa2.objetivo,desa2.descripcion, desa2.id)">Volver a intentar
+                        </span></div>
+
+                    </div>
+                </div>
+
+                <div *ngFor="let desa of alldesafios3" class="card">
+                    <div class="box">
+                        <h2>{{desa.titulo | uppercase }}<br><span style="background: #0fa0a9!important;">Estado: Terminado</span></h2>
+                        <div id=cont1>
+                            <p id="descripcion" [innerHTML]="desa.descripcion | slice:0:200"> </p>
+                            <p><b>Finalizado:</b> {{desa.ffin| date: 'dd/MM/yyyy'}}</p>
+                            <p><b>Intentos:</b>{{desa.intentos}}</p>
+                            <span>
+                        </span></div>
+
+                    </div>
+                </div>
+
+
+
+
+                <!-- <div *ngFor="let desa of alldesafios3" class="card-body">
+                    <h5 id="" class="card-title">{{desa.titulo | uppercase }}</h5>
+                   <p hidden="true" #objetivo class="card-text">{{desa.objetivo | slice:0:200 }}</p> 
+                    <p #descripcion class="card-text">Finalizado: {{desa.ffin}}</p>
+                    <p #descripcion class="card-text">Intentos: {{desa.intentos}}</p>
+                   <p hidden="true">{{desa.id}}</p>
+                </div>
+
+                <div style="background-color:red" *ngFor="let desa2 of alldesafios2" class="card-body">
+                    <h5 id="" class="card-title">{{desa2.titulo | uppercase }}</h5>
+                    <p #descripcion class="card-text">{{desa2.fecha}}</p>
+                    <p #descripcion class="card-text">{{desa2.resumen}}</p>
+                </div>
+                <div style="background-color:yellow" *ngFor="let desa1 of alldesafios1" class="card-body">
+                    <h5 id="" class="card-title">{{desa1.titulo | uppercase }}</h5>
+                    <p #descripcion class="card-text">{{desa1.fecha}}</p>
+                    <p #descripcion class="card-text">{{desa1.resumen}}</p>
+                </div> -->
+                <!-- <app-noterminada></app-noterminada>
+                <app-noiniciada></app-noiniciada>
+                <app-terminada></app-terminada> -->
+
+
+
+            </div>
         </div>
     </div>
-</div>
+</body>
