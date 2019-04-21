@@ -21,6 +21,7 @@ import { PClasesXLSXComponent } from './components/profesor/p-clases-xlsx/p-clas
 import { EBusquedasComponent } from './components/estudiante/e-busquedas/e-busquedas.component';
 import { PDesafioDetallesComponent } from './components/profesor/p-desafio-detalles/p-desafio-detalles.component';
 import { InformesComponent } from './components/profesor/informes/informes.component';
+import { PClasesCrearEstudianteComponent } from './components/profesor/p-clases-crear-estudiante/p-clases-crear-estudiante.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent, },
@@ -33,6 +34,7 @@ export const ROUTES: Routes = [
     { path: 'profesor/clases', component: PClasesComponent },
     { path: 'profesor/clases/crear', component: PClasesCrearComponent },
     { path: 'profesor/clases/detalles', component: PClasesDetallesComponent},
+    { path: 'profesor/clases/crearEstudiante', component: PClasesCrearEstudianteComponent},
     { path: 'profesor/clases/XLSX', component: PClasesXLSXComponent},
     { path: 'profesor/clases/editar', component: PClasesEditarComponent},
     { path: 'profesor/clases/agregaralumno', component: PClasesAgregaralumnoComponent},
