@@ -14,10 +14,6 @@ export class PClasesComponent implements OnInit {
   clases: any;
   dataJSON: any;
   pd: any;
-  terminoabuscar: any;
-  terminoa: any;
-  terminob: any;
-
 
   constructor(public http: HttpClient, public router: Router,
     public _LoginService: LoginService) {
@@ -103,8 +99,7 @@ export class PClasesComponent implements OnInit {
             +  'La clase con los estudiantes se ha creado correctamente';
             document.getElementById('activarmodaldashboard').click();
             document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/clases"');
-          }
-          else {
+          } else {
             document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
             document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
             +  'Error al crear la clase';

@@ -59,6 +59,7 @@ import { InformesComponent } from './components/profesor/informes/informes.compo
 
 import { ChartsModule } from 'ng2-charts';
 import { MensajeComponent } from './components/estudiante/e-tareas/carouselcomp/mensaje/mensaje.component';
+import { PClasesCrearEstudianteComponent } from './components/profesor/p-clases-crear-estudiante/p-clases-crear-estudiante.component';
 
 
 
@@ -111,6 +112,7 @@ var adminLteConf = {
     NoterminadaComponent,
     InformesComponent,
     MensajeComponent,
+    PClasesCrearEstudianteComponent,
    ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

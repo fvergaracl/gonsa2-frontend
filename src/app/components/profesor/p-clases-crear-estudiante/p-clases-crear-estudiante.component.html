@@ -1,0 +1,43 @@
+<mk-layout-wrapper>
+    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-sidebar></app-dashboard-sidebar>
+    <mk-layout-content>
+        <h3 class="box-title">Crear un Estudiante</h3>
+        <div class="box box-success">
+            <div class="box-header with-border">
+
+                <div class="form-group">
+
+                    <label>Nick</label>
+                    <input id="nick" type="text" class="form-control" #nick>
+
+                    <label>Correo electrónico</label>
+                    <input id="email" type="text" class="form-control" #email>
+
+                    <label>Sexo</label>
+                    <input id="sex" type="text" class="form-control" #sex>
+
+                    <label>Escuela, colegio o universidad</label>
+                    <input id="school" type="text" class="form-control" #school>
+
+                    <label>Clase</label>
+                    <input id="clase" type="text" class="form-control" #clase>
+
+                    <label>Año de Nacimiento</label>
+                    <input id="year" type="text" class="form-control" #year>
+
+                    <label>Mes</label>
+                    <input id="month" type="text" class="form-control" #month>
+
+                    <label>Día</label>
+                    <input id="day" type="text" class="form-control" #day>
+
+                </div>
+                <button class="btn btn-primary" (click)="crearEstudiante(nick.value,email.value,sex.value,school.value,clase.value,year.value,month.value,day.value)">Crear Estudiante</button>
+
+            </div>
+        </div>
+    </mk-layout-content>
+
+</mk-layout-wrapper>
+<app-modalalerta></app-modalalerta>

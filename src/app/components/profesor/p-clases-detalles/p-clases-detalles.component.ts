@@ -99,6 +99,11 @@ export class PClasesDetallesComponent implements OnInit {
   verCargarXLSX() {
     document.getElementById('xlf').style.display = 'block';
 }
+
+crearEstudiante() {
+  this.router.navigate(['/profesor/clases/crearEstudiante']);
+}
+
 separador(antiguos: any, nuevos: any) {
   const httpOptions = {
     headers: new HttpHeaders({
