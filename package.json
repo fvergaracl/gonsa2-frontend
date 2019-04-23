@@ -44,9 +44,7 @@
     "ngx-editor": "^4.1.0",
     "ngx-pagination": "^3.2.1",
     "ngx-select-dropdown": "^1.0.1",
-    "remove-accents": "^0.4.2",
     "rxjs": "~6.3.3",
-    "sweetalert2": "^8.8.5",
     "tslib": "^1.9.0",
     "xlsx": "^0.14.1",
     "zone.js": "~0.8.26"
