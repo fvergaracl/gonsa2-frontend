@@ -17,20 +17,20 @@ text: any;
     nick: string = this._LoginService.getNick();
 
   constructor(public _LoginService: LoginService, public _Busqueda: EBusquedasComponent) {
-    this.minutos = 45;
-    this.segundos = 59;
-    setInterval(() => this.tick(), 1000);
+    // this.minutos = 45;
+    // this.segundos = 59;
+    // setInterval(() => this.tick(), 1000);
    }
 
-  public tick(): void {
-    if (--this.segundos < 0) {
-      this.segundos = 59;
-      if (--this.minutos < 0) {
-        this.text = (<HTMLInputElement>document.getElementById('resp2')).value;
-        this._Busqueda.TerminarDesafio(this.text);
-      }
-    }
-   }
+  // public tick(): void {
+  //   if (--this.segundos < 0) {
+  //     this.segundos = 59;
+  //     if (--this.minutos < 0) {
+  //       this.text = (<HTMLInputElement>document.getElementById('resp2')).value;
+  //       this._Busqueda.TerminarDesafio(this.text);
+  //     }
+  //   }
+  //  }
   ngOnInit() {
 
   }

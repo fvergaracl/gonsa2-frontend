@@ -309,3 +309,14 @@ ol {
 html {
     background-color: aliceblue !important;
 }
+
+#relacionadas {
+    font-size: 14px;
+    text-align: -webkit-match-parent;
+    font: Helvetica, Sans-Serif;
+    cursor: pointer;
+}
+
+#relacionadas:hover {
+    text-decoration: underline;
+}

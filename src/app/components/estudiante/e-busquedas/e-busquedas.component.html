@@ -19,8 +19,8 @@
                             <div class="search-wrapper offset-3 mx-auto col-md-8" style="flex-direction: row; box-sizing: border-box; display: flex;">
                                 <div class="search" style="flex-direction: row; box-sizing: border-box; display: flex; place-content: center flex-start; align-items: center; flex: 1 1 0%;">
                                     <mat-icon class="fa fa-search fa-fw"></mat-icon>
-                                    <input style="margin-left: 5px; margin-right: 5px;" (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" placeholder="Búsqueda">
-                                    <button class="btn btn-link btn-default" (click)="ConsultaEstudiante(busqueda.value)" style="color: #757575;">Buscar</button>
+                                    <input style="margin-left: 5px; margin-right: 5px;" (keyup.enter)="ConsultaEstudiante(busqueda.value)" id="busqueda" #busqueda class="ng-tns-c68-109" type="text" placeholder="Búsqueda">
+                                    <button class="btn btn-link btn-default" (click)="ConsultaEstudiante(busqueda.value)" style="color: #757575;" type="text">Buscar</button>
                                 </div>
 
                             </div>
@@ -32,12 +32,12 @@
                                 <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 5, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
                                     <li class="b_algo">
                                         <h2 class="urlstyle">
-                                            <a target="_blank" href="{{res.webSearchUrl}}">{{res.displayText | titlecase}}</a>
-                                        </h2> <a *ngIf="res.esta==false" (click)="GuardarApunte(res.webSearchUrl,res.text, i)"><i id="icon{{i}_relleno}"  class="fa fa-heart-o"></i></a>
-                                        <a *ngIf="res.esta== true"><i id="icon{{i}}"  class="fa fa-heart"></i></a>
+                                            <a target="_blank" (click)="RegistroEvent(res.url,res.name,i)" href="{{res.url}}">{{res.name | titlecase}}</a>
+                                        </h2> <a (click)="GuardarApunte(res.url,res.name, i)"><i id="icon{{i}}_relleno"  class="fa fa-heart-o"></i></a>
+                                        <a><i id="icon{{i}}" style="display:none" (click)="removeLibreria(res.name,res.url,i)" class="fa fa-heart"></i></a>
                                         <div class="b_caption">
-                                            <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.webSearchUrl}}</cite></div>
-                                            <p #textLibreria>{{res.text}}</p>
+                                            <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.url}}</cite></div>
+                                            <p #textLibreria [innerHTML]="res.snippet"></p>
                                         </div>
                                     </li>
                                 </ol>
@@ -58,7 +58,7 @@
                                     <div style="margin-top:10px; width: 100%;" class="respuesta pull-left">
                                         <button id="guardar" (click)="guardarRepuestaEstudiante(respuesta.value)" class="btn btn-primary mat-raised-button center pull-left">Guardar respuesta</button>
                                         <!-- <button id="enviar" (click)="TerminarDesafio(respuesta.value)" class="btn btn-success pull-right">Enviar</button> -->
-                                        <button id="enviar" (click)="ConfirmarTermino()" class="btn btn-success pull-right">Enviar</button>
+                                        <button id="enviar" (click)="ConfirmarTermino(respuesta.value)" class="btn btn-success pull-right">Enviar</button>
                                     </div>
 
                                 </div>
@@ -69,13 +69,13 @@
                                     </div>
                                     <div style="list-style: none;margin-left: 10px;">
                                         <li *ngFor="let rela of resBUSQUEDASRELACIONADAS" class="item" style="list-style-type:none;">
-                                            <a style="font-size: 14px;text-align: -webkit-match-parent;font: Helvetica,Sans-Serif">{{rela.name}}</a>
+                                            <a id="relacionadas" (click)="Busquedarelacionada(rela.text)">{{rela.text| titlecase}}</a>
                                         </li>
                                     </div>
                                 </div>
 
 
-                                <div *ngIf="showH==true" style="width: initial; min-width: 20% !important; max-width: 100%;">
+                                <div *ngIf="showH==true" style="width: initial; min-width: 20% !important; max-width: 100%; max-height: 400px; overflow: auto;">
                                     <div class="box box-primary">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Documentos guardados</h3>
@@ -87,12 +87,12 @@
                                         </div>
                                         <div style="background: #5f9ea00a" class="box-body ">
                                             <ul class="products-list product-list-in-box">
-                                                <li *ngFor="let item of resLIBRERIA" class="item">
+                                                <li *ngFor="let item of resLIBRERIA; index as i " class="item">
                                                     <div class="">
                                                         <div class="box-tools pull-right">
-                                                            <button (click)="removeLibreria(item.text,item.url)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                                            <button (click)="removeLibreria(item.text,item.url,i)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                                         </div>
-                                                        <a id="ti" #textL href="" class="product-title">{{item.text}}</a>
+                                                        <a id="ti" #textL href="{{item.url}}" target="_blank" class="product-title">{{item.text}}</a>
                                                         <span id="ur" #urlL class="product-description">{{item.url}}</span>
                                                     </div>
                                                 </li>
