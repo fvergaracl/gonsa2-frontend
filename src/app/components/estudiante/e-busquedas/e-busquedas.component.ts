@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import Swal from 'sweetalert2';
+declare var require: any;
 
 
 @Component({
@@ -87,7 +88,10 @@ AgregarApunteNuevo (text: any, url: any) {
     document.getElementById(iddd).setAttribute('style', 'display:none');
     document.getElementById(idd).setAttribute('style', 'display:visible');
     // document.getElementById(iddd).classList.add('fa-heart');
-    console.log('guardar apunte');
+    // console.log('guardar apunte');
+    let accents = require('remove-accents');
+    textLibreria = accents.remove(textLibreria);
+    // biuidsuiusdiusd
     console.log('se guardare la urla y text: ' + urlLibreria, textLibreria);
     const id = localStorage.getItem('idsidebar');
     const accion = 'block';
@@ -260,6 +264,8 @@ removeLibreria(text: any, url: any, indice: any) {
     const idd = 'icon' + indice;
     document.getElementById(iddd).setAttribute('style', 'display:visible');
     document.getElementById(idd).setAttribute('style', 'display:none');
+    let accents = require('remove-accents');
+    text = accents.remove(text);
   // console.log(text);
   // console.log(url);
   const id = Number (localStorage.getItem('idsidebar'));
@@ -330,10 +336,11 @@ guardarRepuestaEstudiante(text: any) {
   Busquedarelacionada(text: any) {
     (<HTMLInputElement>document.getElementById('busqueda')).value = text;
   }
-  RegistroEvent(url: any, titulo: any) {
+  RegistroEvent(url: any, titulo: any, indice: any) {
     console.log(url);
     console.log(titulo);
-    let data = {evento: 'click', link: url};
+    console.log('documento numero'+indice);
+    let data = {evento: 'click', link: {titulo: titulo, url: url, indice: indice}};
     console.log(data);
     const httpOptions = {
       headers: new HttpHeaders({

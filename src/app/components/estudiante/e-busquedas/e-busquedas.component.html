@@ -32,7 +32,7 @@
                                 <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 5, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
                                     <li class="b_algo">
                                         <h2 class="urlstyle">
-                                            <a target="_blank" (click)="RegistroEvent(res.url,res.name)" href="{{res.url}}">{{res.name | titlecase}}</a>
+                                            <a target="_blank" (click)="RegistroEvent(res.url,res.name,i)" href="{{res.url}}">{{res.name | titlecase}}</a>
                                         </h2> <a (click)="GuardarApunte(res.url,res.name, i)"><i id="icon{{i}}_relleno"  class="fa fa-heart-o"></i></a>
                                         <a><i id="icon{{i}}" style="display:none" (click)="removeLibreria(res.name,res.url,i)" class="fa fa-heart"></i></a>
                                         <div class="b_caption">
@@ -92,7 +92,7 @@
                                                         <div class="box-tools pull-right">
                                                             <button (click)="removeLibreria(item.text,item.url,i)" type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                                         </div>
-                                                        <a id="ti" #textL href="" class="product-title">{{item.text}}</a>
+                                                        <a id="ti" #textL href="{{item.url}}" target="_blank" class="product-title">{{item.text}}</a>
                                                         <span id="ur" #urlL class="product-description">{{item.url}}</span>
                                                     </div>
                                                 </li>
