@@ -45,7 +45,6 @@
     "ngx-pagination": "^3.2.1",
     "ngx-select-dropdown": "^1.0.1",
     "rxjs": "~6.3.3",
-    "sweetalert2": "^8.8.7",
     "tslib": "^1.9.0",
     "xlsx": "^0.14.1",
     "zone.js": "~0.8.26"
