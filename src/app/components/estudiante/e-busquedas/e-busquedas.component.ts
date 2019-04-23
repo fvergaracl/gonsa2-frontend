@@ -147,13 +147,14 @@ AgregarApunteNuevo (text: any, url: any) {
     // let boo: Boolean;
     let resBusqueda = [];
     let resBusquedasRelacionadas = [];
-    console.log(busqueda);
+    // console.log(busqueda);
     const id = localStorage.getItem('idsidebar');
     console.log(id);
-    for (let i = 0; i < busqueda.length; i++) {
-      busqueda = busqueda.replace(' ', '&');
-    }
-    console.log(busqueda);
+    busqueda = encodeURIComponent(busqueda);
+    // for (let i = 0; i < busqueda.length; i++) {
+    //   // busqueda = busqueda.replace(' ', '%20');
+    // }
+    // console.log(busqueda);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
