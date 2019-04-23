@@ -147,14 +147,14 @@ AgregarApunteNuevo (text: any, url: any) {
     // let boo: Boolean;
     let resBusqueda = [];
     let resBusquedasRelacionadas = [];
-    // console.log(busqueda);
+     console.log(busqueda);
     const id = localStorage.getItem('idsidebar');
     console.log(id);
     busqueda = encodeURIComponent(busqueda);
     // for (let i = 0; i < busqueda.length; i++) {
     //   // busqueda = busqueda.replace(' ', '%20');
     // }
-    // console.log(busqueda);
+     console.log(busqueda);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -170,8 +170,9 @@ AgregarApunteNuevo (text: any, url: any) {
           const na =  data['message']['webPages']['value'][i].name;
           const sn =  data['message']['webPages']['value'][i].snippet;
           const ur = data['message']['webPages']['value'][i].url;
+          let position= i;
           // boo = this.Esdelalibreria(web);
-          const re = {name: na, snippet: sn, url: ur};
+          const re = {name: na, snippet: sn, url: ur, position: position};
           // , esta: boo
           console.log(re);
         resBusqueda.push(re);
@@ -337,11 +338,16 @@ guardarRepuestaEstudiante(text: any) {
   Busquedarelacionada(text: any) {
     (<HTMLInputElement>document.getElementById('busqueda')).value = text;
   }
-  RegistroEvent(url: any, titulo: any, indice: any) {
+  RegistroEvent(url: any, titulo: any, indice: any, position: any) {
     console.log(url);
+    // let documentos = document.getElementById('documentosi').getAttribute('values');
+    console.log(position);
     console.log(titulo);
-    console.log('documento numero'+indice);
-    let data = {evento: 'click', link: {titulo: titulo, url: url, indice: indice}};
+    indice = indice + 1;
+    position=position+1;
+    console.log('documento numero' + indice);
+    indice = indice.toString();
+    let data = {data:{evento: 'click', link: {titulo: titulo, posicion: position}}};
     console.log(data);
     const httpOptions = {
       headers: new HttpHeaders({
