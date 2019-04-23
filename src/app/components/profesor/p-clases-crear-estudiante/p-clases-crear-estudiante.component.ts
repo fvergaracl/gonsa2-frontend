@@ -71,17 +71,27 @@ export class PClasesCrearEstudianteComponent implements OnInit {
           title: 'Estudiante creado',
           text: 'Estudiante creado con éxito'
         });
-        (<HTMLInputElement>document.getElementById('nick')).value = '';
-        (<HTMLInputElement>document.getElementById('email')).value = '';
-        (<HTMLInputElement>document.getElementById('sex')).value = '';
-        (<HTMLInputElement>document.getElementById('school')).value = '';
-        (<HTMLInputElement>document.getElementById('clase')).value = '';
-        (<HTMLInputElement>document.getElementById('year')).value = '';
-        (<HTMLInputElement>document.getElementById('month')).value = '';
-        (<HTMLInputElement>document.getElementById('day')).value = '';
-
+        Swal.fire({
+          title: 'Estudiante Creado',
+          text: 'Estudiante creado con éxito',
+          type: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Okey'
+        }).then((result) => {
+          if (result.value) {
+            (<HTMLInputElement>document.getElementById('nick')).value = '';
+            (<HTMLInputElement>document.getElementById('email')).value = '';
+            (<HTMLInputElement>document.getElementById('sex')).value = '';
+            (<HTMLInputElement>document.getElementById('school')).value = '';
+            (<HTMLInputElement>document.getElementById('clase')).value = '';
+            (<HTMLInputElement>document.getElementById('year')).value = '';
+            (<HTMLInputElement>document.getElementById('month')).value = '';
+            (<HTMLInputElement>document.getElementById('day')).value = '';
+          }
+        });
       }
-
     });
   }
 }
