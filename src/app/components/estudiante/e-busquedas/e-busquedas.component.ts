@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
+import Swal from 'sweetalert2';
+declare var require: any;
 
 
 @Component({
@@ -80,11 +82,16 @@ AgregarApunteNuevo (text: any, url: any) {
 // termino de agregar apunte
 
   GuardarApunte(urlLibreria: any, textLibreria: any, indice: any) {
-    this.siF = true;
-    const iddd = 'icon' + indice;
-    document.getElementById(iddd).classList.remove('fa-heart-o');
-    document.getElementById(iddd).classList.add('fa-heart');
-    console.log('guardar apunte');
+    // this.siF = true;
+    const iddd = 'icon' + indice + '_relleno';
+    const idd = 'icon' + indice;
+    document.getElementById(iddd).setAttribute('style', 'display:none');
+    document.getElementById(idd).setAttribute('style', 'display:visible');
+    // document.getElementById(iddd).classList.add('fa-heart');
+    // console.log('guardar apunte');
+    let accents = require('remove-accents');
+    textLibreria = accents.remove(textLibreria);
+    // biuidsuiusdiusd
     console.log('se guardare la urla y text: ' + urlLibreria, textLibreria);
     const id = localStorage.getItem('idsidebar');
     const accion = 'block';
@@ -99,10 +106,18 @@ AgregarApunteNuevo (text: any, url: any) {
     this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
         console.log('se agrego a la libreria');
+        Swal.fire({title: 'Documento guardado',
+          showConfirmButton: false,
+          timer: 1000,
+          type: 'success'});
         this.LibreriaEstudiante();
-     } else if (res['message'] === 'You are not allowed to access this page') {
-       console.log('aqui meto la funcion, aca vaaaa');
+     } else if (res['code'] === 500) {
        this.AgregarApunteNuevo(textLibreria, urlLibreria);
+         Swal.fire({title: 'Documento guardado',
+         timer: 1000,
+         showConfirmButton: false,
+         type: 'success'});
+       this.LibreriaEstudiante();
      } else {
        console.log('no se agrego a libreria, hubo un problema');
        console.log(res['code']);
@@ -121,6 +136,12 @@ AgregarApunteNuevo (text: any, url: any) {
   }
 
   ConsultaEstudiante(busqueda: any) {
+    Swal.fire({title: 'Cargando...',
+    timer: 1500,
+    showConfirmButton: false,
+    onBeforeOpen: () => {
+ Swal.showLoading(),100}
+  });
     let boo: any;
     this.show = true;
     // let boo: Boolean;
@@ -130,7 +151,7 @@ AgregarApunteNuevo (text: any, url: any) {
     const id = localStorage.getItem('idsidebar');
     console.log(id);
     for (let i = 0; i < busqueda.length; i++) {
-      busqueda = busqueda.replace(' ', '/&');
+      busqueda = busqueda.replace(' ', '&');
     }
     console.log(busqueda);
     const httpOptions = {
@@ -140,29 +161,28 @@ AgregarApunteNuevo (text: any, url: any) {
       })
     };
 
-    this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/ejecucion', httpOptions).subscribe(data => {
+    this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/' + busqueda, httpOptions).subscribe(data => {
       if (data['code'] === 200) {
-        // this.LibreriaEstudiante();
-        // resBusqueda = data['message']['relatedSearches']['value'];
-        // this.resBUSQUEDA = resBusqueda;
-        // console.log(this.resBUSQUEDA);
-        console.log(data['message']['relatedSearches']['value'].length);
-        for (let i = 0; i < data['message']['relatedSearches']['value'].length; i++) {
 
-          const dis =  data['message']['relatedSearches']['value'][i].displayText;
-          const tex =  data['message']['relatedSearches']['value'][i].text;
-          const web = data['message']['relatedSearches']['value'][i].webSearchUrl;
-          boo = this.Esdelalibreria(web);
-          const re = {displayText: dis, text: tex, webSearchUrl: web, esta: boo};
+        for (let i = 0; i < data['message']['webPages']['value'].length; i++) {
+
+          const na =  data['message']['webPages']['value'][i].name;
+          const sn =  data['message']['webPages']['value'][i].snippet;
+          const ur = data['message']['webPages']['value'][i].url;
+          // boo = this.Esdelalibreria(web);
+          const re = {name: na, snippet: sn, url: ur};
+          // , esta: boo
           console.log(re);
         resBusqueda.push(re);
           this.resBUSQUEDA = resBusqueda;
        }
-
+// this.resBUSQUEDA = data['message']['webPages']['value'];
+// console.log(this.resBUSQUEDA);
        // busquedas relacionadas
-resBusquedasRelacionadas = data['message']['webPages']['value'][0]['deepLinks'];
+resBusquedasRelacionadas = data['message']['relatedSearches']['value'];
 this.resBUSQUEDASRELACIONADAS = resBusquedasRelacionadas;
-console.log(this.resBUSQUEDASRELACIONADAS);
+// console.log(this.resBUSQUEDASRELACIONADAS);
+
        // fin de busquedas relacionadas
      } else {console.log(data['code']);
     }
@@ -184,15 +204,21 @@ console.log(this.resBUSQUEDASRELACIONADAS);
 
 
   }
-ConfirmarTermino() {
-  document.getElementById('modaldashboardtitulo').innerHTML = 'Esta seguro?';
-  document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-circle" style="color: orange;"></i> '
-  +  '¿Estas seguro que quieres terminar el desafió?';
-  document.getElementById('activarmodaldashboard').click();
-  document.getElementById('bClose').setAttribute('style', 'display: none');
-  document.getElementById('cosa').innerHTML = '<button class="btn" (click)="TerminarDesafio(respuesta.value)" data-dismiss="modal">OK</button>';
-  // document.getElementById('cosa2').setAttribute('onclick','TerminarDesafio(respuesta.value)');
-  // console.log('');
+ConfirmarTermino(respuesta: any) {
+
+  Swal.fire({
+    title: 'Estas seguro que quieres terminar el desafío?',
+    text: 'No se podra revertir',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, enviar'
+  }).then((result) => {
+    if (result.value) {
+        this.TerminarDesafio(respuesta);
+    }
+  });
 }
   TerminarDesafio(respuesta: any) {
     const id = Number(localStorage.getItem('idsidebar'));
@@ -210,29 +236,42 @@ ConfirmarTermino() {
     console.log('desafio terminado');
     this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
-        document.getElementById('modaldashboardtitulo').innerHTML = 'Desafio terminado';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
-        +  'respuesta enviada';
-        document.getElementById('activarmodaldashboard').click();
-        document.getElementById('bClose').setAttribute('onclick', 'location.href="/estudiante/tareas"');
-        console.log('Enviado correctamente');
+        Swal.fire({
+          title: 'Respuesta enviada correctamente',
+          type: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+        this.router.navigate(['/estudiante/tareas']);
       } else {
         console.log('Algo salio mal :c');
-        document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation" style="color: red;"></i> '
-        +  'Error al enviar respuesta';
-        document.getElementById('activarmodaldashboard').click();
+              Swal.fire({
+          title: 'Hubo un problema',
+          type: 'error',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
    }
   });
 }
 
-removeLibreria(text: any, url: any) {
-  console.log(text);
-  console.log(url);
+removeLibreria(text: any, url: any, indice: any) {
+    const iddd = 'icon' + indice + '_relleno';
+    const idd = 'icon' + indice;
+    document.getElementById(iddd).setAttribute('style', 'display:visible');
+    document.getElementById(idd).setAttribute('style', 'display:none');
+    let accents = require('remove-accents');
+    text = accents.remove(text);
+  // console.log(text);
+  // console.log(url);
   const id = Number (localStorage.getItem('idsidebar'));
   const accion = 'remove';
   const data = {idchallenge: id, text: text, url: url, action: accion};
-  console.log(data);
+  // console.log(data);
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -241,7 +280,11 @@ removeLibreria(text: any, url: any) {
   };
   this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
     if (res['code'] === 200) {
-      console.log('se borro el recurso');
+      // console.log('se borro el recurso');
+      Swal.fire({title: 'Documento eliminado',
+      timer: 1050,
+      showConfirmButton: false,
+      type: 'success'});
       this.LibreriaEstudiante();
     } else {
       console.log(res['code']);
@@ -267,21 +310,51 @@ guardarRepuestaEstudiante(text: any) {
     this.http.post( this._LoginService.getUrlApi() + '/new_response', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
         console.log('respuesta guardada');
-        document.getElementById('modaldashboardtitulo').innerHTML = 'Respuesta Guardada';
-        document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
-        +  'Respuesta guardada';
-        document.getElementById('activarmodaldashboard').click();
-        console.log('Guardada correctamente');
+        Swal.fire({
+          title: 'Respuesta guardada correctamente',
+          type: 'success',
+          showCancelButton: false,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
       } else {console.log('respuesta no guardada');
             console.log('Algo salio mal :c');
-            document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
-            document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation" style="color: red;"></i> '
-            +  'Error al enviar respuesta';
-            document.getElementById('activarmodaldashboard').click();
+            Swal.fire({
+              title: 'Hubo un problema',
+              type: 'error',
+              showCancelButton: false,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'OK'
+            });
     }
     });
 
   }
+
+  Busquedarelacionada(text: any) {
+    (<HTMLInputElement>document.getElementById('busqueda')).value = text;
+  }
+  RegistroEvent(url: any, titulo: any, indice: any) {
+    console.log(url);
+    console.log(titulo);
+    console.log('documento numero'+indice);
+    let data = {evento: 'click', link: {titulo: titulo, url: url, indice: indice}};
+    console.log(data);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'JWT ' + localStorage.getItem('token')
+      })
+    };
+    this.http.post( this._LoginService.getUrlApi() + '/reg_event', data, httpOptions).subscribe(res => {
+      if (res['code'] === 200) {
+        console.log('click registrado');
+      }else{console.log(res['code']);
+      }
+  });
+}
 
 
   ngOnInit() {

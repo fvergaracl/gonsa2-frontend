@@ -99,7 +99,6 @@ var adminLteConf = {
     PClasesDetallesComponent,
     PClasesEditarComponent,
     PClasesAgregaralumnoComponent,
-    ModalalertaComponent,
     ETareasComponent,
     ModalalertaComponent,
     PDesafioDetalleComponent,
@@ -138,7 +137,7 @@ var adminLteConf = {
     MatCheckboxModule,
     ChartsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
