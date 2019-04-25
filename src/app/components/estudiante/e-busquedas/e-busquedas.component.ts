@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import Swal from 'sweetalert2';
 declare var require: any;
+declare var jQuery: any;
 
 
 @Component({
@@ -136,12 +137,6 @@ AgregarApunteNuevo (text: any, url: any) {
   }
 
   ConsultaEstudiante(busqueda: any) {
-    Swal.fire({title: 'Cargando...',
-    timer: 1500,
-    showConfirmButton: false,
-    onBeforeOpen: () => {
- Swal.showLoading(),100}
-  });
     let boo: any;
     this.show = true;
     // let boo: Boolean;
@@ -150,9 +145,9 @@ AgregarApunteNuevo (text: any, url: any) {
      console.log(busqueda);
     const id = localStorage.getItem('idsidebar');
     console.log(id);
-    busqueda = encodeURIComponent(busqueda);
+    busqueda = encodeURIComponent(busqueda).replace(/[!'()]/g, escape).replace(/\*/g, '%2A');
     // for (let i = 0; i < busqueda.length; i++) {
-    //   // busqueda = busqueda.replace(' ', '%20');
+    //   busqueda = busqueda.replace(' ', '%20');
     // }
      console.log(busqueda);
     const httpOptions = {
@@ -162,9 +157,9 @@ AgregarApunteNuevo (text: any, url: any) {
       })
     };
 
-    this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/' + busqueda, httpOptions).subscribe(data => {
+    this.http.get( this._LoginService.getUrlApi() + '/search_bing/' + id + '/' + busqueda + '', httpOptions).subscribe(data => {
       if (data['code'] === 200) {
-
+// resBusqueda = data['message']['webPages']['value'];
         for (let i = 0; i < data['message']['webPages']['value'].length; i++) {
 
           const na =  data['message']['webPages']['value'][i].name;
@@ -177,16 +172,29 @@ AgregarApunteNuevo (text: any, url: any) {
           console.log(re);
         resBusqueda.push(re);
           this.resBUSQUEDA = resBusqueda;
-       }
+        }
 // this.resBUSQUEDA = data['message']['webPages']['value'];
 // console.log(this.resBUSQUEDA);
        // busquedas relacionadas
-resBusquedasRelacionadas = data['message']['relatedSearches']['value'];
-this.resBUSQUEDASRELACIONADAS = resBusquedasRelacionadas;
+       if (data['message']['relatedSearches']) {
+           resBusquedasRelacionadas = data['message']['relatedSearches']['value'];
+          this.resBUSQUEDASRELACIONADAS = resBusquedasRelacionadas;
+       }
+
 // console.log(this.resBUSQUEDASRELACIONADAS);
 
        // fin de busquedas relacionadas
-     } else {console.log(data['code']);
+     } else {
+      Swal.fire({
+        title: 'Error ' + data['code'] + '!',
+        text: 'Vuelve a intentar con otra búsqueda',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+      });
+      console.log(data['code']);
     }
     });
 
@@ -361,6 +369,18 @@ guardarRepuestaEstudiante(text: any) {
       }else{console.log(res['code']);
       }
   });
+}
+AbrirPesta(url: any) {
+  let iMyWidth;
+  let  iMyHeight;
+
+iMyWidth = (window.screen.width / 4) - (120);
+
+iMyHeight = (window.screen.height / 3) - (100);
+
+  window.open(url, '_blank', 'location=2,status=1,scrollbars=1,width=1000px,height=500px,resizable=yes,left='
+  + iMyWidth + ',top=' + iMyHeight + ',screenX=' + iMyWidth + ', screenY=' + iMyHeight +'');
+
 }
 
 

@@ -27,14 +27,19 @@
                             <!-- -->
                             <div class="col-md-4"></div>
                         </div>
+                        <div *ngIf="show!=true" class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-info"></i> Atención!</h4>
+                            Una vez que hayas hecho tu primera consulta, el desafío comenzará y contaras con 45 min para terminarlo.
+                        </div>
                         <div *ngIf="show==true" style="background-color: white; padding-top: 20px;    margin-right: 0px;     height:auto;" class="row">
                             <div class="col-md-8">
                                 <ol *ngFor="let res of resBUSQUEDA | paginate:{itemsPerPage: 5, id: 'documentosi', currentPage: pd }; index as i" class="col-md-12" id="b_results" role="main" aria-label="Resultados de la búsqueda">
                                     <li class="b_algo">
                                         <h2 class="urlstyle">
-                                            <a target="_blank" (click)="RegistroEvent(res.url,res.name,i, res.position)" href="{{res.url}}">{{res.name | titlecase}}</a>
-                                        </h2> <a (click)="GuardarApunte(res.url,res.name, i)"><i id="icon{{i}}_relleno"  class="fa fa-heart-o"></i></a>
-                                        <a><i id="icon{{i}}" style="display:none" (click)="removeLibreria(res.name,res.url,i)" class="fa fa-heart"></i></a>
+                                            <a (click)="RegistroEvent(res.url,res.name,i, res.position);AbrirPesta(res.url)">{{res.name | titlecase}}</a>
+                                        </h2> <a (click)="GuardarApunte(res.url,res.name, i)"><i id="icon{{i}}_relleno"  class="fa fa-heart-o" title="Añadir a documentos útiles"></i></a>
+                                        <a><i id="icon{{i}}" style="display:none" (click)="removeLibreria(res.name,res.url,i)" class="fa fa-heart" title="Quitar de mis documentos"></i></a>
                                         <div class="b_caption">
                                             <div class="b_attribution"><cite #urlLibereria style="color:#006d21">{{res.url}}</cite></div>
                                             <p #textLibreria [innerHTML]="res.snippet"></p>
@@ -63,7 +68,7 @@
 
                                 </div>
 
-                                <div class="box box-primary busquedasrelacionadas">
+                                <div *ngIf="resBUSQUEDASRELACIONADAS" class="box box-primary busquedasrelacionadas">
                                     <div class="box-header">
                                         <h3 class="box-title">Términos relacionados</h3>
                                     </div>
@@ -79,11 +84,12 @@
                                     <div class="box box-primary">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Documentos guardados</h3>
-                                            <!-- 
+
                                             <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                            </button>
-                                            </div> -->
+                                                <span id="consulta" style="display: inline-block;" class="btn btn-box-tool "><i class="far fa-question-circle" title="Guarda los documentos que te sirvierón para responder el desafío"></i>
+                                                   
+                                                </span>
+                                            </div>
                                         </div>
                                         <div style="background: #5f9ea00a" class="box-body ">
                                             <ul class="products-list product-list-in-box">
