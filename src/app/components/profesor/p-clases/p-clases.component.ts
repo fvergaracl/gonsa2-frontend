@@ -14,7 +14,8 @@ export class PClasesComponent implements OnInit {
   clases: any;
   dataJSON: any;
   pd: any;
-
+  terminoabuscar:any;
+  
   constructor(public http: HttpClient, public router: Router,
     public _LoginService: LoginService) {
       this.clases = [];

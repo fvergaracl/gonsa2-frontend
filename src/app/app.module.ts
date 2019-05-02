@@ -4,6 +4,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NguCarouselModule } from '@ngu/carousel';
 import { MatIconModule, MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
@@ -42,7 +44,6 @@ import { ConfiguracionComponent } from './components/configuracion/configuracion
 import { PClasesDetallesComponent } from './components/profesor/p-clases-detalles/p-clases-detalles.component';
 import { PClasesEditarComponent } from './components/profesor/p-clases-editar/p-clases-editar.component';
 import { PClasesAgregaralumnoComponent } from './components/profesor/p-clases-agregaralumno/p-clases-agregaralumno.component';
-import { AlertsModule } from 'angular-alert-module';
 
 import { ModalalertaComponent } from './components/modalalerta/modalalerta.component';
 import { ETareasComponent } from './components/estudiante/e-tareas/e-tareas.component';
@@ -124,7 +125,6 @@ var adminLteConf = {
     Ng2SearchPipeModule,
     NgxPaginationModule,
     BrowserModule,
-    AlertsModule.forRoot(),
     FormsModule,
     RouterModule.forRoot(ROUTES),
     LayoutModule.forRoot(adminLteConf),
@@ -137,7 +137,7 @@ var adminLteConf = {
     MatCheckboxModule,
     ChartsModule
   ],
-  providers: [LoginService,],
+  providers: [LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
