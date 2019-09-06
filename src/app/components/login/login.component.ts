@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
             this._loginService.setExpireToken(expiracion_token);
             localStorage.setItem('token',res['token'])
             if (rol === 'Professor') {
-              this.router.navigate(['/profesor/inicio']);
+              this.router.navigate(['profesor/inicio']);
             } else if (rol == 'Student'){
-              this.router.navigate(['/estudiante/inicio']);
+              this.router.navigate(['estudiante/inicio']);
             } else if (rol == 'Administrador'){
               this.router.navigate(['/administrador/inicio']);
             }
@@ -62,8 +62,9 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     let rol = this._loginService.getRol()
+    console.log(rol);
     if (rol === 'Professor') {
-      this.router.navigate(['/profesor/inicio']);
+      this.router.navigate(['profesor/inicio']);
     } else if (rol == 'Student'){
       this.router.navigate(['/estudiante/inicio']);
     } else if (rol == 'Administrador'){

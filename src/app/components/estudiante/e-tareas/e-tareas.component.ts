@@ -114,7 +114,7 @@ export class ETareasComponent implements OnInit {
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);
-    this.router.navigate(['/estudiante/busquedas']);
+    this.router.navigate(['estudiante/busquedas']);
   }
   setInfoNoTerminada (objetivo: any, descripcion: any, id: any ) {
     console.log(objetivo);
@@ -123,13 +123,13 @@ export class ETareasComponent implements OnInit {
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);
-    this.router.navigate(['/estudiante/busquedas']);
+    this.router.navigate(['estudiante/busquedas']);
   }
   atras() {
     // localStorage.removeItem('tareasfinish');
     // localStorage.removeItem('tareasnofinish');
     // localStorage.removeItem('tareasnoinit');
-    this.router.navigate(['/estudiante/inicio']);
+    this.router.navigate(['estudiante/inicio']);
   }
   ngOnInit() {
   }

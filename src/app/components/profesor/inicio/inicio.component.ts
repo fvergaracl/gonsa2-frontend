@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
-export class InicioComponent_p implements OnInit {
+export class InicioComponent implements OnInit {
   range = [
     {nombre:"Desafios", descripcion:"descipcion componente", color: "bg-green", icon: "fa-tasks"},
     {nombre:"Clases", descripcion:"descipcion componente",  color: "bg-red", icon:"fa-users"},
@@ -15,6 +15,7 @@ export class InicioComponent_p implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    console.log("pag profesor iniciada")
   }
 
 }

@@ -38,7 +38,9 @@ export class DashboardHeaderComponent implements OnInit {
             'Authorization': 'JWT ' + this._loginService.getToken()
           })
         };
-        this.http.get( this._loginService.getUrlApi() +'islogged', httpOptions).subscribe(data => {
+        
+         this.http.get( this._loginService.getUrlApi() +'islogged', httpOptions).subscribe(data => {
+           console.log(data['code']+"token:"+ this._loginService.getToken())
           if (data['code'] === 200){
             null;
             //todo ok, el usuario esta logeado
@@ -49,9 +51,9 @@ export class DashboardHeaderComponent implements OnInit {
             this._loginService.setNick('')
             this._loginService.setRol('')
             this._loginService.setToken('')
-            this.router.navigate(['/']);
+            this.router.navigate(['/login']);
           }
-        });
+        }); 
       } else {
 
         this.router.navigate(['/']);

@@ -95,7 +95,7 @@ tempData: any[];
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);
-    this.router.navigate(['/estudiante/busquedas']);
+    this.router.navigate(['estudiante/busquedas']);
   }
   ngOnInit() {
     if (localStorage.getItem('tareasnoinit')) {

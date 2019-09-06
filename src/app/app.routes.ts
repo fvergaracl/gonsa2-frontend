@@ -1,8 +1,8 @@
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 
-import { Routes } from '@angular/router';
-import { InicioComponent_p } from './components/profesor/inicio/inicio.component';
+import { InicioComponent } from './components/profesor/inicio/inicio.component';
 import { Error404Component } from './components/error404/error404.component';
 import { EInicioComponent } from './components/estudiante/e-inicio/e-inicio.component';
 import { AInicioComponent } from './components/administrador/a-inicio/a-inicio.component';
@@ -24,9 +24,9 @@ import { InformesComponent } from './components/profesor/informes/informes.compo
 import { PClasesCrearEstudianteComponent } from './components/profesor/p-clases-crear-estudiante/p-clases-crear-estudiante.component';
 
 export const ROUTES: Routes = [
-    { path: '', component: HomeComponent, },
     { path: 'login', component: LoginComponent },
-    { path: 'profesor/inicio', component: InicioComponent_p },
+    { path: '', component: HomeComponent },
+    { path: 'profesor/inicio', component: InicioComponent },
     { path: 'profesor/desafios', component: PDesafioComponent },
     { path: 'profesor/desafios/crear', component: PDesafioCrearComponent },
     { path: 'profesor/desafios/detalle/:id', component: PDesafioDetalleComponent },
@@ -45,8 +45,5 @@ export const ROUTES: Routes = [
     { path: 'administrador/inicio', component: AInicioComponent },
     { path: 'configuracion', component: ConfiguracionComponent},
     { path: 'Error404', component: Error404Component },
-    { path: 'profesor', pathMatch: 'full', redirectTo: 'profesor/inicio' },
-    { path: 'estudiante', pathMatch: 'full', redirectTo: 'estudiante/inicio' },
-    { path: 'administrador', pathMatch: 'full', redirectTo: 'administrador/inicio' },
     { path: '**', pathMatch: 'full', redirectTo: 'Error404' }
 ]

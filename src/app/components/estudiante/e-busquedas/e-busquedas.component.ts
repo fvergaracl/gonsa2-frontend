@@ -254,7 +254,7 @@ ConfirmarTermino(respuesta: any) {
           cancelButtonColor: '#d33',
           confirmButtonText: 'OK'
         });
-        this.router.navigate(['/estudiante/tareas']);
+        this.router.navigate(['estudiante/tareas']);
       } else {
         console.log('Algo salio mal :c');
               Swal.fire({

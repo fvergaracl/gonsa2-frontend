@@ -65,7 +65,7 @@ export class PClasesDetallesComponent implements OnInit {
   }
   agregarAlumno() {
     this.idclase = localStorage.getItem('id_desafio');
-    this.router.navigate(['/profesor/clases/agregaralumno']);
+    this.router.navigate(['profesor/clases/agregaralumno']);
   }
   eliminarAlumno(alumno: any) {
     this.idclase = localStorage.getItem('id_desafio');
@@ -101,7 +101,7 @@ export class PClasesDetallesComponent implements OnInit {
 }
 
 crearEstudiante() {
-  this.router.navigate(['/profesor/clases/crearEstudiante']);
+  this.router.navigate(['profesor/clases/crearEstudiante']);
 }
 
 separador(antiguos: any, nuevos: any) {

@@ -115,7 +115,7 @@ export class PDesafioEditarComponent implements OnInit {
         document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
         +  'Desafio editado exitosamente';
         document.getElementById('activarmodaldashboard').click();
-        document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/desafios"');
+        document.getElementById('bClose').setAttribute('onclick', 'location.href="profesor/desafios"');
         console.log('Enviado correctamente');
 
       } if (res['code'] === 403) {
@@ -123,7 +123,7 @@ export class PDesafioEditarComponent implements OnInit {
         document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle" style="color: red;"></i> '
         +  'No se pudo modificar el desafio, ya que hay uno o varios estudiantes en el desafío';
         document.getElementById('activarmodaldashboard').click();
-        document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/desafios"');
+        document.getElementById('bClose').setAttribute('onclick', 'location.href="profesor/desafios"');
       }
       else {
         console.log('Algo salio mal :c');

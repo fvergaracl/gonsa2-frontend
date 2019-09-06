@@ -29,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardHeaderComponent } from './components/profesor/dashboardcomp/dashboard-header/dashboard-header.component';
 import { DashboardHeaderComponentEstudiante } from './components/estudiante/dashboardcomp/dashboard-header/dashboard-header.component';
-import { InicioComponent_p } from './components/profesor/inicio/inicio.component';
+import { InicioComponent } from './components/profesor/inicio/inicio.component';
 import { DashboardSidebarComponent } from './components/profesor/dashboardcomp/dashboard-sidebar/dashboard-sidebar.component';
 import { DashboardFooterComponent } from './components/profesor/dashboardcomp/dashboard-footer/dashboard-footer.component';
 import { Error404Component } from './components/error404/error404.component';
@@ -62,7 +62,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MensajeComponent } from './components/estudiante/e-tareas/carouselcomp/mensaje/mensaje.component';
 import { PClasesCrearEstudianteComponent } from './components/profesor/p-clases-crear-estudiante/p-clases-crear-estudiante.component';
 
-
+import {Location, PathLocationStrategy} from '@angular/common';
 
 var adminLteConf = {
   skin: 'blue',
@@ -85,7 +85,7 @@ var adminLteConf = {
     LoginComponent,
     DashboardHeaderComponent,
     DashboardHeaderComponentEstudiante,
-    InicioComponent_p,
+    InicioComponent,
     DashboardSidebarComponent,
     DashboardFooterComponent,
     Error404Component,
@@ -126,8 +126,9 @@ var adminLteConf = {
     NgxPaginationModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(ROUTES),
     LayoutModule.forRoot(adminLteConf),
+  RouterModule.forRoot(ROUTES),
+    
     HttpClientModule,
     AngularFontAwesomeModule,
     NguCarouselModule,
@@ -137,7 +138,7 @@ var adminLteConf = {
     MatCheckboxModule,
     ChartsModule
   ],
-  providers: [LoginService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [Location, LoginService, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

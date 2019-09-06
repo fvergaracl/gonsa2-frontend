@@ -32,11 +32,15 @@ export class PClasesComponent implements OnInit {
           if (data['code'] === 200) {
             this.clases = data['classes'];
             console.log(this.clases);
+          }else{
+            console.log(data['code']);
+            this.clases = data['classes'];
+            console.log(this.clases);
           }
         });
     }
     direccionarCrearClase() {
-      this.router.navigate(['/profesor/clases/crear']);
+      this.router.navigate(['profesor/clases/crear']);
     }
     editardesafio(id_desafio: any, school: any, identificator: any, clase: any, year: any ) {
       console.log(id_desafio, school, identificator, clase, year);
@@ -46,7 +50,7 @@ export class PClasesComponent implements OnInit {
       localStorage.setItem('clase', clase);
       localStorage.setItem('year', year);
       console.log('entro al editar');
-      this.router.navigate(['/profesor/clases/editar']);
+      this.router.navigate(['profesor/clases/editar']);
     }
     visualizarClase(id_desafio: any, school: any, identificator: any, clase: any, year: any) {
       console.log(id_desafio, school, identificator, clase, year);
@@ -56,7 +60,7 @@ export class PClasesComponent implements OnInit {
       localStorage.setItem('clase', clase);
       localStorage.setItem('year', year);
       console.log('visualizando clase...');
-      this.router.navigate(['/profesor/clases/detalles']);
+      this.router.navigate(['profesor/clases/detalles']);
     }
     verCargarXLSX() {
         document.getElementById('xlf').style.display = '';
@@ -99,7 +103,7 @@ export class PClasesComponent implements OnInit {
             document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
             +  'La clase con los estudiantes se ha creado correctamente';
             document.getElementById('activarmodaldashboard').click();
-            document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/clases"');
+            document.getElementById('bClose').setAttribute('onclick', 'location.href="profesor/clases"');
           } else {
             document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
             document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-exclamation-triangle " style="color: red;"></i> '
