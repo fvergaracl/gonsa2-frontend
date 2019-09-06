@@ -21,10 +21,10 @@ export class TerminadaComponent implements OnInit {
   curso: string = localStorage.getItem('nombreclasecarousel');
   @Input() name: string;
 imgags = [
-  'assets/bg.jpg',
-  'assets/car.png',
-  'assets/canberra.jpg',
-  'assets/holi.jpg'
+  '../../../assets/bg.jpg',
+  '../../../assets/car.png',
+  '../../../assets/canberra.jpg',
+  '../../../assets/holi.jpg'
 ];
 public carouselTileItems$: Observable<number[]>;
 public carouselTileConfig: NguCarouselConfig = {

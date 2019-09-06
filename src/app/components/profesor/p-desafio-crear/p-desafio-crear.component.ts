@@ -74,7 +74,7 @@ export class PDesafioCrearComponent implements OnInit {
             document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
             +  'El desafío se creó exitosamente';
             document.getElementById('activarmodaldashboard').click();
-            document.getElementById('bClose').setAttribute('onclick', 'location.href="profesor/desafios"');
+            document.getElementById('bClose').setAttribute('onclick', 'location.href="/profesor/desafios"');
           } else if (res['code'] === 500) {
             console.log('No se pudo crear el desafío');
             document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';

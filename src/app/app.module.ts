@@ -4,7 +4,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NguCarouselModule } from '@ngu/carousel';
 import { MatIconModule, MatButtonModule, MatCardModule, MatCheckboxModule } from '@angular/material';
 
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, Location, PathLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -62,7 +63,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MensajeComponent } from './components/estudiante/e-tareas/carouselcomp/mensaje/mensaje.component';
 import { PClasesCrearEstudianteComponent } from './components/profesor/p-clases-crear-estudiante/p-clases-crear-estudiante.component';
 
-import {Location, PathLocationStrategy} from '@angular/common';
+
 
 var adminLteConf = {
   skin: 'blue',
