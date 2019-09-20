@@ -1,33 +1,223 @@
+// VARIABLES
+$mainblack: #22262b;
+$amain: #fbb053;
+$grisclaro: #e0e2e2;
+$display: #abadc6;
+$item: #d1c9bf;
+$codred: #ac5e47;
+
+body {
+  font-family: "Century Gothic", 'Lato', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.et-hero-tabs,
+.et-slide {
+  background-image: url('/assets/img/e-learning.jpg');
+  max-width:100%;
+  width: 100%;
+  //height:auto;
+  display: flex;
+  background-size: 100% 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+  padding: 0 2em;
+
+  h1 {
+	  
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    letter-spacing: 0.3rem;
+    opacity: 0.6;
+  }
+}
+
+.slide1{
+	background-image: url('/assets/img/loginstudent.png');
+	max-width:100%;
+	width: 100%;
+	//height:auto;
+	display: flex;
+	background-size: 100% 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+	text-align: center;
+	padding: 0 2em;
+}
+
+.gonsa{
+	background-color: $mainblack;
+	max-width:100%;
+	width: 100%;
+	//height:auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+	text-align: center;
+	padding: 0 2em;
+}
+.edm{
+	background-image: url('/assets/img/edm.jpg');
+	max-width:100%;
+	color:#FF7F11;
+	width: 100%;
+	//height:auto;
+	display: flex;
+	background-size: 100% 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+	text-align: center;
+	padding: 0 2em;
+}
+
+.et-hero-tabs-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 10;
+
+  &--top {
+    position: fixed;
+    top: 0;
+  }
+}
+
+.et-hero-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+
+  &:hover {
+    color: white;
+    background: rgba(102, 177, 241, 0.8);
+    transition: all 0.5s ease;
+  }
+}
+
+.et-hero-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  transition: left 0.3s ease;
+}
+
+@media (min-width: 800px) {
+
+  .et-hero-tabs,
+  .et-slide {
+    h1 {
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+  }
+
+  .et-hero-tab {
+    font-size: 1rem;
+  }
+}
+
+
 /* DEMO-SPECIFIC STYLES */
 .typewriter h1 {
-	color: #fff;
-	font-family: monospace;
-	overflow: hidden; /* Ensures the content is not revealed until the animation */
-	border-right: .15em solid orange; /* The typwriter cursor */
-	white-space: nowrap; /* Keeps the content on a single line */
-	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-	letter-spacing: .15em; /* Adjust as needed */
-	animation: 
-	  typing 3.5s steps(30, end),
-	  blink-caret .5s step-end infinite;
+  color: #000;
+  font-family: "Century Gothic", 'Lato', sans-serif;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+.typewriter h2 {
+  color: #000;
+  font-family: "Century Gothic", 'Lato', sans-serif;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  animation:
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0
   }
-  
-  /* The typing effect */
-  @keyframes typing {
-	from { width: 0 }
-	to { width: 100% }
+
+  to {
+    width: 100%
   }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink-caret {
-	from, to { border-color: transparent }
-	50% { border-color: orange }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
   }
+
+  50% {
+    border-color: orange
+  }
+}
 
 
 // RESETS
-* html .clearfix             { zoom: 1; } /* IE6 */
-*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+* html .clearfix             { zoom: 1; }
+*:first-child+html .clearfix { zoom: 1; } 
 .clearfix:before,
 .clearfix:after {
     content: "";
@@ -37,7 +227,7 @@
     clear: both;
 }
 .clearfix {
-    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+    zoom: 1;
 }
 * {
 	margin: 0;
@@ -73,16 +263,11 @@ img{
 	max-width: 100%;
 }
 h1, h2, h3, h4{
+	font-family: "Century Gothic", 'Lato', sans-serif;
 	padding: 0;
 	margin: 0;
 }
-// VARIABLES
-$mainblack: #22262b;
-$amain: #fbb053;
-$grisclaro: #e0e2e2;
-$display: #abadc6;
-$item: #d1c9bf;
-$codred: #ac5e47;
+
 
 // MISC
 .wrap{
@@ -96,7 +281,7 @@ $codred: #ac5e47;
 }
 .comp{
     width: 100%;
-    height: 194px;
+    height: 200px;
     text-align: center;
     .monitor{
 		width: 275px;
@@ -296,7 +481,7 @@ $codred: #ac5e47;
 }
 
 .base {
-    width: 338px;
+    width: 558px;
     height: 12px;
     background: $grisclaro;
     display: block;
@@ -309,6 +494,7 @@ $codred: #ac5e47;
     display: block;
     margin: 0 auto;
 }  
+
 
 //=== Drawing effect
 
@@ -455,7 +641,7 @@ $ease-cb: cubic-bezier(.19,1,.22,1);
 body {
   margin: 0;
   width: 100%;
-  font-family: $font-mono;
+  font-family: "Century Gothic", 'Lato', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-style: normal;
@@ -499,7 +685,7 @@ body {
     padding: 5%;
   }
   &__title{
-    font-family: $font-mono;
+    font-family: "Century Gothic", 'Lato', sans-serif;
     font-size: 1em;
     font-weight: 400;
     letter-spacing: 0.3em;
@@ -512,7 +698,7 @@ body {
   }
   //Letter animation
   &__text{
-    font-family: $font-mono;
+    font-family: "Century Gothic", 'Lato', sans-serif;
     font-size: 1em;
     margin: 0 0 0.5em;
     line-height: 1.5;

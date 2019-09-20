@@ -58,6 +58,7 @@ body {
 
 .wrap {
 	position:absolute;
+	position:-webkit-fixed -webkit-absolute; position:fixed;
 	top:20px;
 	left:20px;
 	margin:auto;
@@ -72,6 +73,7 @@ body {
 		border:none;
 		outline:none;
 		position:absolute;
+		position:-webkit-absolute;
 		width:80px;
 		height:80px;
 		border-radius:50%;
@@ -107,31 +109,43 @@ body {
 		margin-left:85px;
 		margin-top:10px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(3) {
 		margin-top:145px;
 		margin-left:65px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(4) {
 		margin-top:160px;
 		margin-left:10px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(5) {
 		margin-top:85px;
 		margin-left:10px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(6) {
 		margin-top:63px;
 		margin-left:63px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(7) {
 		margin-top:65px;
 		margin-left:145px;
 		background-color:#fff;
+		position:absolute;
+		position:-webkit-absolute;
 	}
 	&>#checking:checked~.blob:nth-child(8) {
 		margin-top:112px;
@@ -201,11 +215,11 @@ body {
     background-repeat: no-repeat;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
-    overflow: hidden;
   }
 
 .writingshit {
   width:80%;
+  position: static;
   margin:50px auto;
   background-color:#fff;
   text-align:center;
@@ -219,3 +233,5 @@ body {
     }
   }
 }
+
+

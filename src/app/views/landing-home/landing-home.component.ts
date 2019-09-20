@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StickyNavigation } from './StickyNavigation';
+
 
 @Component({
   selector: 'app-landing-home',
@@ -7,14 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-home.component.scss']
 })
 export class LandingHomeComponent implements OnInit {
-
-  constructor(public router:Router) { }
+  st: StickyNavigation;
+  constructor(public router:Router) { 
+        
+  }
 
   ngOnInit() {
-
+    this.st = new StickyNavigation();
   }
+
+  
 
   gologin(){
     this.router.navigate(["/login"]);
   }
+
 }
