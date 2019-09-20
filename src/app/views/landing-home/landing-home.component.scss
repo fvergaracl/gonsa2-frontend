@@ -1,0 +1,535 @@
+/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+	color: #fff;
+	font-family: monospace;
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	border-right: .15em solid orange; /* The typwriter cursor */
+	white-space: nowrap; /* Keeps the content on a single line */
+	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+	letter-spacing: .15em; /* Adjust as needed */
+	animation: 
+	  typing 3.5s steps(30, end),
+	  blink-caret .5s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+	from { width: 0 }
+	to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: orange }
+  }
+
+
+// RESETS
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+} 
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+}
+a, a:hover, a:focus, a:active {
+	text-decoration: none!important;
+	outline: none;
+}
+.npd{
+	padding: 0;
+}
+ul,li{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+a:hover{
+	opacity: 0.7;
+	color: white;
+}
+body{
+	font-size: 14px;
+	color: black;
+}
+.clear{
+	clear: both;
+}
+img{
+	max-width: 100%;
+}
+h1, h2, h3, h4{
+	padding: 0;
+	margin: 0;
+}
+// VARIABLES
+$mainblack: #22262b;
+$amain: #fbb053;
+$grisclaro: #e0e2e2;
+$display: #abadc6;
+$item: #d1c9bf;
+$codred: #ac5e47;
+
+// MISC
+.wrap{
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	background-color: $mainblack;
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
+.comp{
+    width: 100%;
+    height: 194px;
+    text-align: center;
+    .monitor{
+		width: 275px;
+		height: 181px;
+		display: block;
+		margin: 0 auto;
+		border-radius: 10px 10px 0px 0px;
+		padding: 9px;
+		border: solid 1px $grisclaro;
+		background-color: black;
+    }
+    .mid{
+    	float: left;
+    	display: block;
+    	height: 100%;
+    	position: relative;
+    	background-color: $display;
+    	width: 50%;
+    	&.codigo{
+    		background-color: $mainblack;
+    	}
+    }
+    .site{
+    	overflow: hidden;
+    	position: absolute;
+		width: 105px;
+		height: 138px;
+	    bottom: 0;
+	    right: 0;
+    	.topbar{
+			width: 100%;
+
+    	}
+    	.cerrar{
+			width: 100%;
+			padding: 3px;
+			line-height: 0;
+			display: flex;
+		    align-items: center;
+		    justify-content: flex-start;
+		    border-radius: 4px 4px 0px 0px;
+			background-color: #afa895;
+			&>div{
+				display: inline-block;
+				width: 2px;
+				height: 2px;
+				border-radius: 50%;
+				background: white;
+				margin: 0px 1px;
+			}
+		}
+		.inhead{
+			padding: 2px;
+			height: 5px;
+			background-color: #ddd8cf;
+			.item{
+				width: 10px;
+    			height: 1px;
+				background-color: $item;
+				margin: 0 1px;
+				display: block;
+				float: left;
+			}
+		}
+    }
+    .txr{
+    	text-align: right;
+		.item{
+			float: right;
+		}
+    }
+    .inslid{
+    	width: 100%;
+    	height: 33px;
+    	background-color: #efebe2;
+    }
+    .incont{
+		padding-top: 10px;
+		background: #fefaf0;
+    	.item{
+			background-color: $item;
+			width: 53px;
+			height: 2px;
+			display: block;
+			margin: 0 auto;
+			margin-top: 1px;
+			&:nth-child(1){
+				width: 20px;
+			}
+			&:nth-child(2){
+				margin-top: 3px;
+				width: 41px;
+			}
+			&:nth-child(3){
+				width: 32px;
+			}
+			&:nth-child(4){
+				width: 23px;
+			}
+    	}
+    	.wid{
+    		width: 100%;
+    		padding: 8px 1px;
+    		.itwid{
+    			width: 33.333%;
+    			float: left;
+    			height: 26px;
+    			padding: 0px 3px;
+    			&>div{
+    				width: 100%;
+    				height: 100%;
+    				background-color: #f5f1e6;
+    				position: relative;
+    				.contfoot{
+    					position: absolute;
+    					bottom: 0;
+    					left: 0;
+    					height: 6px;
+    					width: 100%;
+    					background-color: #ebe5dc;
+    				}
+    			}
+    		}
+    	}
+    	.infoot{
+    		background-color: #efebe2;
+    		height: 26px;
+    		width: 100%;
+    	}
+    }
+	@keyframes code {
+	    0% {
+			opacity: 1;
+	    }
+	    50% {
+			opacity: 0.6;
+	    }
+	    100% {
+			opacity: 1;
+	    }
+	}
+    .codigo{
+    	padding: 14px 0px 14px 14px;
+    	.var{
+    		background-color: $codred;
+	    	animation: code;
+			animation-duration: 0.3s;
+			animation-iteration-count: infinite;
+    	}
+    	.cont{
+    		background-color: #464748;
+	    	animation: code;
+			animation-duration: 0.5s;
+			animation-iteration-count: infinite;
+    	}
+    	.fun{
+    		background-color: $amain;
+	    	animation: code;
+			animation-duration: 0.2s;
+			animation-iteration-count: infinite;
+    	}
+    	.atr{
+    		background-color: #645572;
+	    	animation: code;
+			animation-duration: 0.1s;
+			animation-iteration-count: infinite;
+    	}
+    	.item{
+    		height: 3px;
+    		width: 20px;
+    		float: left;
+    		margin-right: 3px;
+    		&.min{
+    			width: 13px;
+    		}
+    		&.lrg{
+    			width: 30px;
+    		}
+    	}
+    	.line{
+    		padding: 2px 0;
+    		width: 100%;
+    	}
+    	.tab1{
+    		padding-left: 5px;
+    	}
+    	.tab2{
+    		padding-left: 8px;
+    	}
+    	.tab3{
+    		padding-left: 10px;
+    	}
+    	.tab4{
+    		padding-left: 12px;
+    	}
+    }
+}
+
+.base {
+    width: 338px;
+    height: 12px;
+    background: $grisclaro;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0px 0px 6px 6px;
+}  
+.underbase {
+    width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}  
+
+//=== Drawing effect
+
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+	box-shadow: inset 0 0 0 $width $color;
+	color: $color;
+	transition: color $duration $duration/3;
+	position: relative;
+	
+	&::before,
+	&::after {
+	  border: 0 solid transparent;
+	  box-sizing: border-box;
+	  content: '';
+	  pointer-events: none;
+	  position: absolute;
+	  width: 0; height: 0;
+	  
+	  #{$vertical}: 0; 
+	  #{$horizontal}: 0;
+	}
+  
+	&::before {
+	  $h-side: if($horizontal == 'left', 'right', 'left');
+	  
+	  border-#{$vertical}-width: $width;
+	  border-#{$h-side}-width: $width;
+	}
+	
+	&::after {
+	  $v-side: if($vertical == 'top', 'bottom', 'top');
+	  
+	  border-#{$v-side}-width: $width;
+	  border-#{$horizontal}-width: $width;
+	}
+	
+	&:hover {
+	  color: $hover;
+	  
+	  &::before,
+	  &::after {
+		border-color: $hover;
+		transition: border-color 0s, width $duration, height $duration;
+		width: 100%;
+		height: 100%;
+	  }
+	  
+	  &::before { transition-delay: 0s, 0s, $duration; }
+	  
+	  &::after { transition-delay: 0s, $duration, 0s; }
+	}
+  }
+  
+  .draw-border {
+	@include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+  }
+  
+  //=== Button styling, semi-ignore
+  .btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	line-height: 1.5;
+	font: 700 1.2rem 'Roboto Slab', sans-serif;
+	padding: 1em 2em;
+	letter-spacing: 0.05rem;
+	
+	&:focus { outline: 2px dotted #55d7dc; }
+  }
+  
+  //=== Pen styling, ignore
+  body { 
+	background: #1f1a25;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+  }
+
+
+
+  // Config: fonts
+$font-mono: "Cutive Mono", monospace;
+// Config: Ease
+$ease-cb: cubic-bezier(.19,1,.22,1);
+
+//--------------------------
+//  nth-trans-delay()
+//  @description: Transition Delay on nth-childs
+//  @param: $delay_items: [7]    - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s]   - transition-dealy value
+//--------------------------
+@mixin nth-trans-delay($delay_items: 7, $delay_time: 0.2s){
+@for $i from 1 through $delay_items {
+  &:nth-child(#{$i}) {   
+   transition-delay: $delay_time * $i; 
+  }
+ }
+}
+
+//--------------------------
+//  nth-ani-delay()
+//  @description: Animation Delay on nth-childs
+//  @param: $delay_items: [7] - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s] - transition-dealy value
+//--------------------------
+@mixin nth-ani-delay($delay_items: 7, $delay_time: 0.2s){
+@for $i from 1 through $delay_items {
+  &:nth-child(#{$i}) {   
+   animation-delay: $delay_time * $i; 
+  }
+ }
+}
+//--------------------------
+//  bg-overlay()
+//  @description:pseduo overlay element  
+//  @param: $bg_hex: [$color-dark] - hex value for rgba conversion
+//  @param: $bg_opacity:[0.6] - alpha transparency level
+//  @param: $top_layer: element or class name for higher z-index layer
+//--------------------------
+@mixin bg-overlay($bg_hex: #111, $bg_opacity: 0.6, $top_layer: 'header') {
+  &:after {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba($bg_hex, $bg_opacity);
+  }
+  
+  // Layer atop overlay
+  & > #{$top_layer}{
+    z-index: 2;
+    position: relative;
+  }
+}
+//Setups
+*, *:before, *:after {
+  box-sizing: border-box; 
+}
+// Body
+body {
+  margin: 0;
+  width: 100%;
+  font-family: $font-mono;
+  line-height: 1.5;
+  font-weight: 400;
+  font-style: normal;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  text-rendering: optimizeLegibility;
+}
+
+.sep{
+  border: 0;
+  width: 3em;
+  height: 1px;
+  margin: 1em 0;
+  background-color: rgba(255,255,255,0.4);
+}
+.mast{
+  position: relative;
+  display:flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  background-color: #111;
+  @include bg-overlay(#111, 0.9);  
+  
+  &__bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: 50%;
+  }
+  
+  &__header{
+    padding: 5%;
+  }
+  &__title{
+    font-family: $font-mono;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  // Letter animation
+  &__title span{
+    animation: letter-glow 0.7s 0s ease both;
+    @include nth-ani-delay(25, 0.05s);
+  }
+  //Letter animation
+  &__text{
+    font-family: $font-mono;
+    font-size: 1em;
+    margin: 0 0 0.5em;
+    line-height: 1.5;
+    white-space: pre;
+  }
+  
+  &__text span{
+    animation: letter-glow 0.7s 0s ease both;
+    @include nth-ani-delay(180, 0.05s);
+  }
+}
+
+
+// Letter Glow
+@keyframes letter-glow{
+  0%   { opacity: 0; text-shadow: 0px 0px 1px rgba(255,255,255,0.1)}
+  66%  { opacity: 1; text-shadow: 0px 0px 20px rgba(255,255,255,0.9) }
+  77%   { opacity: 1;  }
+  100% { opacity:0.7; text-shadow: 0px 0px 20px rgba(255,255,255,0.0)}
+}

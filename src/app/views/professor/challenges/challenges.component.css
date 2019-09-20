@@ -1,0 +1,23 @@
+.desafios{
+    margin-top: 8%;
+    margin-left: 8%;
+}
+.card{
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+.cardchallenge:hover{
+    border-color: #55a4b1;
+    border-width: 3px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    /* border-style: solid;
+  border-width: medium; */
+    border-inline-color: #55a4b1;
+    /* 
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0,75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0,75);
+    box-shadow: -1px 9px 40px -12px rgba(0,0,0,0,75); */
+}
+

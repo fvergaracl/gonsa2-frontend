@@ -1,0 +1,247 @@
+<div class="animated fadeIn">
+  <cui-breadcrumb>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <a class="btn" href=" "><i class="icon-speech"></i></a>
+        <a class="btn" [routerLink]="['/professor']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+        <a class="btn" [routerLink]="['/professor']"><i class="icon-book-open"></i> &nbsp;Cursos</a>
+        <a class="btn" [routerLink]="['/professor']" id="name_course"><i class="icon-notebook"></i> &nbsp;name
+          course</a>
+      </div>
+    </li>
+  </cui-breadcrumb>
+
+
+  <div class="row>">
+    <!-- row course -->
+    <div class="card text-white bg-dark">
+      <div class="card-body pb-0">
+        <div class="text-value" id="name"> <i class="icon-notebook icons  "></i> Course Name</div>
+        <div> <i class="icon-ghost icons  "></i> 32 Estudiantes</div>
+        <div> <i class="icon-badge icons  "></i> 12 Desafíos (3 completados)</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          <i class="icon-badge icons"></i>Desafíos
+          <div class="card-header-actions" style="height: 21px;">
+            <label class="switch switch-sm switch-label switch-info">
+              <input type="checkbox" class="switch-input" checked (click)="isCollapsed = !isCollapsed">
+              <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+            </label>
+          </div>
+        </div>
+        <div class="card-body" [collapse]="isCollapsed" (collapsed)="collapsed($event)" (expanded)="expanded($event)">
+          <div class="row">
+            <div class="col-md-4 col-lg-4">
+              <div class="card border-secondary bg-dark">
+                <div class="card-header" (click)="selectDesafio('Desafio #1')">
+                  Desafío # 1
+                </div>
+                <div class="card-body pb-0" (click)="selectDesafio('Desafio #1')">
+                  <div class="ldBar float-right label-center text-black" data-value="28.6" data-preset="fan"></div>
+                  <div class="text" id="name"> <i class="icon-badge icons  "></i> Lugar del océano más profundo del
+                    mundo</div>
+                  <div> <i class="icon-eye icons  "></i> 25 Vistos<div> <i class="icon-arrow-up-circle icons  "></i> 23
+                      Envíos</div>
+                  </div>
+                </div>
+                <!-- <a [routerLink]="['/professor']" type="button" class="btn btn-primary  btn-md ">
+                  <p><i class="icon-book-open icons  "></i> Ver Desafío </p>
+                </a> -->
+              </div>
+            </div>
+            <!--/.col-->
+            <!-- <div class="col-sm-12 col-md-12"> -->
+            <div class="col-md-4 col-lg-4">
+              <div class="card border-secondary bg-dark animated infinite bounce delay-2s">
+                <div class="card-header" (click)="selectDesafio('Desafio #2')">
+                  Desafío # 2
+                </div>
+                <div class="card-body pb-0" (click)="selectDesafio('Desafio #2')">
+                  <div class=" ldBar float-right label-center text-black" data-value="28.6" data-preset="fan"></div>
+                  <div class="text" id="name"> <i class="icon-badge icons  "></i> Personas con VIH en Chile</div>
+                  <div> <i class="icon-eye icons  "></i> 34 Vistos<div> <i class="icon-arrow-up-circle icons  "></i> 28
+                      Envíos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.col-->
+
+            <div class="col-md-4 col-lg-4">
+              <div class="card border-secondary bg-dark animated bounce">
+                <div class="card-header" (click)="selectDesafio('Desafio #3')">
+                  Desafío #3
+                </div>
+                <div class=" card-body pb-0" (click)="selectDesafio('Desafio #3')">
+                  <div class=" ldBar float-right label-center text-black" data-value="28.6" data-preset="fan"></div>
+                <div class="text" id="name"> <i class="icon-badge icons  "></i> Piezas para armar un automóvil</div>
+                <div> <i class="icon-eye icons  "></i> 31 Vistos<div> <i class="icon-arrow-up-circle icons  "></i> 23
+                    Envíos</div>
+                </div>
+              </div>
+            </div>
+
+            <!--/.col-->
+
+            <div class="col-md-4 col-lg-4">
+              <div class="card border-secondary bg-dark animated bounce">
+                <div class="card-header" (click)="selectDesafio('Desafio #4')">
+                  Desafío #4
+                </div>
+                <div class="card-body pb-0" (click)="selectDesafio('Desafio #4')">
+                  <div class=" ldBar float-right label-center text-black" data-value="28.6" data-preset="fan"></div>
+                  <div class="text" id="name"> <i class="icon-badge icons  "></i> Piezas para armar un automóvil</div>
+                  <div> <i class="icon-eye icons  "></i> 31 Vistos<div> <i class="icon-arrow-up-circle icons  "></i> 23
+                      Envíos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.col-->
+          </div><!-- row close -->
+        </div> <!-- CARD DESAFIOS -->
+      </div>
+    </div> <!-- row -->
+
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <p id="desafio_section">{{desafio}}</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <!-- LEFT SECTION DESAFIOS -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  Resumen
+                </div>
+                <div class="card-body">
+                  <p>{{details}}</p>
+                  <div class="input-group">
+                    <div class="input-group-prepend" dropdown>
+                      <button type="button" class="btn btn-primary dropdown-toggle" dropdownToggle>Categoría
+                        <span class="caret"></span>
+                      </button>
+                      <div class="dropdown-menu" *dropdownMenu>
+                        <a class="dropdown-item" href=" ">Actualidad</a>
+                        <a class="dropdown-item" href=" ">Deporte</a>
+                        <a class="dropdown-item" href=" ">Salud</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href=" ">Agregar Nuevo</a>
+                      </div>
+                    </div>
+                    <input type="text" id="input1-group3" name="input1-group3" class="form-control"
+                      placeholder="Username">
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  Objetivo(s)
+                </div>
+                <div class="card-body">
+                  <p>{{objetive}}</p>
+
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  Fechas
+                </div>
+                <div class="card-body">
+                  <p>{{date}}</p>
+                  <p>{{code}}</p>
+                </div>
+              </div>
+            </div> <!-- END SECTION LEFT DESCRIPCIÓN -->
+
+            <!-- SECTION RIGTH TABLE -->
+            <div class="col-sm-8 col-md-8 col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  Alumnos
+                </div>
+                <div class="card-body">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Usuario</th>
+                        <th>Date registered</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Samppa Nori</td>
+                        <td>2012/01/01</td>
+                        <td>Member</td>
+                        <td>
+                          <span class="badge badge-success">Active</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Estavan Lykos</td>
+                        <td>2012/02/01</td>
+                        <td>Staff</td>
+                        <td>
+                          <span class="badge badge-danger">Banned</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Chetan Mohamed</td>
+                        <td>2012/02/01</td>
+                        <td>Admin</td>
+                        <td>
+                          <span class="badge badge-secondary">Inactive</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Derick Maximinus</td>
+                        <td>2012/03/01</td>
+                        <td>Member</td>
+                        <td>
+                          <span class="badge badge-warning">Pending</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Friderik Dávid</td>
+                        <td>2012/01/21</td>
+                        <td>Staff</td>
+                        <td>
+                          <span class="badge badge-success">Active</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href=" ">Prev</a></li>
+                    <li class="page-item active">
+                      <a class="page-link" href=" ">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href=" ">2</a></li>
+                    <li class="page-item"><a class="page-link" href=" ">3</a></li>
+                    <li class="page-item"><a class="page-link" href=" ">4</a></li>
+                    <li class="page-item"><a class="page-link" href=" ">Next</a></li>
+                  </ul>
+                </div>
+                <!--/.row-->
+              </div>
+            </div> <!-- END SECTION TABLE -->
+          </div> <!-- ROW -->
+        </div><!-- card body main desafios -->
+      </div> <!-- END MAIN CARD DESAFIOS -->
+    </div> <!-- END SECCIÓN DESAFÍOS -->
+
+
+  </div><!-- MAIN ROW -->

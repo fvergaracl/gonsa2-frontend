@@ -1,0 +1,221 @@
+$red:#F44336;
+
+@mixin transition($in) {
+	transition:$in;
+	-webkit-transition:$in;
+	-moz-transition:$in;
+	-o-transition:$in;
+	-ms-transition:$in;
+}
+@mixin animation($in) {
+	animation:$in;
+	-webkit-animation:$in;
+	-moz-animation:$in;
+	-o-animation:$in;
+	-ms-animation:$in;
+}
+@mixin box-shadow($in) {
+	box-shadow:$in;
+	-webkit-box-shadow:$in;
+	-moz-box-shadow:$in;
+	-o-box-shadow:$in;
+	-ms-box-shadow:$in;
+}
+@mixin transform($in) {
+	transform:$in;
+	-webkit-transform:$in;
+	-moz-transform:$in;
+	-o-transform:$in;
+	-ms-transform:$in;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+body {
+	margin:0;
+	padding:0;
+	background-color:#222;
+}
+* {
+	color:#888;
+  font-family:"Lato",Helvetica,sans-serif;
+}
+
+.bar {
+  display:block;
+  width:40px;
+  height:5px;
+  margin:5px auto;
+  background-color:#fff;
+  border-radius:2px;
+  
+  @include transition(all 0.4s linear 0.1s);
+  
+  &:first-child {
+    margin-top:27px;
+  }
+}
+
+.wrap {
+	position:absolute;
+	top:20px;
+	left:20px;
+	margin:auto;
+	width:150px;
+	height:100px;
+	filter:url("#filt");
+	-webkit-filter:url("#filt");
+
+	.blob {
+		display:block;
+		cursor:pointer;
+		border:none;
+		outline:none;
+		position:absolute;
+		width:80px;
+		height:80px;
+		border-radius:50%;
+		z-index:10;
+		background-color:$red;
+
+		@include box-shadow(0 0 10px 1px rgba(0,0,0,0.3));
+
+		&[for="checking"] {
+			z-index:30;
+			font-size:60px;
+			text-align:center;
+			color:#fff;
+
+			@include transition(transform 0.5s ease-in-out 0.2s);
+		}
+
+		&:not([for="checking"]) {
+			width:50px;
+			height:50px;
+			top:15px;
+			left:15px;
+			font-size:30px;
+			@include transition(all 0.5s ease-in-out);
+
+			&:hover {
+				color:$red;
+				@include animation(harlem 0.5s linear forwards);
+			}
+		}
+	}
+	&>#checking:checked~.blob:nth-child(2) {
+		margin-left:85px;
+		margin-top:10px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(3) {
+		margin-top:145px;
+		margin-left:65px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(4) {
+		margin-top:160px;
+		margin-left:10px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(5) {
+		margin-top:85px;
+		margin-left:10px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(6) {
+		margin-top:63px;
+		margin-left:63px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(7) {
+		margin-top:65px;
+		margin-left:145px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(8) {
+		margin-top:112px;
+		margin-left:112px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob:nth-child(9) {
+		margin-top:10px;
+		margin-left:160px;
+		background-color:#fff;
+	}
+	&>#checking:checked~.blob[for="checking"]>.bar {
+    &:nth-child(1) {
+      @include transform(rotate(45deg));
+      margin-top:37px;
+    }
+    &:nth-child(2) {
+      @include transform(rotate(-45deg));
+      margin-top:-10px;
+    }
+    &:nth-child(3) {
+      opacity:0;
+    }
+	}
+}
+
+@keyframes harlem {
+	0% {
+		@include transform(translate(0));
+	}
+	25% {
+		@include transform(translate(5px,5px));
+	}
+	50% {
+		@include transform(translate(-5px,-5px));
+	}
+	75% {
+		@include transform(translate(2px,2px));
+	}
+	100% {
+		@include transform(translate(0));
+	}
+}
+@-webkit-keyframes harlem {
+	0% {
+		@include transform(translate(0));
+	}
+	25% {
+		@include transform(translate(5px,5px));
+	}
+	50% {
+		@include transform(translate(-5px,-5px));
+	}
+	75% {
+		@include transform(translate(2px,2px));
+	}
+	100% {
+		@include transform(translate(0));
+	}
+}
+
+body {
+    background-image: url('/assets/img/loginstudent.png');
+    background-position: center;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+  }
+
+.writingshit {
+  width:80%;
+  margin:50px auto;
+  background-color:#fff;
+  text-align:center;
+  @include box-shadow(0 0 10px 2px #000);
+  
+  .wow {
+    padding:30px;
+    
+    p {
+      padding:0 30px;
+    }
+  }
+}

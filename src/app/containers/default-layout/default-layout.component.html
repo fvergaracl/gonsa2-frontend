@@ -1,0 +1,47 @@
+<header>
+  <style type="text/css">  @import url("/assets/css/login.css"); </style>
+</header>
+
+<div class="app-body" style="overflow: auto">
+  <!-- menu desplegable en top -->
+  <div class='wrap'>
+    <input type='checkbox' id='checking' style='display:none;' />
+    <button class='blob'>&#x2605;</button>
+    <button class='blob'>&#x2709;</button>
+    <button class='blob'>&#x2699;</button>
+    <button class='blob'>&#x2764;</button>
+    <button class='blob'>&#x270C;</button>
+    <button class='blob'>&#x270E;</button>
+    <button class='blob'>&#x266B;</button>
+    <button class='blob'>&#x2706;</button>
+    <label class='blob' for='checking'>
+      <span class='bar'></span>
+      <span class='bar'></span>
+      <span class='bar'></span>
+    </label>
+  </div>
+
+  <!-- contenedor principal/hoja -->
+  <div class='writingshit'>
+    <div class='wow'>
+      <h1>-username here-</h1>
+      <div class='wow-text'>
+        rol, school<br />
+        city, country<br />
+        <!-- Main content -->
+        <main class="main">
+
+          <div class="container-fluid">
+            <router-outlet></router-outlet>
+          </div><!-- /.container-fluid -->
+        </main>
+      </div>
+    </div>
+    <footer>
+      <span><a href="http://opentera.inf.uach.cl/login/index.php">Opentera</a> &copy; 2019 - GoNSa2 v.2.1.1</span>
+    </footer>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,206 @@
+<div class="animated fadeIn">
+
+  <!-- Sección presentación del Curso -->
+  <div class="row>">
+    <div class="card text-white bg-dark">
+      <div class="card-body pb-0">
+        <div class="text-value" id="name"> <i class="icon-notebook icons  "></i> {{course.name}}</div>
+        <div> <i class="icon-graduation icons  "></i> {{course.school}}</div>
+        <div> <i class="icon-ghost icons  "></i> {{course.students}} Estudiantes</div>
+        <div> <i class="icon-badge icons  "></i>{{course.challenge_number}} Desafíos</div>
+
+      </div>
+
+    </div>
+  </div> <!-- END Sección presentación del Curso -->
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          <div class="text-value float-left"> <i class="icon-badge icons"></i> Desafíos </div>
+
+          <div class="card-header-actions">
+
+            <button type="button" class="float-right" class="btn btn-primary"
+              (click)="isCollapsed = !isCollapsed">Colapsar Desafíos
+            </button>
+          </div>
+        </div>
+        <!-- Sección Listado de Desafíos -->
+        <div class="card-body" [collapse]="isCollapsed" (collapsed)="collapsed($event)" (expanded)="expanded($event)">
+          <div class="row">
+
+            <div *ngFor="let dsf of challengeData trackBy: trackByFn" class="col-lg-4 mbr-col-md-4">
+              <div class="card border-secondary cardchallenge animated pulse ">
+                <div class="card-header" (click)="selectDesafio(dsf.title)">
+                  Desafío id # {{dsf.id}}
+                </div>
+                <div class="card-body pb-0" (click)="selectDesafio(dsf.title)">
+                  <div class="ldBar float-right label-center text-black" data-value="dsf.sent" data-preset="fan"></div>
+                  <div class="text" id="name"> <i class="icon-badge icons  "></i> {{dsf.title}}</div>
+                  <div> <i class="icon-eye icons  "></i> {{dsf.seen}} Vistos<div> <i
+                        class="icon-arrow-up-circle icons  "></i>
+                      {{dsf.sent}} Envíos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- row close -->
+      </div> <!-- CARD DESAFIOS -->
+    </div>
+  </div> <!-- row -->
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          <div id="desafio_section" class="text-value">{{desafio}}</div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <!-- LEFT SECTION DESAFIOS -->
+            <div class="col-sm-4 col-md-4 col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  Resumen
+                </div>
+                <div class="card-body">
+                  <p>{{details}}</p>
+                  <div class="input-group">
+                    <div class="input-group-prepend" dropdown>
+                      <button type="button" class="btn btn-primary dropdown-toggle" dropdownToggle>Categoría:
+                        {{category}}
+                        <span class="caret"></span>
+                      </button>
+                      <div class="dropdown-menu" *dropdownMenu>
+                        <a class="dropdown-item">Actualidad</a>
+                        <a class="dropdown-item">Deporte</a>
+                        <a class="dropdown-item">Salud</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item">Agregar Nuevo</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  Objetivo(s)
+                </div>
+                <div class="card-body">
+                  <p>{{objetive}}</p>
+                </div>
+              </div>
+
+            </div> <!-- END SECTION LEFT DESCRIPCIÓN -->
+
+            <!-- SECTION RIGTH TABLE -->
+            <div class="col-sm-8 col-md-8 col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-people"></i></span>
+                    </div>
+                    <input type="text" name="table_search" class="form-control pull-right" [(ngModel)]="searchTodos"
+                      placeholder="Buscar Alumno">
+                  </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover table-sm ">
+                    <thead>
+                      <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>Fecha Envío</th>
+                        <th>Calificación</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container
+                        *ngFor="let student of tableData trackBy: trackByFn |filter:searchTodos | paginate: { itemsPerPage: 5, id: 'estudiantei', currentPage: pd }">
+                        <tr>
+                          <td>{{student.nick}}</td>
+                          <td>{{student.name}}</td>
+                          <td>{{student.rut}}</td>
+                          <td>{{student.date_send}}</td>
+                          <td><button type="button" class="btn btn-info mr-1" data-toggle="modal"
+                              (click)="evaluate(student.nick)">
+                              Califica:{{student.calification}}
+                            </button></td>
+                          <td>
+                            <span class="badge badge-success">{{student.state}}</span>
+                          </td>
+                        </tr>
+                      </ng-container>
+
+                    </tbody>
+                  </table>
+                  <ul style="float:right;">
+                    <pagination-controls id="estudiantei" (pageChange)="pd = $event" previousLabel="Anterior"
+                      nextLabel="Siguiente"></pagination-controls>
+                  </ul>
+                </div>
+                <!--/.row-->
+              </div>
+            </div> <!-- END SECTION TABLE -->
+          </div> <!-- ROW -->
+        </div><!-- card body main desafios -->
+      </div> <!-- END MAIN CARD DESAFIOS -->
+    </div> <!-- END SECCIÓN DESAFÍOS -->
+  </div>
+
+  <!-- MODAL -->
+  <div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Evaluando a {{nick_eval}}</h4>
+          <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-6 col-md-8 col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <p>Estudiante: <strong>{{name_eval}}</strong></p>
+                  <p>Fecha Envío: {{date_eval}}</p>
+                </div>
+                <div class="card-body">
+                  <div class="text-value">Respuesta</div>
+                  <textarea type="text" rows="3"
+                    placeholder="Respuesta en blanco / no envío respuesta"> {{answer_eval}}</textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <div class="card">
+                <div class="card-header">
+                  Calificar
+                </div>
+                <div class="card-body">
+                  <input type="number" class="form-control" placeholder="Calificación" value={{mark_eval}}>
+                  <textarea type="text" class="form-control" placeholder="Escribir comentario"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="largeModal.hide()">Cerrar</button>
+          <button type="button" class="btn btn-primary">Calificar y guardar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+</div><!-- END MAIN -->
