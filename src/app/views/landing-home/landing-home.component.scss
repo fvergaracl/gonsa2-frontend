@@ -63,7 +63,6 @@ a {
 .gonsa{
 	background-color: $mainblack;
 	max-width:100%;
-	width: 100%;
 	//height:auto;
 	display: flex;
 	flex-direction: column;
@@ -557,6 +556,7 @@ h1, h2, h3, h4{
 	background: none;
 	border: none;
 	cursor: pointer;
+	color: $mainblack;
 	line-height: 1.5;
 	font: 700 1.2rem 'Roboto Slab', sans-serif;
 	padding: 1em 2em;
