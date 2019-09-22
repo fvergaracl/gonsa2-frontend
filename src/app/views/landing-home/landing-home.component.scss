@@ -5,6 +5,39 @@ $grisclaro: #e0e2e2;
 $display: #abadc6;
 $item: #d1c9bf;
 $codred: #ac5e47;
+/* 
+.scrollbar {
+	margin-left: 22px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+	&::-webkit-scrollbar-track {
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		background-color: #F5F5F5;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-image: -webkit-gradient(linear,
+    left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+	}
+}
+.force-overflow {
+	min-height: 450px;
+}
+#wrapper {
+	text-align: center;
+	margin: auto;
+}
+ */
 
 body {
   font-family: "Century Gothic", 'Lato', sans-serif;
@@ -88,6 +121,10 @@ a {
 	position: relative;
 	text-align: center;
 	padding: 0 2em;
+	h3{
+		color:$mainblack;
+		background-color: $item;
+	}
 }
 
 .et-hero-tabs-container {
@@ -154,7 +191,12 @@ a {
 
 /* DEMO-SPECIFIC STYLES */
 .typewriter h1 {
-  color: #000;
+  color: $amain;
+/*   text-shadow: 2px 0 0, -2px 0 0 $mainblack, 0 2px 0 $mainblack, 0 -2px 0 $mainblack, 1px 1px $mainblack, -1px -1px 0 $mainblack, 1px -1px 0 $mainblack, -1px 1px 0 $mainblack;
+ */  
+ -webkit-text-stroke-width: 0.6px;
+ -webkit-text-stroke-color: $amain;
+ color:$mainblack;
   font-family: "Century Gothic", 'Lato', sans-serif;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */
@@ -172,7 +214,8 @@ a {
 }
 
 .typewriter h2 {
-  color: #000;
+  color:$amain;
+  background-color: $mainblack;
   font-family: "Century Gothic", 'Lato', sans-serif;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */

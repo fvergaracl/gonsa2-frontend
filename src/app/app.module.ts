@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -60,7 +60,11 @@ import { LoginComponent } from './views/login/login.component';
     LandingHomeComponent,
     LoginComponent,
   ],
-  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy},
+    {
+      provide: APP_BASE_HREF,
+      useValue: window['base-href']
+    }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

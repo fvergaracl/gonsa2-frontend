@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
 
-  <!-- Sección presentación del Curso -->
+  <p>Course component here! - Work in progress...</p>
   <div class="row>">
     <div class="card text-white bg-dark">
       <div class="card-body pb-0">
@@ -12,7 +12,7 @@
       </div>
 
     </div>
-  </div> <!-- END Sección presentación del Curso -->
+  </div> 
 
   <div class="row">
     <div class="col-sm-12 col-md-12">
@@ -31,7 +31,7 @@
         <div class="card-body" [collapse]="isCollapsed" (collapsed)="collapsed($event)" (expanded)="expanded($event)">
           <div class="row">
 
-            <div *ngFor="let dsf of challengeData trackBy: trackByFn" class="col-lg-4 mbr-col-md-4">
+            <!-- <div *ngFor="let dsf of challengeData trackBy: trackByFn" class="col-lg-4 mbr-col-md-4">
               <div class="card border-secondary cardchallenge animated pulse ">
                 <div class="card-header" (click)="selectDesafio(dsf.title)">
                   Desafío id # {{dsf.id}}
@@ -45,7 +45,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div><!-- row close -->
       </div> <!-- CARD DESAFIOS -->
@@ -122,7 +122,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <ng-container
+                      <!-- <ng-container
                         *ngFor="let student of tableData trackBy: trackByFn |filter:searchTodos | paginate: { itemsPerPage: 5, id: 'estudiantei', currentPage: pd }">
                         <tr>
                           <td>{{student.nick}}</td>
@@ -137,7 +137,7 @@
                             <span class="badge badge-success">{{student.state}}</span>
                           </td>
                         </tr>
-                      </ng-container>
+                      </ng-container> -->
 
                     </tbody>
                   </table>

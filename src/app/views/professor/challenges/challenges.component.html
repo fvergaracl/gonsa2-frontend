@@ -18,13 +18,13 @@
         <div class="card-body" [collapse]="isCollapsed" (collapsed)="collapsed($event)" (expanded)="expanded($event)">
           <div class="row">
 
-            <div *ngFor="let dsf of challengeData trackBy: trackByFn" class="col-lg-4 mbr-col-md-4">
+            <!-- <div *ngFor="let dsf of challengeData trackBy: trackByFn" class="col-lg-4 mbr-col-md-4">
               <div class="card border-secondary cardchallenge animated pulse ">
                 <div class="card-header" (click)="selectDesafio(dsf.title)">
                   Desafío id # {{dsf.id}}
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div><!-- row close -->
       </div> <!-- CARD DESAFIOS -->
