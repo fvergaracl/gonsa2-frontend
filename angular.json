@@ -29,11 +29,13 @@
             "styles": [
               "src/styles.scss",
               "src/assets/fonts/material-icons.css",
+              "src/assets/css/toastr.css",
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/animate.css/animate.min.css"
             ],
             "scripts": [ 
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/toastr.min.js"
             ]
           },
           "configurations": {

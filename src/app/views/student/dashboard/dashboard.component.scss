@@ -27,6 +27,7 @@ body {
   background-color: $amain;
 }
 h1 {
+  color: $amain;
   margin: 0;
   line-height: 2;
   text-align: center;
@@ -113,6 +114,8 @@ input:checked {
     padding: 1em;
   }
 }
+
+
 
 
 

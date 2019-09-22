@@ -9,10 +9,10 @@
         <label class="tab-label" for="chck1"> <i class="material-icons md-36">emoji_symbols</i> Mis Cursos</label>
         <div class="tab-content">
           <ul>
-            <li><a class="btn btn-course" href="">Todos (Resumen)</a></li>
-            <li><a class="btn btn-course" href="">Biología</a></li>
-            <li><a class="btn btn-course" href="">Lenguaje</a></li>
-            <li><a class="btn btn-course" href="">Matemáticas</a></li>
+            <li><a class="btn btn-course" (click)="changeCourse('TODOS')">Todos (Resumen)</a></li>
+            <li><a class="btn btn-course" (click)="changeCourse('BIO')">Biología</a></li>
+            <li><a class="btn btn-course" (click)="changeCourse('LEN')">Lenguaje</a></li>
+            <li><a class="btn btn-course" (click)="changeCourse('MAT')">Matemáticas</a></li>
           </ul>
         </div>
       </div>
