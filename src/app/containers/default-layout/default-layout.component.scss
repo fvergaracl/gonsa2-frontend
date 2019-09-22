@@ -1,5 +1,11 @@
 $red:#F44336;
 
+.app-body{
+	overflow-y: auto; 
+	overflow-x: hidden
+  }
+
+  
 @mixin transition($in) {
 	transition:$in;
 	-webkit-transition:$in;
@@ -35,6 +41,7 @@ body {
 	margin:0;
 	padding:0;
 	background-color:#222;
+	overflow-x: hidden;
 }
 * {
 	color:#888;
@@ -213,7 +220,10 @@ body {
     background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+	min-height: 100vh;
+	height: auto;
+	width: 100%;
+	overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
   }
 

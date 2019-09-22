@@ -61,10 +61,10 @@ import { LoginComponent } from './views/login/login.component';
     LoginComponent,
   ],
   providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy},
-    {
+    /* {
       provide: APP_BASE_HREF,
       useValue: window['base-href']
-    }],
+    } */],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
