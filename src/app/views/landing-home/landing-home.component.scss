@@ -194,9 +194,10 @@ a {
   color: $amain;
 /*   text-shadow: 2px 0 0, -2px 0 0 $mainblack, 0 2px 0 $mainblack, 0 -2px 0 $mainblack, 1px 1px $mainblack, -1px -1px 0 $mainblack, 1px -1px 0 $mainblack, -1px 1px 0 $mainblack;
  */  
- -webkit-text-stroke-width: 0.6px;
- -webkit-text-stroke-color: $amain;
- color:$mainblack;
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: $amain;
+  font-size: 5vmax;
+  color:$mainblack;
   font-family: "Century Gothic", 'Lato', sans-serif;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */
@@ -216,6 +217,7 @@ a {
 .typewriter h2 {
   color:$amain;
   background-color: $mainblack;
+  font-size: 3.5vw;
   font-family: "Century Gothic", 'Lato', sans-serif;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */
@@ -531,7 +533,8 @@ h1, h2, h3, h4{
     border-radius: 0px 0px 6px 6px;
 }  
 .underbase {
-    width: 600px;
+	width: 100%;
+	padding: 10%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -591,7 +594,7 @@ h1, h2, h3, h4{
   }
   
   .draw-border {
-	@include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
+	@include btn-border-drawing(#58afd1, $amain, 4px, bottom, right);
   }
   
   //=== Button styling, semi-ignore
