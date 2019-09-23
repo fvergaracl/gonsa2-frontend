@@ -3,14 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Gonsa2f</title>
+  <title>GoNSA2</title>
   <base href="">  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="assets/favicon.ico">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
 
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" type="text/css" rel="stylesheet" />
@@ -19,15 +17,6 @@
     /* window['base-href'] = window.location.pathname+"";
     console.log(window['base-href']); */
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    // Shared ID
-    gtag('config', 'UA-118965717-3');
-    // Angular ID
-    gtag('config', 'UA-118965717-4');
 
     if (window.navigator.userAgent.indexOf('MSIE ') >= 0) {
       $('[hacked-for-ie]').on('click', 'a', function () {
@@ -42,32 +31,11 @@
   <script type="text/javascript" src="/assets/js/loading-bar.js"></script>
   <script type="text/javascript" src="/assets/js/toastr.min.js"></script>
 
-  <!-- update the version number as needed -->
-  <script defer src="/assets/js/firebase-app.js"></script>
 <link rel="stylesheet" href="styles.357392118815d678ea02.css"></head>
 
 <body>
   <!-- App Loading... -->
   <app-root></app-root>
-
-  <!-- FIREBASE CONFIG -->
-  <script>
-    window.onload = function what() {
-      document.addEventListener('DOMContentLoaded', function () {
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] ===
-            'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    }
-
-  </script>
-<script src="runtime.23bea520aa5deae9966a.js" defer></script><script src="polyfills-es5.7c5d5eef4befb4fb2db1.js" nomodule defer></script><script src="scripts.8b2838cf407a39300cd6.js" defer></script><script src="main.85baa06f898b8e75afe8.js" defer></script></body>
+<script src="runtime.23bea520aa5deae9966a.js" defer></script><script src="polyfills-es5.7c5d5eef4befb4fb2db1.js" nomodule defer></script><script src="scripts.8b2838cf407a39300cd6.js" defer></script><script src="main.d11b16a3bcffadd1dcf3.js" defer></script></body>
 
 </html>
