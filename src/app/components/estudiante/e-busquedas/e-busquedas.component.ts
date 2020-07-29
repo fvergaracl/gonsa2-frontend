@@ -21,6 +21,7 @@ export class EBusquedasComponent implements OnInit {
   busqueda: any;
   respuesta: [];
   resBUSQUEDA: any;
+  Consulta_busqueda: any;
   resBUSQUEDASRELACIONADAS: any;
   resLIBRERIA: any;
   constructor(public http: HttpClient, public router: Router, public _LoginService: LoginService) {
@@ -102,7 +103,7 @@ AgregarApunteNuevo (text: any, url: any) {
         'Authorization': 'JWT ' + localStorage.getItem('token')
       })
     };
-    const data = {idchallenge: id , text: textLibreria, url: urlLibreria, action: accion};
+    const data = {idchallenge: id , text: textLibreria, url: urlLibreria, action: accion, consulta: this.Consulta_busqueda};
     console.log(data);
     this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
@@ -140,6 +141,7 @@ AgregarApunteNuevo (text: any, url: any) {
     let boo: any;
     this.show = true;
     // let boo: Boolean;
+    this.Consulta_busqueda = busqueda
     let resBusqueda = [];
     let resBusquedasRelacionadas = [];
      console.log(busqueda);
@@ -280,7 +282,7 @@ removeLibreria(text: any, url: any, indice: any) {
   // console.log(url);
   const id = Number (localStorage.getItem('idsidebar'));
   const accion = 'remove';
-  const data = {idchallenge: id, text: text, url: url, action: accion};
+  const data = {idchallenge: id, text: text, url: url, action: accion,};
   // console.log(data);
   const httpOptions = {
     headers: new HttpHeaders({
