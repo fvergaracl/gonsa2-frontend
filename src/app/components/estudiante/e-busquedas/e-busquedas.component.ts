@@ -24,9 +24,13 @@ export class EBusquedasComponent implements OnInit {
   Consulta_busqueda: any;
   resBUSQUEDASRELACIONADAS: any;
   resLIBRERIA: any;
+  cantidadResultado: number;
+
   constructor(public http: HttpClient, public router: Router, public _LoginService: LoginService) {
     this.noF = true;
-
+    this.cantidadResultado = this._LoginService.getCantidadResultados() 
+    console.log('---------')
+    console.log(this.cantidadResultado)
    }
 
 

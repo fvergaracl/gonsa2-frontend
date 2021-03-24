@@ -11,14 +11,21 @@ export class LoginService {
   rol: string;
   urlapi: string;
   expiretoken: string;
+  UserId: number;
+  cantidadResultados: number;
 
   constructor(public http: HttpClient, 
     private router: Router) {
       this.token = localStorage.getItem('token')
+      this.cantidadResultados = 10
       console.log(this.token)
       if (this.token != null) {
         let temproltoken = this.token.split('.')[1]
         this.rol = JSON.parse(atob(temproltoken))['Rol']
+        this.UserId = JSON.parse(atob(temproltoken))['UserId']
+        if (this.UserId%2 === 1){
+          this.cantidadResultados = 20
+        }
         this.nick = JSON.parse(atob(temproltoken))['User']
         this.expiretoken = JSON.parse(atob(temproltoken))['exp']
         this.logged = true
@@ -30,7 +37,7 @@ export class LoginService {
         this.logged = false
       }
       
-      this.urlapi = 'http://tera.uach.cl:8080/'
+      this.urlapi = 'http://tera.uach.cl:4848/'
     }
 
   setLogged(newStatus: boolean) {
@@ -79,6 +86,10 @@ export class LoginService {
 
   getexpToken(): string {
     return this.expiretoken;
+  }
+
+  getCantidadResultados(): number {
+    return this.cantidadResultados;
   }
 }
 
