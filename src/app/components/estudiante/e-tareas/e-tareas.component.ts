@@ -100,26 +100,21 @@ export class ETareasComponent implements OnInit {
           }
         }
       desafio = {terminados: this.alldesafios3, pendiente: this.alldesafios2, noiniciado: this.alldesafios1};
-      console.log(desafio);
 
-      } else {console.log(data['code']); }
+      } else {
+        
+       }
     });
     return(desafio);
   }
 
   setInfoNoIniciada(objetivo: any, descripcion: any, id: any ) {
-    console.log(objetivo);
-    console.log(descripcion);
-    console.log(id);
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);
     this.router.navigate(['estudiante/busquedas']);
   }
   setInfoNoTerminada (objetivo: any, descripcion: any, id: any ) {
-    console.log(objetivo);
-    console.log(descripcion);
-    console.log(id);
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);

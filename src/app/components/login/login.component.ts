@@ -16,9 +16,6 @@ export class LoginComponent implements OnInit {
     public router: Router) { }
 
   Entrar(usuario, contrasena) {
-    console.log(usuario);
-    console.log(contrasena);
-
     const req = this.http.post(this._loginService.getUrlApi()+'login', {
       user: usuario,
       pass: contrasena
@@ -44,7 +41,6 @@ export class LoginComponent implements OnInit {
             }
             
           } else if (res['code'] >= 400) {
-            console.log('no entro algo paso');
             console.log(res);
             document.getElementById('modaldashboardtitulo').innerHTML = 'Error!';
             document.getElementById('modaldashboardtexto').innerHTML = '<i class="fa fa-check" style="color: green;"></i> '
@@ -62,7 +58,6 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     let rol = this._loginService.getRol()
-    console.log(rol);
     if (rol === 'Professor') {
       this.router.navigate(['profesor/inicio']);
     } else if (rol == 'Student'){

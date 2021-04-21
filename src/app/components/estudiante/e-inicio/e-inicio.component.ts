@@ -38,8 +38,8 @@ export class EInicioComponent implements OnInit {
         // localStorage.setItem('clasescategoria', JSON.stringify(clases));
         // console.log(localStorage.getItem('clases'));
       } else {
-        console.log(data['code']);
-     }console.log(this.categorias);
+        
+     }
     });
     // return clases;
   }

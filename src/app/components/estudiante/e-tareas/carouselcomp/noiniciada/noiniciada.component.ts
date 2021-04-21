@@ -74,24 +74,18 @@ tempData: any[];
           }
         }
         if (tareasNoInit.length !== 0) {
-          console.log('dentro del if');
-          console.log(tareasNoInit.length);
           localStorage.setItem('tareasnoinit', JSON.stringify(tareasNoInit));
-          console.log(tareasNoInit);
           this.show = true;
         }else{
           this.show = false;
 
         }
-      } else {console.log(data['code']);
+      } else {
     }
   });
   return tareasNoInit;
   }
   setInfoNoIniciada(objetivo: any, descripcion: any, id: any ) {
-    console.log(objetivo);
-    console.log(descripcion);
-    console.log(id);
     localStorage.setItem('idsidebar', id);
     localStorage.setItem('objetivosidebar', objetivo);
     localStorage.setItem('descripcionsidebar', descripcion);
@@ -100,7 +94,6 @@ tempData: any[];
   ngOnInit() {
     if (localStorage.getItem('tareasnoinit')) {
       const parnoinit =  JSON.parse(localStorage.getItem('tareasnoinit'));
-      console.log(Object.keys(parnoinit).length);
       const obnoinit = Object.keys(parnoinit).length;
         this.tempData = [];
         this.carouselTileItems$ = interval(500).pipe(

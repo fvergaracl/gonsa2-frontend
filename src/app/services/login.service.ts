@@ -18,7 +18,6 @@ export class LoginService {
     private router: Router) {
       this.token = localStorage.getItem('token')
       this.cantidadResultados = 10
-      console.log(this.token)
       if (this.token != null) {
         let temproltoken = this.token.split('.')[1]
         this.rol = JSON.parse(atob(temproltoken))['Rol']
@@ -89,6 +88,13 @@ export class LoginService {
   }
 
   getCantidadResultados(): number {
+    this.cantidadResultados = 10
+    this.token = localStorage.getItem('token')
+    let temproltoken = this.token.split('.')[1]
+    this.UserId = JSON.parse(atob(temproltoken))['UserId']
+    if (this.UserId%2 === 1){
+      this.cantidadResultados = 20
+    }
     return this.cantidadResultados;
   }
 }

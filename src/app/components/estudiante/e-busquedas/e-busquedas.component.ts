@@ -29,14 +29,11 @@ export class EBusquedasComponent implements OnInit {
   constructor(public http: HttpClient, public router: Router, public _LoginService: LoginService) {
     this.noF = true;
     this.cantidadResultado = this._LoginService.getCantidadResultados() 
-    console.log('---------')
-    console.log(this.cantidadResultado)
    }
 
 
   LibreriaEstudiante() {
     let urlparaverificar = [];
-    console.log('libreria estudiante:');
     const id = localStorage.getItem('idsidebar');
     this.showH = true;
     const resLibreria = [];
@@ -59,9 +56,8 @@ export class EBusquedasComponent implements OnInit {
       }
       // resLibreria = data['message'];
         this.resLIBRERIA = resLibreria;
-        console.log(this.resLIBRERIA);
         localStorage.setItem('urlparaverificar', JSON.stringify(urlparaverificar));
-     } else {console.log(data['code']);
+     } else {
     }
     });
     return (resLibreria);
@@ -98,7 +94,6 @@ AgregarApunteNuevo (text: any, url: any) {
     let accents = require('remove-accents');
     textLibreria = accents.remove(textLibreria);
     // biuidsuiusdiusd
-    console.log('se guardare la urla y text: ' + urlLibreria, textLibreria);
     const id = localStorage.getItem('idsidebar');
     const accion = 'block';
     const httpOptions = {
@@ -108,10 +103,8 @@ AgregarApunteNuevo (text: any, url: any) {
       })
     };
     const data = {idchallenge: id , text: textLibreria, url: urlLibreria, action: accion, consulta: this.Consulta_busqueda};
-    console.log(data);
     this.http.post( this._LoginService.getUrlApi() + '/library/accion', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
-        console.log('se agrego a la libreria');
         Swal.fire({title: 'Documento guardado',
           showConfirmButton: false,
           timer: 1000,
@@ -125,8 +118,6 @@ AgregarApunteNuevo (text: any, url: any) {
          type: 'success'});
        this.LibreriaEstudiante();
      } else {
-       console.log('no se agrego a libreria, hubo un problema');
-       console.log(res['code']);
     }
     });
   }
@@ -134,8 +125,6 @@ AgregarApunteNuevo (text: any, url: any) {
 
 
   EliminarApunte(indice) {
-    console.log('*****************************************************')
-    console.log(indice);
     const iddd = 'icon' + indice;
     document.getElementById(iddd).classList.remove('fa-heart');
     document.getElementById(iddd).classList.add('fa-heart-o');
@@ -148,14 +137,11 @@ AgregarApunteNuevo (text: any, url: any) {
     this.Consulta_busqueda = busqueda
     let resBusqueda = [];
     let resBusquedasRelacionadas = [];
-     console.log(busqueda);
     const id = localStorage.getItem('idsidebar');
-    console.log(id);
     busqueda = encodeURIComponent(busqueda).replace(/[!'()]/g, escape).replace(/\*/g, '%2A');
     // for (let i = 0; i < busqueda.length; i++) {
     //   busqueda = busqueda.replace(' ', '%20');
     // }
-     console.log(busqueda);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -175,7 +161,6 @@ AgregarApunteNuevo (text: any, url: any) {
           // boo = this.Esdelalibreria(web);
           const re = {name: na, snippet: sn, url: ur, position: position};
           // , esta: boo
-          console.log(re);
         resBusqueda.push(re);
           this.resBUSQUEDA = resBusqueda;
         }
@@ -200,21 +185,17 @@ AgregarApunteNuevo (text: any, url: any) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'OK'
       });
-      console.log(data['code']);
     }
     });
 
   }
   Esdelalibreria( web: any) {
-    console.log(web);
     const array = localStorage.getItem('urlparaverificar');
 
     if (array.indexOf(web) !== -1) {
-      console.log('si esta en la libreria');
       return true;
     }
     else {
-      console.log('no esta en la libreria');
       return false;
     }
 
@@ -238,9 +219,6 @@ ConfirmarTermino(respuesta: any) {
 }
   TerminarDesafio(respuesta: any) {
     const id = Number(localStorage.getItem('idsidebar'));
-    console.log(respuesta);
-    console.log(id);
-    console.log('se ejecuto terminar desafio');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -248,8 +226,6 @@ ConfirmarTermino(respuesta: any) {
       })
     };
    const data = {idchallenge: id, solution: respuesta};
-    console.log(data);
-    console.log('desafio terminado');
     this.http.post( this._LoginService.getUrlApi() + '/finish_challenge', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
         Swal.fire({
@@ -262,7 +238,6 @@ ConfirmarTermino(respuesta: any) {
         });
         this.router.navigate(['estudiante/tareas']);
       } else {
-        console.log('Algo salio mal :c');
               Swal.fire({
           title: 'Hubo un problema',
           type: 'error',
@@ -303,18 +278,14 @@ removeLibreria(text: any, url: any, indice: any) {
       type: 'success'});
       this.LibreriaEstudiante();
     } else {
-      console.log(res['code']);
-      console.log('no se borro el recurso');
   }
   });
 
 }
 
 guardarRepuestaEstudiante(text: any) {
-    console.log(text);
     const id = Number (localStorage.getItem('idsidebar'));
     const data = {idchallenge: id, solution: text };
-    console.log(data);
 
 
     const httpOptions = {
@@ -325,7 +296,6 @@ guardarRepuestaEstudiante(text: any) {
     };
     this.http.post( this._LoginService.getUrlApi() + '/new_response', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
-        console.log('respuesta guardada');
         Swal.fire({
           title: 'Respuesta guardada correctamente',
           type: 'success',
@@ -334,8 +304,7 @@ guardarRepuestaEstudiante(text: any) {
           cancelButtonColor: '#d33',
           confirmButtonText: 'OK'
         });
-      } else {console.log('respuesta no guardada');
-            console.log('Algo salio mal :c');
+      } else {
             Swal.fire({
               title: 'Hubo un problema',
               type: 'error',
@@ -353,16 +322,12 @@ guardarRepuestaEstudiante(text: any) {
     (<HTMLInputElement>document.getElementById('busqueda')).value = text;
   }
   RegistroEvent(url: any, titulo: any, indice: any, position: any) {
-    console.log(url);
-    // let documentos = document.getElementById('documentosi').getAttribute('values');
-    console.log(position);
-    console.log(titulo);
+
     indice = indice + 1;
     position=position+1;
-    console.log('documento numero' + indice);
     indice = indice.toString();
     let data = {data:{evento: 'click', link: {titulo: titulo, posicion: position}}};
-    console.log(data);
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
@@ -371,8 +336,7 @@ guardarRepuestaEstudiante(text: any) {
     };
     this.http.post( this._LoginService.getUrlApi() + '/reg_event', data, httpOptions).subscribe(res => {
       if (res['code'] === 200) {
-        console.log('click registrado');
-      }else{console.log(res['code']);
+      }else{
       }
   });
 }

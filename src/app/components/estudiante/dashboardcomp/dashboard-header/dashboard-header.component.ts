@@ -39,7 +39,6 @@ export class DashboardHeaderComponentEstudiante implements OnInit {
         this.http.get( this._loginService.getUrlApi() +'islogged', httpOptions).subscribe(data => {
           if (data['code'] === 200){
             null;
-            console.log('todo ok, el usuario esta logeado');
           } else {
             // No tiene token o el token es invalido, por lo tanto lo redirigo al inicio de gonsa
             this._loginService.setExpireToken('')
